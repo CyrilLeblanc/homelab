@@ -1,0 +1,70 @@
+services:
+  affine:
+    image: ghcr.io/toeverything/affine-graphql:stable
+    container_name: affine_app
+    restart: unless-stopped
+#    ports:
+#      - 3010:3010
+    depends_on:
+      - redis
+      - postgres
+      - affine_migration
+    volumes:
+      - ./storage:/root/.affine/storage
+      - ./config:/root/.affine/config
+    environment:
+      - REDIS_SERVER_HOST=redis
+      - DATABASE_URL=postgresql://${DB_USERNAME}:${DB_PASSWORD}@postgres:5432/${DB_DATABASE}
+    networks:
+      - web
+      - default
+
+  affine_migration:
+    image: ghcr.io/toeverything/affine-graphql:stable
+    container_name: affine_migration
+    restart: unless-stopped
+    volumes:
+      - ./storage:/root/.affine/storage
+      - ./config:/root/.affine/config
+    command: ['sh', '-c', 'node ./scripts/self-host-predeploy.js']
+    environment:
+      - REDIS_SERVER_HOST=redis
+      - DATABASE_URL=postgresql://${DB_USERNAME}:${DB_PASSWORD}@postgres:5432/${DB_DATABASE}
+    depends_on:
+      - postgres
+      - redis
+
+  redis:
+    image: redis
+    container_name: affine_redis
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'redis-cli', '--raw', 'incr', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgres:
+    image: postgres:16
+    container_name: affine_postgres
+    restart: unless-stopped
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_INITDB_ARGS: '--data-checksums'
+      # you better set a password for you database
+      # or you may add 'POSTGRES_HOST_AUTH_METHOD=trust' to ignore postgres security policy
+      POSTGRES_HOST_AUTH_METHOD: trust
+    healthcheck:
+      test:
+        ['CMD', 'pg_isready', '-U', "${DB_USERNAME}", '-d', "${DB_DATABASE}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  web:
+    external: true

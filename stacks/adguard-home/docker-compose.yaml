@@ -1,0 +1,23 @@
+
+services:
+  app:
+    container_name: ${STACK_NAME}_app
+    image: adguard/adguardhome:latest
+    restart: unless-stopped
+    volumes:
+      - app-work:/opt/adguardhome/work
+      - app-conf:/opt/adguardhome/conf
+    ports:
+      - 53:53/tcp
+      - ${HOST_IP}:53:53/udp
+      - 853:853/tcp
+    networks:
+      - web
+
+volumes:
+  app-work:
+  app-conf:
+
+networks:
+  web:
+    external: true

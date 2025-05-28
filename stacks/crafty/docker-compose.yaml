@@ -1,0 +1,29 @@
+services:
+
+  app:
+    container_name: crafty_app
+    image: registry.gitlab.com/crafty-controller/crafty-4:latest
+    restart: unless-stopped
+    environment:
+        - TZ=Etc/CEST
+    networks:
+      - web
+    ports:
+        - 25565:25565
+    volumes:
+        - crafty_backups:/crafty/backups
+        - crafty_logs:/crafty/logs
+        - crafty_servers:/crafty/servers
+        - crafty_config:/crafty/app/config
+        - crafty_import:/crafty/import
+
+volumes:
+  crafty_backups:
+  crafty_logs:
+  crafty_servers:
+  crafty_config:
+  crafty_import:
+
+networks:
+  web:
+    external: true

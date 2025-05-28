@@ -1,0 +1,71 @@
+services:
+  app:
+    container_name: ${STACK_NAME}_app
+    image: nextcloud:fpm-alpine
+    restart: unless-stopped
+    networks:
+      - default
+      - smtp
+    volumes:
+      - ./app:/var/www/html:z
+    environment:
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_HOST=db
+
+    depends_on:
+      - db
+      - redis
+
+  db:
+    container_name: ${STACK_NAME}_db
+    image: mariadb:10.6
+    restart: unless-stopped
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    networks:
+      - default
+    volumes:
+      - ./data:/var/lib/mysql:Z
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+
+  nginx:
+    container_name: ${STACK_NAME}_nginx
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ./app:/var/www/html:z,ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:r2
+    links:
+      - app
+    networks:
+      - default
+      - web
+
+  cron:
+    container_name: ${STACK_NAME}_cron
+    image: nextcloud:fpm-alpine
+    restart: unless-stopped
+    volumes:
+      - ./app:/var/www/html:z
+    user: root
+    entrypoint: /cron.sh
+    depends_on:
+      - db
+
+  redis:
+    container_name: ${STACK_NAME}_redis
+    image: redis:alpine
+    restart: unless-stopped
+    networks:
+      - default
+
+networks:
+  web:
+    external: true
+  smtp:
+    external: true

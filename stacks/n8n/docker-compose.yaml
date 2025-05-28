@@ -1,0 +1,37 @@
+services:
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n
+    restart: unless-stopped
+    volumes:
+      - ./data:/home/node/.n8n:rw
+    environment:
+      - N8N_HOST=n8n.cyrleb.dev
+      - WEBHOOK_URL=https://n8n.cyrleb.dev/
+      - GENERIC_TIMEZONE=Europe/Paris
+      - NODE_ENV=production
+      - QUEUE_BULL_REDIS_HOST=redis
+      - QUEUE_BULL_REDIS_PORT=6379
+      - QUEUE_HEALTH_CHECK_ACTIVE=true
+      - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+    networks:
+      - web
+      - default
+
+
+  postgres:
+    image: postgres:latest
+    container_name: n8n_postgres
+    restart: unless-stopped
+    shm_size: 128mb
+    environment:
+      - POSTGRES_DB=n8n
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+
+networks:
+  web:
+    external: true

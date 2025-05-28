@@ -1,0 +1,46 @@
+services:
+
+  app:
+    container_name: searxng_app
+    image: docker.io/searxng/searxng:latest
+    restart: unless-stopped
+    environment:
+      - SEARXNG_BASE_URL=https://searxng.yo/
+      - UWSGI_WORKERS=4
+      - UWSGI_THREADS=4
+      - SEARXNG_REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+      - tor
+    volumes:
+      - app_data:/etc/searxng:rw
+    networks:
+      - default
+      - web
+
+  redis:
+    container_name: searxng_redis
+    image: docker.io/valkey/valkey:8-alpine
+    command: valkey-server --save 30 1 --loglevel warning
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+
+  tor:
+    container_name: searxng_tor
+    image: dockurr/tor:latest
+    restart: unless-stopped
+    volumes:
+      - tor_config:/etc/tor
+      - tor_data:/var/lib/tor
+
+volumes:
+  app_data:
+  redis_data:
+  tor_config:
+  tor_data:
+
+networks:
+  web:
+    external: true
+    

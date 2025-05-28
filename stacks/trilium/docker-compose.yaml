@@ -1,0 +1,13 @@
+version: '3'
+services:
+  trilium:
+    image: triliumnext/notes:stable
+    container_name: trilium
+    restart: unless-stopped
+    networks:
+      - web
+    volumes:
+      - ./data:/home/node/trilium-data
+networks:
+  web:
+    external: true

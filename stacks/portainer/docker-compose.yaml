@@ -1,0 +1,21 @@
+services:
+
+  app:
+    image: portainer/portainer-ce:latest
+    container_name: ${STACK_NAME}_app
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - app-data:/data
+    networks:
+      - web
+   # ports:
+   #  - 9443:9443
+
+volumes:
+  app-data:
+
+networks:
+  web:
+    external: true

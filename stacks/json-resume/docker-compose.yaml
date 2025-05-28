@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  resume:
+    container_name: resume
+    restart: unless-stopped
+    image: httpd:alpine
+    volumes:
+      - ./data:/usr/local/apache2/htdocs
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
