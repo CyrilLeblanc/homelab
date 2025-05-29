@@ -1,7 +1,7 @@
 services:
 
   app:
-    container_name: searxng_app
+    container_name: ${STACK_NAME}_app
     image: docker.io/searxng/searxng:latest
     restart: unless-stopped
     environment:
