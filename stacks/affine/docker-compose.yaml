@@ -1,17 +1,17 @@
 services:
-  affine:
+  app:
     image: ghcr.io/toeverything/affine-graphql:stable
-    container_name: affine_app
+    container_name: ${STACK_NAME}_app
     restart: unless-stopped
 #    ports:
 #      - 3010:3010
     depends_on:
       - redis
       - postgres
-      - affine_migration
+      - migration
     volumes:
-      - ./storage:/root/.affine/storage
-      - ./config:/root/.affine/config
+      - app-storage:/root/.affine/storage:rw
+      - app-config:/root/.affine/config:rw
     environment:
       - REDIS_SERVER_HOST=redis
       - DATABASE_URL=postgresql://${DB_USERNAME}:${DB_PASSWORD}@postgres:5432/${DB_DATABASE}
@@ -19,13 +19,13 @@ services:
       - web
       - default
 
-  affine_migration:
+  migration:
     image: ghcr.io/toeverything/affine-graphql:stable
-    container_name: affine_migration
+    container_name: ${STACK_NAME}_migration
     restart: unless-stopped
     volumes:
-      - ./storage:/root/.affine/storage
-      - ./config:/root/.affine/config
+      - app-storage:/root/.affine/storage:rw
+      - app-config:/root/.affine/config:rw
     command: ['sh', '-c', 'node ./scripts/self-host-predeploy.js']
     environment:
       - REDIS_SERVER_HOST=redis
@@ -35,8 +35,8 @@ services:
       - redis
 
   redis:
-    image: redis
-    container_name: affine_redis
+    image: redis:latest
+    container_name: ${STACK_NAME}_redis
     restart: unless-stopped
     healthcheck:
       test: ['CMD', 'redis-cli', '--raw', 'incr', 'ping']
@@ -46,10 +46,10 @@ services:
 
   postgres:
     image: postgres:16
-    container_name: affine_postgres
+    container_name: ${STACK_NAME}_postgres
     restart: unless-stopped
     volumes:
-      - ./database:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data:rw
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -64,6 +64,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+volumes:
+  app-storage:
+  app-config:
+  postgres-data:
 
 networks:
   web:
