@@ -59,6 +59,10 @@ services:
     image: redis:alpine
     restart: unless-stopped
 
+volumes:
+  app-data:
+  mariadb-data:
+
 networks:
   web:
     external: true
