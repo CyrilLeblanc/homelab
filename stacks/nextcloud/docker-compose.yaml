@@ -36,7 +36,7 @@ services:
     restart: unless-stopped
     volumes:
       - app-data:/var/www/html:z,ro
-      - ./nginx.conf:/etc/nginx/nginx.conf:r2
+      - nginx-config:/etc/nginx
     links:
       - app
     networks:
@@ -62,6 +62,7 @@ services:
 volumes:
   app-data:
   mariadb-data:
+  nginx-config:
 
 networks:
   web:
