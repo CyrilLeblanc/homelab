@@ -20,6 +20,8 @@ services:
     environment:
       - PAPERLESS_REDIS=redis://redis:6379
       - PAPERLESS_DBHOST=postgres
+      - PAPERLESS_OCR_LANGUAGE=fra
+      - PAPERLESS_TIME_ZONE=Europe/Paris
 
   postgres:
     container_name: ${STACK_NAME}_postgres
@@ -48,3 +50,4 @@ volumes:
 
 networks:
   web:
+    external: true
