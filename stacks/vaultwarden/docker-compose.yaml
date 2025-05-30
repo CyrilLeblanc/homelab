@@ -1,16 +1,18 @@
-version: '3'
 services:
-  vaultwarden:
+
+  app:
     image: vaultwarden/server:latest
-    container_name: vaultwarden
+    container_name: ${STACK_NAME}_app
     restart: unless-stopped
     volumes:
-      - ./data:/data
+      - app-data:/data:rw
     networks:
       - web
     environment:
       - SIGNUPS_ALLOWED=false
 
+volumes:
+  app-data:
 
 networks:
   web:
