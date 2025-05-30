@@ -1,0 +1,50 @@
+services:
+
+  app:
+    container_name: ${STACK_NAME}_app
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - web
+      - default
+#    ports:
+#      - 8000:8000
+    volumes:
+      - app-data:/usr/src/paperless/data:rw
+      - app-media:/usr/src/paperless/media:rw
+      - app-export:/usr/src/paperless/export:rw
+      - app-consume:/usr/src/paperless/consume:rw
+    environment:
+      - PAPERLESS_REDIS=redis://redis:6379
+      - PAPERLESS_DBHOST=postgres
+
+  postgres:
+    container_name: ${STACK_NAME}_postgres
+    image: docker.io/library/postgres:17
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data:rw
+
+  redis:
+    container_name: ${STACK_NAME}_redis
+    image: docker.io/library/redis:8
+    volumes:
+      - redis-data:/data:rw²
+
+volumes:
+  app-data:
+  app-media:
+  app-export:
+  app-consume:
+  postgres-data:
+  redis-data:
+
+networks:
+  web:
