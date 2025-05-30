@@ -22,6 +22,7 @@ services:
       - PAPERLESS_DBHOST=postgres
       - PAPERLESS_OCR_LANGUAGE=fra
       - PAPERLESS_TIME_ZONE=Europe/Paris
+      - PAPERLESS_URL=${PAPERLESS_URL}
 
   postgres:
     container_name: ${STACK_NAME}_postgres
