@@ -1,0 +1,50 @@
+services:
+
+  app:
+    container_name: ${STACK_NAME}_app
+    image: lscr.io/linuxserver/bookstack:latest
+    restart: unless-stopped
+    networks:
+      - web
+      - default
+    volumes:
+      - app-data:/config:rw
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Paris
+      - APP_URL=${BOOKSTACK_URL}
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_USERNAME=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_NAME}
+      - QUEUE_CONNECTION=redis
+
+  mariadb:
+    container_name: ${STACK_NAME}_mariadb
+    image: mariadb:latest
+    restart: unless-stopped
+    volumes:
+      - mariadb-data:/var/lib/mysql:rw
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+
+  redis:
+    container_name: ${STACK_NAME}_redis
+    image: redis:latest
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data:rw
+
+volumes:
+  app-data:
+  mariadb-data:
+  redis-data:
+
+networks:
+  web:
+    external: true
