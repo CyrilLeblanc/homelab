@@ -14,6 +14,7 @@ services:
       - PGID=1000
       - TZ=Europe/Paris
       - APP_URL=${BOOKSTACK_URL}
+      - APP_KEY=${APP_KEY}
       - DB_HOST=mariadb
       - DB_PORT=3306
       - DB_USERNAME=${DB_USER}
