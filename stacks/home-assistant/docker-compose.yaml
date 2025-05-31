@@ -1,0 +1,17 @@
+services:
+
+  app:
+    container_name: ${STACK_NAME}_app
+    image: ghcr.io/home-assistant/home-assistant:stable
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - app-data:/config:rw
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    network_mode: host
+    privileged: true
+
+volumes:
+  app-data:
