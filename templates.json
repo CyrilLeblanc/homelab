@@ -3,14 +3,15 @@
   "templates": [
     {
       "title": "AdGuard Home",
+      "description": "AdGuard Home is a network-wide software for blocking ads and trackers. It acts as a DNS server, filtering out unwanted content at the network level.",
       "categories": [
         "network",
         "dns"
       ],
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/main/stacks/adguard-home/logo.png",
+      "logo": "https://gitea.yo/proved1813/homelab/raw/branch/main/stacks/adguard-home/logo.png",
       "type": 3,
       "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
+        "url": "https://gitea.yo/proved1813/homelab",
         "stackfile": "stacks/adguard-home/docker-compose.yaml"
       },
       "platform": "linux"

@@ -1,5 +1,6 @@
 {
     "title": "AdGuard Home",
+    "description": "AdGuard Home is a network-wide software for blocking ads and trackers. It acts as a DNS server, filtering out unwanted content at the network level.",
     "categories": [
         "network",
         "dns"
