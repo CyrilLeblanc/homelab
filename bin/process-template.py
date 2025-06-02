@@ -27,11 +27,11 @@ def main():
                     data = json.load(f)
                     data['type'] = 3
                     data['repository'] = {
-                        'url': 'http://gitea_app:3000/proved1813/homelab',
+                        'url': 'https://github.com/CyrilLeblanc/homelab',
                         'stackfile': f'stacks/{stack_name}/docker-compose.yaml'
                     }
                     data['platform'] = 'linux'
-                    data['logo'] = f'https://gitea.yo/proved1813/homelab/raw/branch/main/stacks/{stack_name}/logo.png'
+                    data['logo'] = f'https://github.com/CyrilLeblanc/homelab/blob/main/stacks/{stack_name}/logo.png?raw=true'
 
                     templates.append(data)
                 except Exception as e:

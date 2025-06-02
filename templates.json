@@ -10,11 +10,11 @@
       ],
       "type": 3,
       "repository": {
-        "url": "http://gitea_app:3000/proved1813/homelab",
+        "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/adguard-home/docker-compose.yaml"
       },
       "platform": "linux",
-      "logo": "https://gitea.yo/proved1813/homelab/raw/branch/main/stacks/adguard-home/logo.png"
+      "logo": "https://github.com/CyrilLeblanc/homelab/blob/main/stacks/adguard-home/logo.png?raw=true"
     }
   ]
 }
