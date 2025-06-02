@@ -27,7 +27,7 @@ def main():
                     data = json.load(f)
                     data['type'] = 3
                     data['repository'] = {
-                        'url': 'https://gitea.yo/proved1813/homelab',
+                        'url': 'http://gitea_app:3000/proved1813/homelab',
                         'stackfile': f'stacks/{stack_name}/docker-compose.yaml'
                     }
                     data['platform'] = 'linux'

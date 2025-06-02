@@ -8,13 +8,13 @@
         "network",
         "dns"
       ],
-      "logo": "https://gitea.yo/proved1813/homelab/raw/branch/main/stacks/adguard-home/logo.png",
       "type": 3,
       "repository": {
-        "url": "https://gitea.yo/proved1813/homelab",
+        "url": "http://gitea_app:3000/proved1813/homelab",
         "stackfile": "stacks/adguard-home/docker-compose.yaml"
       },
-      "platform": "linux"
+      "platform": "linux",
+      "logo": "https://gitea.yo/proved1813/homelab/raw/branch/main/stacks/adguard-home/logo.png"
     }
   ]
 }
