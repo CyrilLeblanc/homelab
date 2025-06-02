@@ -1,0 +1,5 @@
+{
+    "title": "Vaultwarden",
+    "description": "Vaultwarden is an alternative implementation of the Bitwarden server API, written in Rust.",
+    "categories": ["password", "security"]
+}

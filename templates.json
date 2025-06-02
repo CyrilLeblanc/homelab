@@ -2,6 +2,111 @@
   "version": "2",
   "templates": [
     {
+      "title": "Gitea",
+      "description": "Gitea is a lightweight, self-hosted Git service.",
+      "categories": [
+        "development",
+        "git"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/gitea/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/gitea/logo.png"
+    },
+    {
+      "title": "Crafty Controller",
+      "description": "Crafty Controller is a powerful Minecraft server management panel.",
+      "categories": [
+        "games",
+        "management"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/crafty/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/crafty/logo.png"
+    },
+    {
+      "title": "BookStack",
+      "description": "BookStack is a simple, self-hosted, easy-to-use platform for organizing and storing information.",
+      "categories": [
+        "productivity",
+        "wiki"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/bookstack/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/bookstack/logo.png"
+    },
+    {
+      "title": "JSON Resume",
+      "description": "JSON Resume is a community-driven open source initiative to create a JSON-based standard for resumes.",
+      "categories": [
+        "resume",
+        "personal"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/json-resume/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/json-resume/logo.png"
+    },
+    {
+      "title": "Portainer",
+      "description": "Portainer is a lightweight management UI that allows you to easily manage your Docker environments.",
+      "categories": [
+        "docker",
+        "management"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/portainer/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/portainer/logo.png"
+    },
+    {
+      "title": "Stirling PDF",
+      "description": "Stirling PDF is a locally hosted web application that allows you to perform various operations on PDF files.",
+      "categories": [
+        "documents",
+        "pdf"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/stirling-pdf/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/stirling-pdf/logo.png"
+    },
+    {
+      "title": "Sonarr",
+      "description": "Sonarr is a PVR for Usenet and BitTorrent users, automating the downloading, sorting, and renaming of TV series.",
+      "categories": [
+        "media",
+        "automation"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/sonarr/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/sonarr/logo.png"
+    },
+    {
       "title": "AdGuard Home",
       "description": "AdGuard Home is a network-wide software for blocking ads and trackers. It acts as a DNS server, filtering out unwanted content at the network level.",
       "categories": [
@@ -14,7 +119,232 @@
         "stackfile": "stacks/adguard-home/docker-compose.yaml"
       },
       "platform": "linux",
-      "logo": "https://github.com/CyrilLeblanc/homelab/blob/main/stacks/adguard-home/logo.png?raw=true"
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/adguard-home/logo.png"
+    },
+    {
+      "title": "Home Assistant",
+      "description": "Home Assistant is an open-source platform for smart home automation that puts local control and privacy first.",
+      "categories": [
+        "automation",
+        "iot"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/home-assistant/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/home-assistant/logo.png"
+    },
+    {
+      "title": "Homarr",
+      "description": "Homarr is a simple and lightweight homepage for your server.",
+      "categories": [
+        "dashboard",
+        "homepage"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/homarr/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/homarr/logo.png"
+    },
+    {
+      "title": "Open WebUI",
+      "description": "Open WebUI is a modern web-based user interface for managing and interacting with LLMs and AI services.",
+      "categories": [
+        "ai",
+        "interface"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/open-web-ui/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/open-web-ui/logo.png"
+    },
+    {
+      "title": "Homepage",
+      "description": "Homepage is a modern, customizable dashboard for all your web services.",
+      "categories": [
+        "dashboard",
+        "homepage"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/homepage/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/homepage/logo.png"
+    },
+    {
+      "title": "Tor",
+      "description": "Tor is free and open-source software for enabling anonymous communication and privacy online.",
+      "categories": [
+        "privacy",
+        "network"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/tor/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/tor/logo.png"
+    },
+    {
+      "title": "Nginx Proxy Manager",
+      "description": "Nginx Proxy Manager is a simple way to manage Nginx proxy hosts with a clean, efficient interface.",
+      "categories": [
+        "network",
+        "proxy"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/nginx-proxy-manager/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/nginx-proxy-manager/logo.png"
+    },
+    {
+      "title": "Uptime Kuma",
+      "description": "Uptime Kuma is a self-hosted monitoring tool like \"Uptime Robot\".",
+      "categories": [
+        "monitoring",
+        "network"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/uptime-kuma/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/uptime-kuma/logo.png"
+    },
+    {
+      "title": "WireGuard Easy",
+      "description": "WireGuard Easy provides a simple, easy-to-use interface for managing WireGuard VPNs.",
+      "categories": [
+        "vpn",
+        "network"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/wireguard-easy/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/wireguard-easy/logo.png"
+    },
+    {
+      "title": "Vaultwarden",
+      "description": "Vaultwarden is an alternative implementation of the Bitwarden server API, written in Rust.",
+      "categories": [
+        "password",
+        "security"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/vaultwarden/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/vaultwarden/logo.png"
+    },
+    {
+      "title": "SearXNG",
+      "description": "SearXNG is a free internet metasearch engine, aggregating results from various search services.",
+      "categories": [
+        "search",
+        "privacy"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/searxng/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/searxng/logo.png"
+    },
+    {
+      "title": "n8n",
+      "description": "n8n is a free and open workflow automation tool for automating tasks across different services.",
+      "categories": [
+        "automation",
+        "integration"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/n8n/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/n8n/logo.png"
+    },
+    {
+      "title": "Trilium Notes",
+      "description": "Trilium Notes is a hierarchical note taking application with focus on building large personal knowledge bases.",
+      "categories": [
+        "notes",
+        "productivity"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/trilium/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/trilium/logo.png"
+    },
+    {
+      "title": "Paperless-ngx",
+      "description": "Paperless-ngx is a document management system that transforms your physical documents into a searchable online archive.",
+      "categories": [
+        "productivity",
+        "documents"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/paperless-ngx/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/paperless-ngx/logo.png"
+    },
+    {
+      "title": "Nextcloud",
+      "description": "Nextcloud is a suite of client-server software for creating and using file hosting services.",
+      "categories": [
+        "cloud",
+        "storage"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/nextcloud/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/nextcloud/logo.png"
+    },
+    {
+      "title": "Affine",
+      "description": "Affine is a next-generation collaborative knowledge base for teams, combining docs, whiteboards, and databases.",
+      "categories": [
+        "productivity",
+        "collaboration"
+      ],
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/affine/docker-compose.yaml"
+      },
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/affine/logo.png"
     }
   ]
 }
