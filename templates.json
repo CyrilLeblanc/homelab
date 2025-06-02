@@ -77,36 +77,6 @@
       "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/portainer/logo.png"
     },
     {
-      "title": "Stirling PDF",
-      "description": "Stirling PDF is a locally hosted web application that allows you to perform various operations on PDF files.",
-      "categories": [
-        "documents",
-        "pdf"
-      ],
-      "type": 3,
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/stirling-pdf/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/stirling-pdf/logo.png"
-    },
-    {
-      "title": "Sonarr",
-      "description": "Sonarr is a PVR for Usenet and BitTorrent users, automating the downloading, sorting, and renaming of TV series.",
-      "categories": [
-        "media",
-        "automation"
-      ],
-      "type": 3,
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/sonarr/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/sonarr/logo.png"
-    },
-    {
       "title": "AdGuard Home",
       "description": "AdGuard Home is a network-wide software for blocking ads and trackers. It acts as a DNS server, filtering out unwanted content at the network level.",
       "categories": [
