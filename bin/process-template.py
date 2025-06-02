@@ -31,7 +31,7 @@ def main():
                         'stackfile': f'stacks/{stack_name}/docker-compose.yaml'
                     }
                     data['platform'] = 'linux'
-                    data['logo'] = f'https://github.com/CyrilLeblanc/homelab/blob/main/stacks/{stack_name}/logo.png?raw=true'
+                    data['logo'] = f'https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/{stack_name}/logo.png'
 
                     templates.append(data)
                 except Exception as e:
