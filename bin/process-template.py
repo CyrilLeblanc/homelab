@@ -41,7 +41,7 @@ def main():
     # Write the collected templates to templates.json in the current directory
     output_path = os.path.join(os.getcwd(), 'templates.json')
     with open(output_path, 'w') as out:
-        json.dump({"templates": templates}, out, indent=2)
+        json.dump({"version": "2", "templates": templates}, out, indent=2)
     print(f"Wrote {len(templates)} templates to {output_path}")
 
 if __name__ == "__main__":
