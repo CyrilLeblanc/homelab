@@ -1,0 +1,18 @@
+{
+  "templates": [
+    {
+      "title": "AdGuard Home",
+      "categories": [
+        "network",
+        "dns"
+      ],
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/main/stacks/adguard-home/logo.png",
+      "type": 3,
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/adguard-home/docker-compose.yaml"
+      },
+      "platform": "linux"
+    }
+  ]
+}
