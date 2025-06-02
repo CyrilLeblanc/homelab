@@ -1,7 +1,7 @@
 services:
 
   app:
-    container_name: ${STACK_NAME}_app
+    container_name: nginx-proxy-manager_app
     image: jc21/nginx-proxy-manager:latest
     restart: unless-stopped
     volumes:

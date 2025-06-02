@@ -1,7 +1,7 @@
 services:
 
   app:
-    container_name: ${STACK_NAME}_app
+    container_name: adguard-home_app
     image: adguard/adguardhome:latest
     restart: unless-stopped
     volumes:

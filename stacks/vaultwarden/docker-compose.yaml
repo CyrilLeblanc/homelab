@@ -2,7 +2,7 @@ services:
 
   app:
     image: vaultwarden/server:latest
-    container_name: ${STACK_NAME}_app
+    container_name: vaultwarden_app
     restart: unless-stopped
     volumes:
       - app-data:/data:rw

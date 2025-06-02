@@ -1,7 +1,7 @@
 services:
   app:
     image: ghcr.io/toeverything/affine-graphql:stable
-    container_name: ${STACK_NAME}_app
+    container_name: affine_app
     restart: unless-stopped
 #    ports:
 #      - 3010:3010
@@ -21,7 +21,7 @@ services:
 
   migration:
     image: ghcr.io/toeverything/affine-graphql:stable
-    container_name: ${STACK_NAME}_migration
+    container_name: affine_migration
     restart: unless-stopped
     volumes:
       - app-storage:/root/.affine/storage:rw
@@ -36,7 +36,7 @@ services:
 
   redis:
     image: redis:latest
-    container_name: ${STACK_NAME}_redis
+    container_name: affine_redis
     restart: unless-stopped
     healthcheck:
       test: ['CMD', 'redis-cli', '--raw', 'incr', 'ping']
@@ -46,7 +46,7 @@ services:
 
   postgres:
     image: postgres:16
-    container_name: ${STACK_NAME}_postgres
+    container_name: affine_postgres
     restart: unless-stopped
     volumes:
       - postgres-data:/var/lib/postgresql/data:rw

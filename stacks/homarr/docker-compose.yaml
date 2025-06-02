@@ -1,7 +1,7 @@
 services:
 
   app:
-    container_name: ${STACK_NAME}_app
+    container_name: homarr_app
     image: ghcr.io/homarr-labs/homarr:latest
     restart: unless-stopped
     volumes:

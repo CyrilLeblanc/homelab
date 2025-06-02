@@ -1,7 +1,7 @@
 services:
 
   app:
-    container_name: ${STACK_NAME}_app
+    container_name: nextcloud_app
     image: nextcloud:fpm-alpine
     restart: unless-stopped
     networks:
@@ -18,7 +18,7 @@ services:
       - redis
 
   mariadb:
-    container_name: ${STACK_NAME}_db
+    container_name: nextcloud_db
     image: mariadb:10.6
     restart: unless-stopped
     command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
@@ -31,7 +31,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
 
   nginx:
-    container_name: ${STACK_NAME}_nginx
+    container_name: nextcloud_nginx
     image: nginx:alpine
     restart: unless-stopped
     volumes:
@@ -44,7 +44,7 @@ services:
       - web
 
   cron:
-    container_name: ${STACK_NAME}_cron
+    container_name: nextcloud_cron
     image: nextcloud:fpm-alpine
     restart: unless-stopped
     volumes:
@@ -55,7 +55,7 @@ services:
       - mariadb
 
   redis:
-    container_name: ${STACK_NAME}_redis
+    container_name: nextcloud_redis
     image: redis:alpine
     restart: unless-stopped
 

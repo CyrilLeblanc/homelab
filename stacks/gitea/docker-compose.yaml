@@ -1,7 +1,7 @@
 services:
 
   app:
-    container_name: ${STACK_NAME}_app
+    container_name: gitea_app
     image: docker.gitea.com/gitea:latest
     restart: unless-stopped
     environment:
@@ -26,7 +26,7 @@ services:
       - postgres
 
   postgres:
-    container_name: ${STACK_NAME}_postgres
+    container_name: gitea_postgres
     image: docker.io/library/postgres:14
     restart: unless-stopped
     environment:

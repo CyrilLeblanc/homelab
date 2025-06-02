@@ -2,7 +2,7 @@ services:
 
   app:
     image: portainer/portainer-ce:latest
-    container_name: ${STACK_NAME}_app
+    container_name: portainer_app
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro

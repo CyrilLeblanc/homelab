@@ -1,7 +1,7 @@
 services:
 
   app:
-    container_name: ${STACK_NAME}_app
+    container_name: paperless-ngx_app
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
     restart: unless-stopped
     depends_on:
@@ -25,7 +25,7 @@ services:
       - PAPERLESS_URL=${PAPERLESS_URL}
 
   postgres:
-    container_name: ${STACK_NAME}_postgres
+    container_name: paperless-ngx_postgres
     image: docker.io/library/postgres:17
     restart: unless-stopped
     environment:
@@ -36,7 +36,7 @@ services:
       - postgres-data:/var/lib/postgresql/data:rw
 
   redis:
-    container_name: ${STACK_NAME}_redis
+    container_name: paperless-ngx_redis
     image: docker.io/library/redis:8
     volumes:
       - redis-data:/data:rw²
