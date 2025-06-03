@@ -1,38 +1,32 @@
-## Troubleshooting
-
-### Port 53 already in use
-
-Port 53 must be already in use by default.
-
-To resolve this issue :
-
-- Create the file `/etc/systemd/resolved.conf.d/adguardhome.conf` (create the folder if necessary)
-
-- Add the following content in the file :
-
-```txt
-[Resolve]
-DNS=127.0.0.1
-DNSStubListener=no
-```
-
-- Make a backup of the current `/etc/resolv.conf` file
-
-- Create a symbolic link for the compiled resolv.conf
-
-```sh
-sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
-```
-
-- Reload and restart the systemd-resolved service
-
-
-```sh
-systemctl reload-or-restart systemd-resolved
-```
-
-> src: https://github.com/AdguardTeam/AdGuardHome/issues/4283#issuecomment-1037397445
-
-### Misbehaving
-
-Restart portainer or the current container trying to access the DNS
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="port-53-already-in-use">Port 53 already in use</h3>
+<p>Port 53 must be already in use by default.</p>
+<p>To resolve this issue :</p>
+<ul>
+<li><p>Create the file <code>/etc/systemd/resolved.conf.d/adguardhome.conf</code> (create the folder if necessary)</p>
+</li>
+<li><p>Add the following content in the file :</p>
+</li>
+</ul>
+<pre><code class="lang-txt"><span class="hljs-section">[Resolve]</span>
+<span class="hljs-attr">DNS</span>=<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>
+<span class="hljs-attr">DNSStubListener</span>=<span class="hljs-literal">no</span>
+</code></pre>
+<ul>
+<li><p>Make a backup of the current <code>/etc/resolv.conf</code> file</p>
+</li>
+<li><p>Create a symbolic link for the compiled resolv.conf</p>
+</li>
+</ul>
+<pre><code class="lang-sh">sudo <span class="hljs-keyword">ln</span> -s /run/systemd/<span class="hljs-built_in">resolve</span>/resolv.<span class="hljs-keyword">conf</span> /etc/resolv.<span class="hljs-keyword">conf</span>
+</code></pre>
+<ul>
+<li>Reload and restart the systemd-resolved service</li>
+</ul>
+<pre><code class="lang-sh">systemctl reload-<span class="hljs-keyword">or</span>-<span class="hljs-built_in">restart</span> systemd-resolved
+</code></pre>
+<blockquote>
+<p>src: <a href="https://github.com/AdguardTeam/AdGuardHome/issues/4283#issuecomment-1037397445">https://github.com/AdguardTeam/AdGuardHome/issues/4283#issuecomment-1037397445</a></p>
+</blockquote>
+<h3 id="misbehaving">Misbehaving</h3>
+<p>Restart portainer or the current container trying to access the DNS</p>
