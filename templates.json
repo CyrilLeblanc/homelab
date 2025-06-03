@@ -9,12 +9,11 @@
         "git"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/gitea/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/gitea/logo.png"
+      }
     },
     {
       "title": "Crafty Controller",
@@ -24,12 +23,11 @@
         "management"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/crafty/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/crafty/logo.png"
+      }
     },
     {
       "title": "BookStack",
@@ -39,12 +37,11 @@
         "wiki"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/bookstack/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/bookstack/logo.png"
+      }
     },
     {
       "title": "JSON Resume",
@@ -54,12 +51,11 @@
         "personal"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/json-resume/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/json-resume/logo.png"
+      }
     },
     {
       "title": "Portainer",
@@ -69,14 +65,14 @@
         "management"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/portainer/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/portainer/logo.png"
+      }
     },
     {
+      "id": 1,
       "title": "AdGuard Home",
       "description": "AdGuard Home is a network-wide software for blocking ads and trackers. It acts as a DNS server, filtering out unwanted content at the network level.",
       "categories": [
@@ -92,12 +88,13 @@
         }
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/adguard-home/docker-compose.yaml"
       },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/adguard-home/logo.png"
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/adguard-home/logo.png",
+      "note": "## Troubleshooting\n\n### Port 53 already in use\n\nPort 53 must be already in use by default.\n\nTo resolve this issue :\n\n- Create the file `/etc/systemd/resolved.conf.d/adguardhome.conf` (create the folder if necessary)\n\n- Add the following content in the file :\n\n```txt\n[Resolve]\nDNS=127.0.0.1\nDNSStubListener=no\n```\n\n- Make a backup of the current `/etc/resolv.conf` file\n\n- Create a symbolic link for the compiled resolv.conf\n\n```sh\nsudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf\n```\n\n- Reload and restart the systemd-resolved service\n\n\n```sh\nsystemctl reload-or-restart systemd-resolved\n```\n\n> src: https://github.com/AdguardTeam/AdGuardHome/issues/4283#issuecomment-1037397445\n\n### Misbehaving\n\nRestart portainer or the current container trying to access the DNS"
     },
     {
       "title": "Home Assistant",
@@ -107,12 +104,11 @@
         "iot"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/home-assistant/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/home-assistant/logo.png"
+      }
     },
     {
       "title": "Homarr",
@@ -122,12 +118,11 @@
         "homepage"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/homarr/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/homarr/logo.png"
+      }
     },
     {
       "title": "Open WebUI",
@@ -137,12 +132,11 @@
         "interface"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/open-web-ui/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/open-web-ui/logo.png"
+      }
     },
     {
       "title": "Homepage",
@@ -152,12 +146,11 @@
         "homepage"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/homepage/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/homepage/logo.png"
+      }
     },
     {
       "title": "Tor",
@@ -167,12 +160,11 @@
         "network"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/tor/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/tor/logo.png"
+      }
     },
     {
       "title": "Nginx Proxy Manager",
@@ -182,12 +174,11 @@
         "proxy"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/nginx-proxy-manager/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/nginx-proxy-manager/logo.png"
+      }
     },
     {
       "title": "Uptime Kuma",
@@ -197,12 +188,11 @@
         "network"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/uptime-kuma/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/uptime-kuma/logo.png"
+      }
     },
     {
       "title": "WireGuard Easy",
@@ -212,12 +202,11 @@
         "network"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/wireguard-easy/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/wireguard-easy/logo.png"
+      }
     },
     {
       "title": "Vaultwarden",
@@ -227,12 +216,11 @@
         "security"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/vaultwarden/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/vaultwarden/logo.png"
+      }
     },
     {
       "title": "SearXNG",
@@ -242,12 +230,11 @@
         "privacy"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/searxng/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/searxng/logo.png"
+      }
     },
     {
       "title": "n8n",
@@ -257,12 +244,11 @@
         "integration"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/n8n/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/n8n/logo.png"
+      }
     },
     {
       "title": "Trilium Notes",
@@ -272,12 +258,11 @@
         "productivity"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/trilium/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/trilium/logo.png"
+      }
     },
     {
       "title": "Paperless-ngx",
@@ -287,12 +272,11 @@
         "documents"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/paperless-ngx/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/paperless-ngx/logo.png"
+      }
     },
     {
       "title": "Nextcloud",
@@ -302,12 +286,11 @@
         "storage"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/nextcloud/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/nextcloud/logo.png"
+      }
     },
     {
       "title": "Affine",
@@ -317,12 +300,11 @@
         "collaboration"
       ],
       "type": 3,
+      "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/affine/docker-compose.yaml"
-      },
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/affine/logo.png"
+      }
     }
   ]
 }

@@ -26,12 +26,22 @@ def main():
                     # Load the JSON data and add to the templates list
                     data = json.load(f)
                     data['type'] = 3
+                    data['platform'] = 'linux'
                     data['repository'] = {
                         'url': 'https://github.com/CyrilLeblanc/homelab',
                         'stackfile': f'stacks/{stack_name}/docker-compose.yaml'
                     }
-                    data['platform'] = 'linux'
-                    data['logo'] = f'https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/{stack_name}/logo.png'
+
+                    # check if logo.png is readable
+                    logo_path = os.path.join(stack_path, 'logo.png')
+                    if os.path.isfile(logo_path):
+                        data['logo'] = f'https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/{stack_name}/logo.png'
+
+                    # check for a note.html
+                    note_path = os.path.join(stack_path, 'note.html')
+                    if os.path.isfile(note_path):
+                        with open(note_path, 'r') as note_file:
+                            data['note'] = note_file.read()
 
                     templates.append(data)
                 except Exception as e:
