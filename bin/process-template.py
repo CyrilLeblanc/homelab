@@ -28,7 +28,7 @@ def load_template(stack_path, stack_dir):
             data['platform'] = 'linux'
             data['repository'] = {
                 'url': 'https://github.com/CyrilLeblanc/homelab',
-                'stackfile': f'stacks/{stack_name}/docker-compose.yaml'
+                'stackfile': f'stacks/{stack_dir}/docker-compose.yaml'
             }
             # check if logo.png is readable
             logo_path = os.path.join(stack_path, 'logo.png')

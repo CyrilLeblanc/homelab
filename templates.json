@@ -22,7 +22,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/adguard-home/docker-compose.yaml"
+        "stackfile": "stacks/1_adguard-home/docker-compose.yaml"
       },
       "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/1_adguard-home/logo.png",
       "note": "<h2 id=\"troubleshooting\">Troubleshooting</h2>\n<h3 id=\"port-53-already-in-use\">Port 53 already in use</h3>\n<p>Port 53 must be already in use by default.</p>\n<p>To resolve this issue :</p>\n<ul>\n<li><p>Create the file <code>/etc/systemd/resolved.conf.d/adguardhome.conf</code> (create the folder if necessary)</p>\n</li>\n<li><p>Add the following content in the file :</p>\n</li>\n</ul>\n<pre><code class=\"lang-txt\"><span class=\"hljs-section\">[Resolve]</span>\n<span class=\"hljs-attr\">DNS</span>=<span class=\"hljs-number\">127.0</span>.<span class=\"hljs-number\">0.1</span>\n<span class=\"hljs-attr\">DNSStubListener</span>=<span class=\"hljs-literal\">no</span>\n</code></pre>\n<ul>\n<li><p>Make a backup of the current <code>/etc/resolv.conf</code> file</p>\n</li>\n<li><p>Create a symbolic link for the compiled resolv.conf</p>\n</li>\n</ul>\n<pre><code class=\"lang-sh\">sudo <span class=\"hljs-keyword\">ln</span> -s /run/systemd/<span class=\"hljs-built_in\">resolve</span>/resolv.<span class=\"hljs-keyword\">conf</span> /etc/resolv.<span class=\"hljs-keyword\">conf</span>\n</code></pre>\n<ul>\n<li>Reload and restart the systemd-resolved service</li>\n</ul>\n<pre><code class=\"lang-sh\">systemctl reload-<span class=\"hljs-keyword\">or</span>-<span class=\"hljs-built_in\">restart</span> systemd-resolved\n</code></pre>\n<blockquote>\n<p>src: <a href=\"https://github.com/AdguardTeam/AdGuardHome/issues/4283#issuecomment-1037397445\">https://github.com/AdguardTeam/AdGuardHome/issues/4283#issuecomment-1037397445</a></p>\n</blockquote>\n<h3 id=\"misbehaving\">Misbehaving</h3>\n<p>Restart portainer or the current container trying to access the DNS</p>\n"
@@ -60,8 +60,9 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/affine/docker-compose.yaml"
-      }
+        "stackfile": "stacks/2_affine/docker-compose.yaml"
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/2_affine/logo.png"
     },
     {
       "title": "BookStack",
@@ -113,7 +114,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/bookstack/docker-compose.yaml"
+        "stackfile": "stacks/3_bookstack/docker-compose.yaml"
       }
     },
     {
@@ -129,7 +130,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/crafty/docker-compose.yaml"
+        "stackfile": "stacks/4_crafty/docker-compose.yaml"
       }
     },
     {
@@ -165,7 +166,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/gitea/docker-compose.yaml"
+        "stackfile": "stacks/7_gitea/docker-compose.yaml"
       }
     },
     {
@@ -188,7 +189,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/homarr/docker-compose.yaml"
+        "stackfile": "stacks/9_homarr/docker-compose.yaml"
       }
     },
     {
@@ -212,7 +213,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/home-assistant/docker-compose.yaml"
+        "stackfile": "stacks/10_home-assistant/docker-compose.yaml"
       }
     },
     {
@@ -222,14 +223,23 @@
         "dashboard",
         "homepage"
       ],
+      "env": [
+        {
+          "name": "TZ",
+          "label": "Timezone",
+          "description": "The timezone for the Homepage application",
+          "default": "Europe/Paris"
+        }
+      ],
       "id": 11,
       "name": "homepage",
       "type": 3,
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/homepage/docker-compose.yaml"
-      }
+        "stackfile": "stacks/11_homepage/docker-compose.yaml"
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/11_homepage/logo.png"
     },
     {
       "title": "JSON Resume",
@@ -244,7 +254,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/json-resume/docker-compose.yaml"
+        "stackfile": "stacks/14_json-resume/docker-compose.yaml"
       }
     },
     {
@@ -274,7 +284,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/n8n/docker-compose.yaml"
+        "stackfile": "stacks/16_n8n/docker-compose.yaml"
       }
     },
     {
@@ -316,7 +326,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/nextcloud/docker-compose.yaml"
+        "stackfile": "stacks/17_nextcloud/docker-compose.yaml"
       }
     },
     {
@@ -332,7 +342,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/nginx-proxy-manager/docker-compose.yaml"
+        "stackfile": "stacks/18_nginx-proxy-manager/docker-compose.yaml"
       }
     },
     {
@@ -348,7 +358,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/open-web-ui/docker-compose.yaml"
+        "stackfile": "stacks/19_open-web-ui/docker-compose.yaml"
       }
     },
     {
@@ -393,7 +403,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/paperless-ngx/docker-compose.yaml"
+        "stackfile": "stacks/20_paperless-ngx/docker-compose.yaml"
       }
     },
     {
@@ -409,7 +419,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/portainer/docker-compose.yaml"
+        "stackfile": "stacks/21_portainer/docker-compose.yaml"
       }
     },
     {
@@ -425,7 +435,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/searxng/docker-compose.yaml"
+        "stackfile": "stacks/25_searxng/docker-compose.yaml"
       }
     },
     {
@@ -441,7 +451,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/tor/docker-compose.yaml"
+        "stackfile": "stacks/28_tor/docker-compose.yaml"
       }
     },
     {
@@ -457,7 +467,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/trilium/docker-compose.yaml"
+        "stackfile": "stacks/29_trilium/docker-compose.yaml"
       }
     },
     {
@@ -473,7 +483,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/uptime-kuma/docker-compose.yaml"
+        "stackfile": "stacks/30_uptime-kuma/docker-compose.yaml"
       }
     },
     {
@@ -489,7 +499,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/vaultwarden/docker-compose.yaml"
+        "stackfile": "stacks/31_vaultwarden/docker-compose.yaml"
       }
     },
     {
@@ -524,7 +534,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/wireguard-easy/docker-compose.yaml"
+        "stackfile": "stacks/32_wireguard-easy/docker-compose.yaml"
       }
     }
   ]

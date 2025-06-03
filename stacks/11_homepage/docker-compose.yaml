@@ -1,16 +1,19 @@
 
 services:
-  homepage:
-    container_name: homepage
+  app:
+    container_name: homepage_app
     image: ghcr.io/gethomepage/homepage:latest
     restart: unless-stopped
     volumes:
-      - ./config:/config
+      - app-config:/config
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - web
     environment:
-      - TZ=Europe/Paris
+      - TZ=${TZ}
+
+volumes:
+  app-config:
 
 networks:
   web:

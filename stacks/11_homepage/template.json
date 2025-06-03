@@ -1,5 +1,13 @@
 {
     "title": "Homepage",
     "description": "Homepage is a modern, customizable dashboard for all your web services.",
-    "categories": ["dashboard", "homepage"]
+    "categories": ["dashboard", "homepage"],
+    "env": [
+        {
+            "name": "TZ",
+            "label": "Timezone",
+            "description": "The timezone for the Homepage application",
+            "default": "Europe/Paris"
+        }
+    ]
 }
