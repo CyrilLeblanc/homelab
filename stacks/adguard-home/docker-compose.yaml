@@ -2,7 +2,7 @@ services:
 
   app:
     container_name: adguard-home_app
-    image: adguard/adguardhome:v0.107.6 # can't use latest tag due to an issue with timeout
+    image: adguard/adguardhome:latest
     restart: unless-stopped
     volumes:
       - app-work:/opt/adguardhome/work:rw
