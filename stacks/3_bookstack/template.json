@@ -1,0 +1,42 @@
+{
+    "title": "BookStack",
+    "description": "BookStack is a simple, self-hosted, easy-to-use platform for organizing and storing information.",
+    "categories": ["productivity", "wiki"],
+    "env": [
+        {
+            "name": "APP_KEY",
+            "label": "App Key",
+            "description": "The application key for BookStack"
+        },
+        {
+            "name": "DB_ROOT_PASSWORD",
+            "label": "DB Root Password",
+            "description": "The root password for the BookStack database",
+            "default": "changeMe"
+        },
+        {
+            "name": "DB_USER",
+            "label": "DB User",
+            "description": "The username for the BookStack database",
+            "default": "bookstack"
+        },
+        {
+            "name": "DB_PASSWORD",
+            "label": "DB Password",
+            "description": "The password for the BookStack database",
+            "default": "changeMe"
+        },
+        {
+            "name": "DB_NAME",
+            "label": "DB Name",
+            "description": "The name of the BookStack database",
+            "default": "bookstack"
+        },
+        {
+            "name": "BOOKSTACK_URL",
+            "label": "BookStack URL",
+            "description": "The URL for accessing BookStack",
+            "default": "https://bookstack.example.com"
+        }
+    ]
+}

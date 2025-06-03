@@ -1,0 +1,25 @@
+{
+    "title": "Gitea",
+    "description": "Gitea is a lightweight, self-hosted Git service.",
+    "categories": ["development", "git"],
+    "env": [
+        {
+            "name": "DB_NAME",
+            "label": "Database Name",
+            "description": "The name of the Gitea database",
+            "default": "gitea"
+        },
+        {
+            "name": "DB_USER",
+            "label": "Database User",
+            "description": "The username for the Gitea database",
+            "default": "gitea"
+        },
+        {
+            "name": "DB_PASSWORD",
+            "label": "Database Password",
+            "description": "The password for the Gitea database",
+            "default": "changeMe"
+        }
+    ]
+}

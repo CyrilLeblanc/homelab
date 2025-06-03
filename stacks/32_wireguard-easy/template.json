@@ -1,0 +1,24 @@
+{
+    "title": "WireGuard Easy",
+    "description": "WireGuard Easy provides a simple, easy-to-use interface for managing WireGuard VPNs.",
+    "categories": ["vpn", "network"],
+    "env": [
+        {
+            "name": "LANG",
+            "label": "Language",
+            "description": "The language setting for WireGuard Easy",
+            "default": "en"
+        },
+        {
+            "name": "WG_HOST",
+            "label": "WireGuard Host",
+            "description": "The host address for WireGuard",
+            "default": "192.168.1.X"
+        },
+        {
+            "name": "PASSWORD_HASH",
+            "label": "Password Hash",
+            "description": "The password hash for WireGuard Easy"
+        }
+    ]
+}

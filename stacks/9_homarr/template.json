@@ -1,0 +1,12 @@
+{
+    "title": "Homarr",
+    "description": "Homarr is a simple and lightweight homepage for your server.",
+    "categories": ["dashboard", "homepage"],
+    "env": [
+        {
+            "name": "SECRET_ENCRYPTION_KEY",
+            "label": "Secret Encryption Key",
+            "description": "The secret encryption key for Homarr"
+        }
+    ]
+}

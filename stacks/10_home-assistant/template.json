@@ -1,0 +1,13 @@
+{
+    "title": "Home Assistant",
+    "description": "Home Assistant is an open-source platform for smart home automation that puts local control and privacy first.",
+    "categories": ["automation", "iot"],
+    "env": [
+        {
+            "name": "TZ",
+            "label": "Timezone",
+            "description": "The timezone for Home Assistant",
+            "default": "Europe/Paris"
+        }
+    ]
+}

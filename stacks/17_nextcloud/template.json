@@ -1,0 +1,31 @@
+{
+    "title": "Nextcloud",
+    "description": "Nextcloud is a suite of client-server software for creating and using file hosting services.",
+    "categories": ["cloud", "storage"],
+    "env": [
+        {
+            "name": "MYSQL_ROOT_PASSWORD",
+            "label": "MySQL Root Password",
+            "description": "The root password for the MySQL database",
+            "default": "changeMe"
+        },
+        {
+            "name": "MYSQL_DATABASE",
+            "label": "MySQL Database",
+            "description": "The name of the MySQL database",
+            "default": "nextcloud"
+        },
+        {
+            "name": "MYSQL_USER",
+            "label": "MySQL User",
+            "description": "The username for the MySQL database",
+            "default": "nextcloud"
+        },
+        {
+            "name": "MYSQL_PASSWORD",
+            "label": "MySQL Password",
+            "description": "The password for the MySQL database",
+            "default": "changeMe"
+        }
+    ]
+}

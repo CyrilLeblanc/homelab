@@ -1,0 +1,19 @@
+{
+    "title": "n8n",
+    "description": "n8n is a free and open workflow automation tool for automating tasks across different services.",
+    "categories": ["automation", "integration"],
+    "env": [
+        {
+            "name": "POSTGRES_USER",
+            "label": "Postgres User",
+            "description": "The username for the Postgres database",
+            "default": "n8n"
+        },
+        {
+            "name": "POSTGRES_PASSWORD",
+            "label": "Postgres Password",
+            "description": "The password for the Postgres database",
+            "default": "changeMe"
+        }
+    ]
+}

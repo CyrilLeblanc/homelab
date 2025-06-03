@@ -1,0 +1,34 @@
+{
+    "title": "Paperless-ngx",
+    "description": "Paperless-ngx is a document management system that transforms your physical documents into a searchable online archive.",
+    "categories": ["productivity", "documents"],
+    "env": [
+        {
+            "name": "PAPERLESS_URL",
+            "label": "Paperless URL",
+            "description": "The URL for accessing Paperless-ngx",
+            "default": "https://paperless.example.com"
+        },
+        {
+            "name": "DB_USER",
+            "label": "Database User",
+            "description": "The username for the Paperless-ngx database (cannot change value)",
+            "default": "paperless",
+            "preset": true
+        },
+        {
+            "name": "DB_PASSWORD",
+            "label": "Database Password",
+            "description": "The password for the Paperless-ngx database (cannot change value)",
+            "default": "paperless",
+            "preset": true
+        },
+        {
+            "name": "DB_NAME",
+            "label": "Database Name",
+            "description": "The name of the Paperless-ngx database (cannot change value)",
+            "default": "paperless",
+            "preset": true
+        }
+    ]
+}

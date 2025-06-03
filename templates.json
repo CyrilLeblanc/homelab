@@ -2,76 +2,6 @@
   "version": "3",
   "templates": [
     {
-      "title": "Gitea",
-      "description": "Gitea is a lightweight, self-hosted Git service.",
-      "categories": [
-        "development",
-        "git"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/gitea/docker-compose.yaml"
-      }
-    },
-    {
-      "title": "Crafty Controller",
-      "description": "Crafty Controller is a powerful Minecraft server management panel.",
-      "categories": [
-        "games",
-        "management"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/crafty/docker-compose.yaml"
-      }
-    },
-    {
-      "title": "BookStack",
-      "description": "BookStack is a simple, self-hosted, easy-to-use platform for organizing and storing information.",
-      "categories": [
-        "productivity",
-        "wiki"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/bookstack/docker-compose.yaml"
-      }
-    },
-    {
-      "title": "JSON Resume",
-      "description": "JSON Resume is a community-driven open source initiative to create a JSON-based standard for resumes.",
-      "categories": [
-        "resume",
-        "personal"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/json-resume/docker-compose.yaml"
-      }
-    },
-    {
-      "title": "Portainer",
-      "description": "Portainer is a lightweight management UI that allows you to easily manage your Docker environments.",
-      "categories": [
-        "docker",
-        "management"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/portainer/docker-compose.yaml"
-      }
-    },
-    {
       "id": 1,
       "title": "AdGuard Home",
       "description": "AdGuard Home is a network-wide software for blocking ads and trackers. It acts as a DNS server, filtering out unwanted content at the network level.",
@@ -87,6 +17,7 @@
           "default": "192.168.1.X"
         }
       ],
+      "name": "adguard-home",
       "type": 3,
       "platform": "linux",
       "repository": {
@@ -97,17 +28,144 @@
       "note": "<h2 id=\"troubleshooting\">Troubleshooting</h2>\n<h3 id=\"port-53-already-in-use\">Port 53 already in use</h3>\n<p>Port 53 must be already in use by default.</p>\n<p>To resolve this issue :</p>\n<ul>\n<li><p>Create the file <code>/etc/systemd/resolved.conf.d/adguardhome.conf</code> (create the folder if necessary)</p>\n</li>\n<li><p>Add the following content in the file :</p>\n</li>\n</ul>\n<pre><code class=\"lang-txt\"><span class=\"hljs-section\">[Resolve]</span>\n<span class=\"hljs-attr\">DNS</span>=<span class=\"hljs-number\">127.0</span>.<span class=\"hljs-number\">0.1</span>\n<span class=\"hljs-attr\">DNSStubListener</span>=<span class=\"hljs-literal\">no</span>\n</code></pre>\n<ul>\n<li><p>Make a backup of the current <code>/etc/resolv.conf</code> file</p>\n</li>\n<li><p>Create a symbolic link for the compiled resolv.conf</p>\n</li>\n</ul>\n<pre><code class=\"lang-sh\">sudo <span class=\"hljs-keyword\">ln</span> -s /run/systemd/<span class=\"hljs-built_in\">resolve</span>/resolv.<span class=\"hljs-keyword\">conf</span> /etc/resolv.<span class=\"hljs-keyword\">conf</span>\n</code></pre>\n<ul>\n<li>Reload and restart the systemd-resolved service</li>\n</ul>\n<pre><code class=\"lang-sh\">systemctl reload-<span class=\"hljs-keyword\">or</span>-<span class=\"hljs-built_in\">restart</span> systemd-resolved\n</code></pre>\n<blockquote>\n<p>src: <a href=\"https://github.com/AdguardTeam/AdGuardHome/issues/4283#issuecomment-1037397445\">https://github.com/AdguardTeam/AdGuardHome/issues/4283#issuecomment-1037397445</a></p>\n</blockquote>\n<h3 id=\"misbehaving\">Misbehaving</h3>\n<p>Restart portainer or the current container trying to access the DNS</p>\n"
     },
     {
-      "title": "Home Assistant",
-      "description": "Home Assistant is an open-source platform for smart home automation that puts local control and privacy first.",
+      "title": "Affine",
+      "description": "Affine is a next-generation collaborative knowledge base for teams, combining docs, whiteboards, and databases.",
       "categories": [
-        "automation",
-        "iot"
+        "productivity",
+        "collaboration"
       ],
+      "env": [
+        {
+          "name": "DB_USERNAME",
+          "label": "Database Username",
+          "description": "The username for the Affine database",
+          "default": "affine"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "label": "Database Password",
+          "description": "The password for the Affine database",
+          "default": "changeMe"
+        },
+        {
+          "name": "DB_DATABASE",
+          "label": "Database Name",
+          "description": "The name of the Affine database",
+          "default": "affine"
+        }
+      ],
+      "id": 2,
+      "name": "affine",
       "type": 3,
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/home-assistant/docker-compose.yaml"
+        "stackfile": "stacks/affine/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "BookStack",
+      "description": "BookStack is a simple, self-hosted, easy-to-use platform for organizing and storing information.",
+      "categories": [
+        "productivity",
+        "wiki"
+      ],
+      "env": [
+        {
+          "name": "APP_KEY",
+          "label": "App Key",
+          "description": "The application key for BookStack"
+        },
+        {
+          "name": "DB_ROOT_PASSWORD",
+          "label": "DB Root Password",
+          "description": "The root password for the BookStack database",
+          "default": "changeMe"
+        },
+        {
+          "name": "DB_USER",
+          "label": "DB User",
+          "description": "The username for the BookStack database",
+          "default": "bookstack"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "label": "DB Password",
+          "description": "The password for the BookStack database",
+          "default": "changeMe"
+        },
+        {
+          "name": "DB_NAME",
+          "label": "DB Name",
+          "description": "The name of the BookStack database",
+          "default": "bookstack"
+        },
+        {
+          "name": "BOOKSTACK_URL",
+          "label": "BookStack URL",
+          "description": "The URL for accessing BookStack",
+          "default": "https://bookstack.example.com"
+        }
+      ],
+      "id": 3,
+      "name": "bookstack",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/bookstack/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "Crafty Controller",
+      "description": "Crafty Controller is a powerful Minecraft server management panel.",
+      "categories": [
+        "games",
+        "management"
+      ],
+      "id": 4,
+      "name": "crafty",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/crafty/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "Gitea",
+      "description": "Gitea is a lightweight, self-hosted Git service.",
+      "categories": [
+        "development",
+        "git"
+      ],
+      "env": [
+        {
+          "name": "DB_NAME",
+          "label": "Database Name",
+          "description": "The name of the Gitea database",
+          "default": "gitea"
+        },
+        {
+          "name": "DB_USER",
+          "label": "Database User",
+          "description": "The username for the Gitea database",
+          "default": "gitea"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "label": "Database Password",
+          "description": "The password for the Gitea database",
+          "default": "changeMe"
+        }
+      ],
+      "id": 7,
+      "name": "gitea",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/gitea/docker-compose.yaml"
       }
     },
     {
@@ -117,6 +175,15 @@
         "dashboard",
         "homepage"
       ],
+      "env": [
+        {
+          "name": "SECRET_ENCRYPTION_KEY",
+          "label": "Secret Encryption Key",
+          "description": "The secret encryption key for Homarr"
+        }
+      ],
+      "id": 9,
+      "name": "homarr",
       "type": 3,
       "platform": "linux",
       "repository": {
@@ -125,17 +192,27 @@
       }
     },
     {
-      "title": "Open WebUI",
-      "description": "Open WebUI is a modern web-based user interface for managing and interacting with LLMs and AI services.",
+      "title": "Home Assistant",
+      "description": "Home Assistant is an open-source platform for smart home automation that puts local control and privacy first.",
       "categories": [
-        "ai",
-        "interface"
+        "automation",
+        "iot"
       ],
+      "env": [
+        {
+          "name": "TZ",
+          "label": "Timezone",
+          "description": "The timezone for Home Assistant",
+          "default": "Europe/Paris"
+        }
+      ],
+      "id": 10,
+      "name": "home-assistant",
       "type": 3,
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/open-web-ui/docker-compose.yaml"
+        "stackfile": "stacks/home-assistant/docker-compose.yaml"
       }
     },
     {
@@ -145,6 +222,8 @@
         "dashboard",
         "homepage"
       ],
+      "id": 11,
+      "name": "homepage",
       "type": 3,
       "platform": "linux",
       "repository": {
@@ -153,87 +232,19 @@
       }
     },
     {
-      "title": "Tor",
-      "description": "Tor is free and open-source software for enabling anonymous communication and privacy online.",
+      "title": "JSON Resume",
+      "description": "JSON Resume is a community-driven open source initiative to create a JSON-based standard for resumes.",
       "categories": [
-        "privacy",
-        "network"
+        "resume",
+        "personal"
       ],
+      "id": 14,
+      "name": "json-resume",
       "type": 3,
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/tor/docker-compose.yaml"
-      }
-    },
-    {
-      "title": "Nginx Proxy Manager",
-      "description": "Nginx Proxy Manager is a simple way to manage Nginx proxy hosts with a clean, efficient interface.",
-      "categories": [
-        "network",
-        "proxy"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/nginx-proxy-manager/docker-compose.yaml"
-      }
-    },
-    {
-      "title": "Uptime Kuma",
-      "description": "Uptime Kuma is a self-hosted monitoring tool like \"Uptime Robot\".",
-      "categories": [
-        "monitoring",
-        "network"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/uptime-kuma/docker-compose.yaml"
-      }
-    },
-    {
-      "title": "WireGuard Easy",
-      "description": "WireGuard Easy provides a simple, easy-to-use interface for managing WireGuard VPNs.",
-      "categories": [
-        "vpn",
-        "network"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/wireguard-easy/docker-compose.yaml"
-      }
-    },
-    {
-      "title": "Vaultwarden",
-      "description": "Vaultwarden is an alternative implementation of the Bitwarden server API, written in Rust.",
-      "categories": [
-        "password",
-        "security"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/vaultwarden/docker-compose.yaml"
-      }
-    },
-    {
-      "title": "SearXNG",
-      "description": "SearXNG is a free internet metasearch engine, aggregating results from various search services.",
-      "categories": [
-        "search",
-        "privacy"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/searxng/docker-compose.yaml"
+        "stackfile": "stacks/json-resume/docker-compose.yaml"
       }
     },
     {
@@ -243,39 +254,27 @@
         "automation",
         "integration"
       ],
+      "env": [
+        {
+          "name": "POSTGRES_USER",
+          "label": "Postgres User",
+          "description": "The username for the Postgres database",
+          "default": "n8n"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "label": "Postgres Password",
+          "description": "The password for the Postgres database",
+          "default": "changeMe"
+        }
+      ],
+      "id": 16,
+      "name": "n8n",
       "type": 3,
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/n8n/docker-compose.yaml"
-      }
-    },
-    {
-      "title": "Trilium Notes",
-      "description": "Trilium Notes is a hierarchical note taking application with focus on building large personal knowledge bases.",
-      "categories": [
-        "notes",
-        "productivity"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/trilium/docker-compose.yaml"
-      }
-    },
-    {
-      "title": "Paperless-ngx",
-      "description": "Paperless-ngx is a document management system that transforms your physical documents into a searchable online archive.",
-      "categories": [
-        "productivity",
-        "documents"
-      ],
-      "type": 3,
-      "platform": "linux",
-      "repository": {
-        "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/paperless-ngx/docker-compose.yaml"
       }
     },
     {
@@ -285,6 +284,34 @@
         "cloud",
         "storage"
       ],
+      "env": [
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "label": "MySQL Root Password",
+          "description": "The root password for the MySQL database",
+          "default": "changeMe"
+        },
+        {
+          "name": "MYSQL_DATABASE",
+          "label": "MySQL Database",
+          "description": "The name of the MySQL database",
+          "default": "nextcloud"
+        },
+        {
+          "name": "MYSQL_USER",
+          "label": "MySQL User",
+          "description": "The username for the MySQL database",
+          "default": "nextcloud"
+        },
+        {
+          "name": "MYSQL_PASSWORD",
+          "label": "MySQL Password",
+          "description": "The password for the MySQL database",
+          "default": "changeMe"
+        }
+      ],
+      "id": 17,
+      "name": "nextcloud",
       "type": 3,
       "platform": "linux",
       "repository": {
@@ -293,17 +320,211 @@
       }
     },
     {
-      "title": "Affine",
-      "description": "Affine is a next-generation collaborative knowledge base for teams, combining docs, whiteboards, and databases.",
+      "title": "Nginx Proxy Manager",
+      "description": "Nginx Proxy Manager is a simple way to manage Nginx proxy hosts with a clean, efficient interface.",
       "categories": [
-        "productivity",
-        "collaboration"
+        "network",
+        "proxy"
       ],
+      "id": 18,
+      "name": "nginx-proxy-manager",
       "type": 3,
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
-        "stackfile": "stacks/affine/docker-compose.yaml"
+        "stackfile": "stacks/nginx-proxy-manager/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "Open WebUI",
+      "description": "Open WebUI is a modern web-based user interface for managing and interacting with LLMs and AI services.",
+      "categories": [
+        "ai",
+        "interface"
+      ],
+      "id": 19,
+      "name": "open-web-ui",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/open-web-ui/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "Paperless-ngx",
+      "description": "Paperless-ngx is a document management system that transforms your physical documents into a searchable online archive.",
+      "categories": [
+        "productivity",
+        "documents"
+      ],
+      "env": [
+        {
+          "name": "PAPERLESS_URL",
+          "label": "Paperless URL",
+          "description": "The URL for accessing Paperless-ngx",
+          "default": "https://paperless.example.com"
+        },
+        {
+          "name": "DB_USER",
+          "label": "Database User",
+          "description": "The username for the Paperless-ngx database (cannot change value)",
+          "default": "paperless",
+          "preset": true
+        },
+        {
+          "name": "DB_PASSWORD",
+          "label": "Database Password",
+          "description": "The password for the Paperless-ngx database (cannot change value)",
+          "default": "paperless",
+          "preset": true
+        },
+        {
+          "name": "DB_NAME",
+          "label": "Database Name",
+          "description": "The name of the Paperless-ngx database (cannot change value)",
+          "default": "paperless",
+          "preset": true
+        }
+      ],
+      "id": 20,
+      "name": "paperless-ngx",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/paperless-ngx/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "Portainer",
+      "description": "Portainer is a lightweight management UI that allows you to easily manage your Docker environments.",
+      "categories": [
+        "docker",
+        "management"
+      ],
+      "id": 21,
+      "name": "portainer",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/portainer/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "SearXNG",
+      "description": "SearXNG is a free internet metasearch engine, aggregating results from various search services.",
+      "categories": [
+        "search",
+        "privacy"
+      ],
+      "id": 25,
+      "name": "searxng",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/searxng/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "Tor",
+      "description": "Tor is free and open-source software for enabling anonymous communication and privacy online.",
+      "categories": [
+        "privacy",
+        "network"
+      ],
+      "id": 28,
+      "name": "tor",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/tor/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "Trilium Notes",
+      "description": "Trilium Notes is a hierarchical note taking application with focus on building large personal knowledge bases.",
+      "categories": [
+        "notes",
+        "productivity"
+      ],
+      "id": 29,
+      "name": "trilium",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/trilium/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "Uptime Kuma",
+      "description": "Uptime Kuma is a self-hosted monitoring tool like \"Uptime Robot\".",
+      "categories": [
+        "monitoring",
+        "network"
+      ],
+      "id": 30,
+      "name": "uptime-kuma",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/uptime-kuma/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "Vaultwarden",
+      "description": "Vaultwarden is an alternative implementation of the Bitwarden server API, written in Rust.",
+      "categories": [
+        "password",
+        "security"
+      ],
+      "id": 31,
+      "name": "vaultwarden",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/vaultwarden/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "WireGuard Easy",
+      "description": "WireGuard Easy provides a simple, easy-to-use interface for managing WireGuard VPNs.",
+      "categories": [
+        "vpn",
+        "network"
+      ],
+      "env": [
+        {
+          "name": "LANG",
+          "label": "Language",
+          "description": "The language setting for WireGuard Easy",
+          "default": "en"
+        },
+        {
+          "name": "WG_HOST",
+          "label": "WireGuard Host",
+          "description": "The host address for WireGuard",
+          "default": "192.168.1.X"
+        },
+        {
+          "name": "PASSWORD_HASH",
+          "label": "Password Hash",
+          "description": "The password hash for WireGuard Easy"
+        }
+      ],
+      "id": 32,
+      "name": "wireguard-easy",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/wireguard-easy/docker-compose.yaml"
       }
     }
   ]
