@@ -33,7 +33,7 @@ def load_template(stack_path, stack_dir):
             # check if logo.png is readable
             logo_path = os.path.join(stack_path, 'logo.png')
             if os.path.isfile(logo_path):
-                data['logo'] = f'https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/{stack_name}/logo.png'
+                data['logo'] = f'https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/{stack_dir}/logo.png'
             # check for a note.html
             note_path = os.path.join(stack_path, 'note.html')
             if os.path.isfile(note_path):
