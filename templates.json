@@ -83,6 +83,14 @@
         "network",
         "dns"
       ],
+      "env": [
+        {
+          "name": "HOST_IP",
+          "label": "Ip Host",
+          "description": "The ip of the host machine",
+          "default": "192.168.1.X"
+        }
+      ],
       "type": 3,
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
