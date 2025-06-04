@@ -13,14 +13,16 @@ services:
     volumes:
       - app-data:/config:rw
       - app-downloads:/downloads:rw
-      - app-movies:/movies:rw
+      - shared_media:/shared:rw
     # ports:
       # - 7878:7878
 
 volumes:
   app-data:
   app-downloads:
-  app-movies:
+  shared_media:
+    external: true
+    name: shared_media
 
 networks:
   web:
