@@ -35,7 +35,8 @@
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/gitea/docker-compose.yaml"
-      }
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/gitea/logo.png"
     },
     {
       "title": "Crafty Controller",
@@ -51,7 +52,8 @@
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/crafty/docker-compose.yaml"
-      }
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/crafty/logo.png"
     },
     {
       "title": "BookStack",
@@ -104,7 +106,8 @@
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/bookstack/docker-compose.yaml"
-      }
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/bookstack/logo.png"
     },
     {
       "title": "JSON Resume",
@@ -209,7 +212,8 @@
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/homarr/docker-compose.yaml"
-      }
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/homarr/logo.png"
     },
     {
       "title": "Open WebUI",
