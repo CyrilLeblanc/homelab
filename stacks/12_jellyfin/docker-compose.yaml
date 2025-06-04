@@ -1,0 +1,25 @@
+services:
+
+  app:
+    container_name: jellyfin_app
+    image: jellyfin/jellyfin:latest
+    restart: unless-stopped
+    volumes:
+      - app-config:/config:rw
+      - app-cache:/cache:rw
+      - shared_media:/media:rw
+    environment:
+      - JELLYFIN_PublishedServerUrl=${JELLYFIN_PublishedServerUrl}
+    networks:
+      - web
+
+volumes:
+  app-config:
+  app-cache:
+  shared_media:
+    external: true
+    name: shared_media
+
+networks:
+  web:
+    external: true
