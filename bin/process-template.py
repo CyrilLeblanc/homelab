@@ -12,10 +12,8 @@ def get_stacks_dir():
     """Return the absolute path to the 'stacks' directory."""
     return os.path.join(os.path.dirname(os.path.dirname(__file__)), 'stacks')
 
-def load_template(stack_path, stack_dir):
+def load_template(stack_path, stack_name, stack_id):
     """Load and process a template.json from a stack directory, adding extra fields."""
-    stack_id = stack_dir.split('_', 1)[0]
-    stack_name = stack_dir.split('_', 1)[-1]
     template_file = os.path.join(stack_path, 'template.json')
     if not os.path.isfile(template_file):
         return None
@@ -28,12 +26,12 @@ def load_template(stack_path, stack_dir):
             data['platform'] = 'linux'
             data['repository'] = {
                 'url': 'https://github.com/CyrilLeblanc/homelab',
-                'stackfile': f'stacks/{stack_dir}/docker-compose.yaml'
+                'stackfile': f'stacks/{stack_name}/docker-compose.yaml'
             }
             # check if logo.png is readable
             logo_path = os.path.join(stack_path, 'logo.png')
             if os.path.isfile(logo_path):
-                data['logo'] = f'https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/{stack_dir}/logo.png'
+                data['logo'] = f'https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/{stack_name}/logo.png'
             # check for a note.html
             note_path = os.path.join(stack_path, 'note.html')
             if os.path.isfile(note_path):
@@ -47,13 +45,15 @@ def load_template(stack_path, stack_dir):
 def collect_templates(stacks_dir):
     """Iterate over stack directories and collect all templates."""
     templates = []
+    id = 1
     for stack_dir in os.listdir(stacks_dir):
         stack_path = os.path.join(stacks_dir, stack_dir)
         if not os.path.isdir(stack_path):
             continue
-        template = load_template(stack_path, stack_dir)
+        template = load_template(stack_path, stack_dir, id)
         if template:
             templates.append(template)
+            id += 1
     templates.sort(key=lambda x: x['id'])
     return templates
 
