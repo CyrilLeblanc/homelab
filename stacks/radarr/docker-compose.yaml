@@ -1,0 +1,27 @@
+services:
+
+  app:
+    container_name: radarr_app
+    image: ghcr.io/linuxserver/radarr:latest
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+    networks:
+      - web
+    volumes:
+      - app-data:/config:rw
+      - app-downloads:/downloads:rw
+      - app-movies:/movies:rw
+    # ports:
+      # - 7878:7878
+
+volumes:
+  app-data:
+  app-downloads:
+  app-movies:
+
+networks:
+  web:
+    external: true
