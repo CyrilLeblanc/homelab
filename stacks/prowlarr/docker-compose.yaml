@@ -1,0 +1,23 @@
+services:
+
+  app:
+    container_name: prowlarr_app
+    image: ghcr.io/linuxserver/prowlarr:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - app-config:/config:rw
+    networks:
+      - web
+    # ports:
+    #   - 9696:9696
+
+volumes:
+  app-config:
+
+networks:
+  web:
+    external: true
