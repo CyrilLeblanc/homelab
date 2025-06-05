@@ -1,0 +1,25 @@
+services:
+
+  app:
+    container_name: transmission_app
+    image: lscr.io/linuxserver/transmission:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - GUID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - app-config:/config:rw
+    ports:
+      # - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    networks:
+      - web
+
+volumes:
+  app-config:
+
+networks:
+  web:
+    external: true
