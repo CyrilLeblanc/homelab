@@ -12,14 +12,13 @@ services:
       - web
     volumes:
       - app-data:/config:rw
-      - app-downloads:/downloads:rw
+      - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
       - shared_media:/shared:rw
     # ports:
       # - 7878:7878
 
 volumes:
   app-data:
-  app-downloads:
   shared_media:
     external: true
     name: shared_media
