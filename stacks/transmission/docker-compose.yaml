@@ -10,7 +10,7 @@ services:
       - TZ=${TZ}
     volumes:
       - app-config:/config:rw
-      - shared_media/downloads:/downloads
+      - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
     ports:
       # - 9091:9091
       - 51413:51413
@@ -20,9 +20,6 @@ services:
 
 volumes:
   app-config:
-  shared_media:
-    external: true
-    name: shared_media
 
 networks:
   web:
