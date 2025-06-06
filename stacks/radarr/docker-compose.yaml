@@ -12,7 +12,7 @@ services:
       - web
     volumes:
       - app-data:/config:rw
-      - /var/lib/docker/volumes/shared_media/_data/music:/movies:rw
+      - /var/lib/docker/volumes/shared_media/_data/movies:/movies:rw
       - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
     # ports:
       # - 7878:7878
