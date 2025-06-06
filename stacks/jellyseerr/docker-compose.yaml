@@ -9,7 +9,7 @@ services:
       - GUID=${PGID}
       - TZ=${TZ}
     volumes:
-      - app-config:/config:rw
+      - app-config:/app/config:rw
     # ports:
     #   - 5055:5055
     networks:
