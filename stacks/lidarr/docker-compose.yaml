@@ -1,0 +1,25 @@
+services:
+
+  app:
+    container_name: lidarr_app
+    image: lscr.io/linuxserver/lidarr:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - GUID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - app-config:/config:rw
+      - /var/lib/docker/volumes/shared_media/_data/music:/music:rw
+      - /var/lib/docker/volumes/shared_media/_data/download:/downloads:rw
+    # ports:
+    #   - 8686:8686
+    networks:
+      - web
+
+volumes:
+  app-config:
+
+networks:
+  web:
+    external: true
