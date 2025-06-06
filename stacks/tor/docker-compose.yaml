@@ -4,10 +4,19 @@ services:
     container_name: tor_app
     image: dockurr/tor:latest
     restart: unless-stopped
+    # ports:
+    #   - 9050:9050
+    #   - 9051:9051
+    networks:
+      - web
     volumes:
-      - app-config:/etc/tor
-      - app-data:/var/lib/tor
+      - app-config:/etc/tor:rw
+      - app-data:/var/lib/tor:rw
 
 volumes:
   app-config:
   app-data:
+
+networks:
+  web:
+    external: true
