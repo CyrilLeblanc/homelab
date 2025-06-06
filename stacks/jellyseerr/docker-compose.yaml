@@ -1,0 +1,23 @@
+services:
+
+  app:
+    container_name: jellyseerr_app
+    image: fallenbagel/jellyseerr:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - GUID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - app-config:/config:rw
+    # ports:
+    #   - 5055:5055
+    networks:
+      - web
+
+volumes:
+  app-config:
+
+networks:
+  web:
+    external: true
