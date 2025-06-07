@@ -11,7 +11,7 @@ services:
     volumes:
       - app-config:/config:rw
       - /var/lib/docker/volumes/shared_media/_data/music:/music:rw
-      - /var/lib/docker/volumes/shared_media/_data/download:/downloads:rw
+      - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
     # ports:
     #   - 8686:8686
     networks:
