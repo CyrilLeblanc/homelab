@@ -35,7 +35,7 @@ services:
       - redis
 
   redis:
-    image: redis:latest
+    image: redis:alpine
     container_name: affine_redis
     restart: unless-stopped
     healthcheck:
