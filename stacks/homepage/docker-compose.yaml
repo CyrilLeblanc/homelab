@@ -8,13 +8,12 @@ services:
       - app-config:/config
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
+      - TZ=${TZ}
       - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS}
     # ports:
     #   - 3000:3000
     networks:
       - web
-    environment:
-      - TZ=${TZ}
 
 volumes:
   app-config:
