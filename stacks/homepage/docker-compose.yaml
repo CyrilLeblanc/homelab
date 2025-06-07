@@ -7,6 +7,10 @@ services:
     volumes:
       - app-config:/config
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS}
+    # ports:
+    #   - 3000:3000
     networks:
       - web
     environment:
