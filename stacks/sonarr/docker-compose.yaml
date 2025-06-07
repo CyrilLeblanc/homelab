@@ -1,0 +1,25 @@
+services:
+
+  app:
+    container_name: sonarr_app
+    image: ghcr.io/linuxserver/sonarr:latest
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+    # ports:
+    #   - 8989:8989
+    networks:
+      - web
+    volumes:
+      - app-data:/config:rw
+      - /var/lib/docker/volumes/shared_media/_data/shows:/shows:rw
+      - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
+
+volumes:
+  app-data:
+
+networks:
+  web:
+    external: true
