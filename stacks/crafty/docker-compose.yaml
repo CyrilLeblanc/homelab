@@ -5,7 +5,7 @@ services:
     image: registry.gitlab.com/crafty-controller/crafty-4:latest
     restart: unless-stopped
     environment:
-        - TZ=Etc/CEST
+        - TZ=${TZ}
     networks:
       - web
     ports:

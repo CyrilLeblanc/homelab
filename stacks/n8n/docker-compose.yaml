@@ -7,9 +7,9 @@ services:
     volumes:
       - app-data:/home/node/.n8n:rw
     environment:
-      - N8N_HOST=n8n.yo
-      - WEBHOOK_URL=https://n8n.yo/
-      - GENERIC_TIMEZONE=Europe/Paris
+      - N8N_HOST=${N8N_HOST}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
       - NODE_ENV=production
       - QUEUE_BULL_REDIS_HOST=redis
       - QUEUE_BULL_REDIS_PORT=6379

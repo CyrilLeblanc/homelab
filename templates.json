@@ -45,6 +45,14 @@
         "games",
         "management"
       ],
+      "env": [
+        {
+          "name": "TZ",
+          "label": "Timezone",
+          "description": "The timezone for Crafty Controller",
+          "default": "Europe/Paris"
+        }
+      ],
       "id": 2,
       "name": "crafty",
       "type": 3,
@@ -142,7 +150,99 @@
       }
     },
     {
+      "title": "Stirling PDF",
+      "description": "Stirling PDF is a locally hosted web application that allows you to perform various operations on PDF files.",
+      "categories": [
+        "documents",
+        "pdf"
+      ],
+      "env": [],
       "id": 6,
+      "name": "stirling-pdf",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/stirling-pdf/docker-compose.yaml"
+      }
+    },
+    {
+      "title": "Sonarr",
+      "description": "Sonarr is a PVR for Usenet and BitTorrent users, automating the downloading, sorting, and renaming of TV series.",
+      "categories": [
+        "media",
+        "automation"
+      ],
+      "env": [
+        {
+          "name": "TZ",
+          "label": "Timezone",
+          "description": "Timezone for the container",
+          "default": "Europe/Paris"
+        },
+        {
+          "name": "PUID",
+          "label": "User ID",
+          "description": "User ID for running the container",
+          "default": "1000"
+        },
+        {
+          "name": "PGID",
+          "label": "Group ID",
+          "description": "Group ID for running the container",
+          "default": "1000"
+        }
+      ],
+      "id": 7,
+      "name": "sonarr",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/sonarr/docker-compose.yaml"
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/sonarr/logo.png"
+    },
+    {
+      "title": "Prowlarr",
+      "description": "Prowlarr is an indexer manager/proxy built on the popular *arr .NET/React stack to integrate with your various PVR apps.",
+      "categories": [
+        "media",
+        "indexer",
+        "automation"
+      ],
+      "env": [
+        {
+          "name": "PUID",
+          "label": "User ID",
+          "description": "User ID for running the container",
+          "default": "1000"
+        },
+        {
+          "name": "PGID",
+          "label": "Group ID",
+          "description": "Group ID for running the container",
+          "default": "1000"
+        },
+        {
+          "name": "TZ",
+          "label": "Timezone",
+          "description": "Timezone for the container",
+          "default": "Europe/Paris"
+        }
+      ],
+      "id": 8,
+      "name": "prowlarr",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/prowlarr/docker-compose.yaml"
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/prowlarr/logo.png"
+    },
+    {
+      "id": 9,
       "title": "AdGuard Home",
       "description": "AdGuard Home is a network-wide software for blocking ads and trackers. It acts as a DNS server, filtering out unwanted content at the network level.",
       "categories": [
@@ -182,14 +282,15 @@
           "default": "Europe/Paris"
         }
       ],
-      "id": 7,
+      "id": 10,
       "name": "home-assistant",
       "type": 3,
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/home-assistant/docker-compose.yaml"
-      }
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/home-assistant/logo.png"
     },
     {
       "title": "Homarr",
@@ -205,7 +306,7 @@
           "description": "The secret encryption key for Homarr"
         }
       ],
-      "id": 8,
+      "id": 11,
       "name": "homarr",
       "type": 3,
       "platform": "linux",
@@ -216,13 +317,51 @@
       "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/homarr/logo.png"
     },
     {
+      "title": "Radarr",
+      "description": "Radarr is a movie collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new movies and will grab, sort, and rename them.",
+      "categories": [
+        "media",
+        "movies",
+        "automation"
+      ],
+      "env": [
+        {
+          "name": "TZ",
+          "label": "Timezone",
+          "description": "Timezone for the container",
+          "default": "Europe/Paris"
+        },
+        {
+          "name": "PUID",
+          "label": "User ID",
+          "description": "User ID for running the container",
+          "default": "1000"
+        },
+        {
+          "name": "PGID",
+          "label": "Group ID",
+          "description": "Group ID for running the container",
+          "default": "1000"
+        }
+      ],
+      "id": 12,
+      "name": "radarr",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/radarr/docker-compose.yaml"
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/radarr/logo.png"
+    },
+    {
       "title": "Open WebUI",
       "description": "Open WebUI is a modern web-based user interface for managing and interacting with LLMs and AI services.",
       "categories": [
         "ai",
         "interface"
       ],
-      "id": 9,
+      "id": 13,
       "name": "open-web-ui",
       "type": 3,
       "platform": "linux",
@@ -230,6 +369,31 @@
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/open-web-ui/docker-compose.yaml"
       }
+    },
+    {
+      "title": "Jellyfin",
+      "description": "Jellyfin is a free software media system that puts you in control of managing and streaming your media.",
+      "categories": [
+        "media",
+        "streaming"
+      ],
+      "env": [
+        {
+          "name": "JELLYFIN_PublishedServerUrl",
+          "label": "Published server URL",
+          "description": "The URL that Jellyfin will use to access the server externally",
+          "default": "http://jellyfin.local"
+        }
+      ],
+      "id": 14,
+      "name": "jellyfin",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/jellyfin/docker-compose.yaml"
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/jellyfin/logo.png"
     },
     {
       "title": "Homepage",
@@ -244,9 +408,15 @@
           "label": "Timezone",
           "description": "The timezone for the Homepage application",
           "default": "Europe/Paris"
+        },
+        {
+          "name": "HOMEPAGE_ALLOWED_HOSTS",
+          "label": "Allowed Hosts",
+          "description": "A comma-separated list of allowed hosts for the Homepage application",
+          "default": "homepage.local"
         }
       ],
-      "id": 10,
+      "id": 15,
       "name": "homepage",
       "type": 3,
       "platform": "linux",
@@ -257,13 +427,51 @@
       "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/homepage/logo.png"
     },
     {
+      "title": "Transmission",
+      "description": "Transmission is a fast, easy, and free BitTorrent client.",
+      "categories": [
+        "media",
+        "torrent",
+        "downloads"
+      ],
+      "env": [
+        {
+          "name": "PUID",
+          "label": "User ID",
+          "description": "User ID for running the container",
+          "default": "1000"
+        },
+        {
+          "name": "PGID",
+          "label": "Group ID",
+          "description": "Group ID for running the container",
+          "default": "1000"
+        },
+        {
+          "name": "TZ",
+          "label": "Timezone",
+          "description": "Timezone for the container",
+          "default": "Europe/Paris"
+        }
+      ],
+      "id": 16,
+      "name": "transmission",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/transmission/docker-compose.yaml"
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/transmission/logo.png"
+    },
+    {
       "title": "Tor",
       "description": "Tor is free and open-source software for enabling anonymous communication and privacy online.",
       "categories": [
         "privacy",
         "network"
       ],
-      "id": 11,
+      "id": 17,
       "name": "tor",
       "type": 3,
       "platform": "linux",
@@ -279,14 +487,15 @@
         "network",
         "proxy"
       ],
-      "id": 12,
+      "id": 18,
       "name": "nginx-proxy-manager",
       "type": 3,
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/nginx-proxy-manager/docker-compose.yaml"
-      }
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/nginx-proxy-manager/logo.png"
     },
     {
       "title": "Uptime Kuma",
@@ -295,7 +504,7 @@
         "monitoring",
         "network"
       ],
-      "id": 13,
+      "id": 19,
       "name": "uptime-kuma",
       "type": 3,
       "platform": "linux",
@@ -330,7 +539,7 @@
           "description": "The password hash for WireGuard Easy"
         }
       ],
-      "id": 14,
+      "id": 20,
       "name": "wireguard-easy",
       "type": 3,
       "platform": "linux",
@@ -340,13 +549,59 @@
       }
     },
     {
+      "title": "Lidarr",
+      "description": "Lidarr is a music collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new tracks from your favorite artists and will grab, sort, and rename them.",
+      "categories": [
+        "media",
+        "music",
+        "automation"
+      ],
+      "env": [
+        {
+          "name": "PUID",
+          "label": "User ID",
+          "description": "User ID for running the container",
+          "default": "1000"
+        },
+        {
+          "name": "PGID",
+          "label": "Group ID",
+          "description": "Group ID for running the container",
+          "default": "1000"
+        },
+        {
+          "name": "TZ",
+          "label": "Timezone",
+          "description": "Timezone for the container",
+          "default": "Europe/Paris"
+        }
+      ],
+      "id": 21,
+      "name": "lidarr",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/lidarr/docker-compose.yaml"
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/lidarr/logo.png"
+    },
+    {
       "title": "Vaultwarden",
       "description": "Vaultwarden is an alternative implementation of the Bitwarden server API, written in Rust.",
       "categories": [
         "password",
         "security"
       ],
-      "id": 15,
+      "env": [
+        {
+          "name": "SIGNUPS_ALLOWED",
+          "label": "Signups Allowed",
+          "description": "Allow new user signups (true/false)",
+          "default": "false"
+        }
+      ],
+      "id": 22,
       "name": "vaultwarden",
       "type": 3,
       "platform": "linux",
@@ -356,20 +611,36 @@
       }
     },
     {
-      "title": "SearXNG",
-      "description": "SearXNG is a free internet metasearch engine, aggregating results from various search services.",
+      "title": "SearxNG",
+      "description": "SearxNG is a free internet metasearch engine, aggregating results from various search engines while protecting privacy.",
       "categories": [
         "search",
-        "privacy"
+        "privacy",
+        "metasearch"
       ],
-      "id": 16,
+      "env": [
+        {
+          "name": "SEARXNG_BASE_URL",
+          "label": "SearxNG Base URL",
+          "description": "The base URL for the SearxNG instance",
+          "default": "http://searxng.local"
+        },
+        {
+          "name": "SEARXNG_REDIS_URL",
+          "label": "SearxNG Redis URL",
+          "description": "Redis URL for SearxNG",
+          "default": "redis://redis:6379/0"
+        }
+      ],
+      "id": 23,
       "name": "searxng",
       "type": 3,
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/searxng/docker-compose.yaml"
-      }
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/searxng/logo.png"
     },
     {
       "title": "n8n",
@@ -379,6 +650,24 @@
         "integration"
       ],
       "env": [
+        {
+          "name": "N8N_HOST",
+          "label": "N8N Host",
+          "description": "The hostname for the n8n instance",
+          "default": "n8n.local"
+        },
+        {
+          "name": "WEBHOOK_URL",
+          "label": "Webhook URL",
+          "description": "The webhook URL for n8n",
+          "default": "https://n8n.local/"
+        },
+        {
+          "name": "GENERIC_TIMEZONE",
+          "label": "Timezone",
+          "description": "Timezone for the container",
+          "default": "Europe/Paris"
+        },
         {
           "name": "POSTGRES_USER",
           "label": "Postgres User",
@@ -392,7 +681,7 @@
           "default": "changeMe"
         }
       ],
-      "id": 17,
+      "id": 24,
       "name": "n8n",
       "type": 3,
       "platform": "linux",
@@ -408,7 +697,8 @@
         "notes",
         "productivity"
       ],
-      "id": 18,
+      "env": [],
+      "id": 25,
       "name": "trilium",
       "type": 3,
       "platform": "linux",
@@ -432,6 +722,12 @@
           "default": "https://paperless.example.com"
         },
         {
+          "name": "PAPERLESS_TIME_ZONE",
+          "label": "Timezone",
+          "description": "The timezone for the Paperless-ngx instance",
+          "default": "Europe/Paris"
+        },
+        {
           "name": "DB_USER",
           "label": "Database User",
           "description": "The username for the Paperless-ngx database (cannot change value)",
@@ -453,14 +749,15 @@
           "preset": true
         }
       ],
-      "id": 19,
+      "id": 26,
       "name": "paperless-ngx",
       "type": 3,
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/paperless-ngx/docker-compose.yaml"
-      }
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/paperless-ngx/logo.png"
     },
     {
       "title": "Nextcloud",
@@ -495,14 +792,52 @@
           "default": "changeMe"
         }
       ],
-      "id": 20,
+      "id": 27,
       "name": "nextcloud",
       "type": 3,
       "platform": "linux",
       "repository": {
         "url": "https://github.com/CyrilLeblanc/homelab",
         "stackfile": "stacks/nextcloud/docker-compose.yaml"
-      }
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/nextcloud/logo.png"
+    },
+    {
+      "title": "Jellyseerr",
+      "description": "Jellyseerr is a free and open source fork of Overseerr for managing requests for your media library.",
+      "categories": [
+        "media",
+        "requests"
+      ],
+      "env": [
+        {
+          "name": "PUID",
+          "label": "User ID",
+          "description": "User ID for running the container",
+          "default": "1000"
+        },
+        {
+          "name": "PGID",
+          "label": "Group ID",
+          "description": "Group ID for running the container",
+          "default": "1000"
+        },
+        {
+          "name": "TZ",
+          "label": "Timezone",
+          "description": "Timezone for the container",
+          "default": "Europe/Paris"
+        }
+      ],
+      "id": 28,
+      "name": "jellyseerr",
+      "type": 3,
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/CyrilLeblanc/homelab",
+        "stackfile": "stacks/jellyseerr/docker-compose.yaml"
+      },
+      "logo": "https://raw.githubusercontent.com/CyrilLeblanc/homelab/refs/heads/main/stacks/jellyseerr/logo.png"
     },
     {
       "title": "Affine",
@@ -531,7 +866,7 @@
           "default": "affine"
         }
       ],
-      "id": 21,
+      "id": 29,
       "name": "affine",
       "type": 3,
       "platform": "linux",

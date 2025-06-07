@@ -1,0 +1,13 @@
+{
+    "title": "Jellyfin",
+    "description": "Jellyfin is a free software media system that puts you in control of managing and streaming your media.",
+    "categories": ["media", "streaming"],
+    "env": [
+        {
+            "name": "JELLYFIN_PublishedServerUrl",
+            "label": "Published server URL",
+            "description": "The URL that Jellyfin will use to access the server externally",
+            "default": "http://jellyfin.local"
+        }
+    ]
+}

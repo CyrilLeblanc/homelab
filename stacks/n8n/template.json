@@ -4,6 +4,24 @@
     "categories": ["automation", "integration"],
     "env": [
         {
+            "name": "N8N_HOST",
+            "label": "N8N Host",
+            "description": "The hostname for the n8n instance",
+            "default": "n8n.local"
+        },
+        {
+            "name": "WEBHOOK_URL",
+            "label": "Webhook URL",
+            "description": "The webhook URL for n8n",
+            "default": "https://n8n.local/"
+        },
+        {
+            "name": "GENERIC_TIMEZONE",
+            "label": "Timezone",
+            "description": "Timezone for the container",
+            "default": "Europe/Paris"
+        },
+        {
             "name": "POSTGRES_USER",
             "label": "Postgres User",
             "description": "The username for the Postgres database",

@@ -21,7 +21,7 @@ services:
       - PAPERLESS_REDIS=redis://redis:6379
       - PAPERLESS_DBHOST=postgres
       - PAPERLESS_OCR_LANGUAGE=fra
-      - PAPERLESS_TIME_ZONE=Europe/Paris
+      - PAPERLESS_TIME_ZONE=${PAPERLESS_TIME_ZONE}
       - PAPERLESS_URL=${PAPERLESS_URL}
 
   postgres:
@@ -39,7 +39,7 @@ services:
     container_name: paperless-ngx_redis
     image: docker.io/library/redis:8
     volumes:
-      - redis-data:/data:rw²
+      - redis-data:/data:rw
 
 volumes:
   app-data:

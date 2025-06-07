@@ -1,5 +1,13 @@
 {
     "title": "Vaultwarden",
     "description": "Vaultwarden is an alternative implementation of the Bitwarden server API, written in Rust.",
-    "categories": ["password", "security"]
+    "categories": ["password", "security"],
+    "env": [
+        {
+            "name": "SIGNUPS_ALLOWED",
+            "label": "Signups Allowed",
+            "description": "Allow new user signups (true/false)",
+            "default": "false"
+        }
+    ]
 }

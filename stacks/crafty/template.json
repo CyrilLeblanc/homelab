@@ -1,5 +1,13 @@
 {
     "title": "Crafty Controller",
     "description": "Crafty Controller is a powerful Minecraft server management panel.",
-    "categories": ["games", "management"]
+    "categories": ["games", "management"],
+    "env": [
+        {
+            "name": "TZ",
+            "label": "Timezone",
+            "description": "The timezone for Crafty Controller",
+            "default": "Europe/Paris"
+        }
+    ]
 }

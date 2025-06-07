@@ -8,6 +8,12 @@
             "label": "Timezone",
             "description": "The timezone for the Homepage application",
             "default": "Europe/Paris"
+        },
+        {
+            "name": "HOMEPAGE_ALLOWED_HOSTS",
+            "label": "Allowed Hosts",
+            "description": "A comma-separated list of allowed hosts for the Homepage application",
+            "default": "homepage.local"
         }
     ]
 }

@@ -10,6 +10,12 @@
             "default": "https://paperless.example.com"
         },
         {
+            "name": "PAPERLESS_TIME_ZONE",
+            "label": "Timezone",
+            "description": "The timezone for the Paperless-ngx instance",
+            "default": "Europe/Paris"
+        },
+        {
             "name": "DB_USER",
             "label": "Database User",
             "description": "The username for the Paperless-ngx database (cannot change value)",

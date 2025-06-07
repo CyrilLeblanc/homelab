@@ -1,5 +1,19 @@
 {
-    "title": "SearXNG",
-    "description": "SearXNG is a free internet metasearch engine, aggregating results from various search services.",
-    "categories": ["search", "privacy"]
+    "title": "SearxNG",
+    "description": "SearxNG is a free internet metasearch engine, aggregating results from various search engines while protecting privacy.",
+    "categories": ["search", "privacy", "metasearch"],
+    "env": [
+        {
+            "name": "SEARXNG_BASE_URL",
+            "label": "SearxNG Base URL",
+            "description": "The base URL for the SearxNG instance",
+            "default": "http://searxng.local"
+        },
+        {
+            "name": "SEARXNG_REDIS_URL",
+            "label": "SearxNG Redis URL",
+            "description": "Redis URL for SearxNG",
+            "default": "redis://redis:6379/0"
+        }
+    ]
 }

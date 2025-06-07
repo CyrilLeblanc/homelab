@@ -1,0 +1,25 @@
+{
+    "title": "Transmission",
+    "description": "Transmission is a fast, easy, and free BitTorrent client.",
+    "categories": ["media", "torrent", "downloads"],
+    "env": [
+        {
+            "name": "PUID",
+            "label": "User ID",
+            "description": "User ID for running the container",
+            "default": "1000"
+        },
+        {
+            "name": "PGID",
+            "label": "Group ID",
+            "description": "Group ID for running the container",
+            "default": "1000"
+        },
+        {
+            "name": "TZ",
+            "label": "Timezone",
+            "description": "Timezone for the container",
+            "default": "Europe/Paris"
+        }
+    ]
+}

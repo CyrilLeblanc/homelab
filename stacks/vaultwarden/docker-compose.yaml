@@ -9,7 +9,7 @@ services:
     networks:
       - web
     environment:
-      - SIGNUPS_ALLOWED=false
+      - SIGNUPS_ALLOWED=${SIGNUPS_ALLOWED}
 
 volumes:
   app-data:

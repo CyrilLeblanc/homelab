@@ -1,0 +1,25 @@
+{
+    "title": "Lidarr",
+    "description": "Lidarr is a music collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new tracks from your favorite artists and will grab, sort, and rename them.",
+    "categories": ["media", "music", "automation"],
+    "env": [
+        {
+            "name": "PUID",
+            "label": "User ID",
+            "description": "User ID for running the container",
+            "default": "1000"
+        },
+        {
+            "name": "PGID",
+            "label": "Group ID",
+            "description": "Group ID for running the container",
+            "default": "1000"
+        },
+        {
+            "name": "TZ",
+            "label": "Timezone",
+            "description": "Timezone for the container",
+            "default": "Europe/Paris"
+        }
+    ]
+}
