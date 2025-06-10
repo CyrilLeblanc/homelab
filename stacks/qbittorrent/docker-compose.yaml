@@ -1,0 +1,25 @@
+services:
+
+  app:
+    container_name: qbittorrent_app
+    image: ghcr.io/linuxserver/qbittorrent:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - app-config:/config:rw
+      - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
+    # ports:
+      # - 8080:8080 # web UI port
+      # - 6881:6881/udp # torrenting port
+    networks:
+      - web
+
+volumes:
+  app-config:
+
+networks:
+  web:
+    external: true
