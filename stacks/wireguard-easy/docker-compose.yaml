@@ -5,17 +5,13 @@ services:
     image: ghcr.io/wg-easy/wg-easy:latest
     restart: unless-stopped
     environment:
-      - LANG=${LANG}
       - WG_HOST=${WG_HOST}
       - PASSWORD_HASH=${PASSWORD_HASH}
-      - PORT=51821
-      - WG_PORT=51820
-      - WG_CONFIG_PORT=92820
     volumes:
       - app-data:/etc/wireguard
     ports:
-      - 51820:51820/udp
-      - 51821:51821/tcp
+      - 51820:51820/udp # connection port
+      # - 51821:51821/tcp # web interface
     networks:
       - web
     cap_add:

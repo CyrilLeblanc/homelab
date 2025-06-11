@@ -12,8 +12,8 @@
         {
             "name": "WG_HOST",
             "label": "WireGuard Host",
-            "description": "The host address for WireGuard",
-            "default": "192.168.1.X"
+            "description": "The public host IP address for WireGuard",
+            "default": "x.x.x.x"
         },
         {
             "name": "PASSWORD_HASH",
