@@ -1,0 +1,21 @@
+services:
+
+  app:
+    container_name: maintainerr_app
+    image: ghcr.io/jorenn92/maintainerr:latest
+    restart: unless-stopped
+    volumes:
+      - app-data:/opt/data:rw
+    environment:
+      - TZ=${TZ}
+    networks:
+      - web
+    # ports:
+    #   - 6246:6246
+
+volumes:
+  app-data:
+
+networks:
+  web:
+    external: true
