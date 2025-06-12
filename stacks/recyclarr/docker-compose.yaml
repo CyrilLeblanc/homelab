@@ -1,0 +1,20 @@
+services:
+
+  app:
+    container_name: recyclarr_app
+    image: ghcr.io/recyclarr/recyclarr:latest
+    restart: unless-stopped
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - app-config:/config:rw
+    networks:
+      - web
+
+volumes:
+  app-config:
+
+networks:
+  web:
+    external: true
