@@ -1,0 +1,16 @@
+services:
+
+  app:
+    container_name: flaresolverr_app
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    networks:
+      - web
+    # ports:
+    #   - 8191:8191
+
+networks:
+  web:
+    external: true
