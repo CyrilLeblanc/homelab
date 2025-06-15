@@ -4,7 +4,7 @@ services:
     container_name: recyclarr_app
     image: ghcr.io/recyclarr/recyclarr:latest
     restart: unless-stopped
-    user: "${UID:-1000}:${GID:-1000}"
+    user: ${PUID}:${PGID}
     environment:
       - TZ=${TZ}
     volumes:
