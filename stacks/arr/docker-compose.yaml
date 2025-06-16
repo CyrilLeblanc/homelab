@@ -1,0 +1,174 @@
+services:
+  jellyfin:
+    container_name: arr_jellyfin
+    image: jellyfin/jellyfin:latest
+    restart: unless-stopped
+    volumes:
+      - jellyfin-config:/config:rw
+      - jellyfin-cache:/cache:rw
+      - shared_media:/media:rw
+    environment:
+      - JELLYFIN_PublishedServerUrl=${JELLYFIN_PublishedServerUrl}
+    networks:
+      - default
+      - web
+    # ports:
+    #   - 8096:8096
+    devices:
+      - /dev/dri:/dev/dri # For hardware acceleration
+
+  jellyseerr:
+    container_name: arr_jellyseerr
+    image: fallenbagel/jellyseerr:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - GUID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - jellyseerr-config:/app/config:rw
+    networks:
+      - default
+      - web
+
+  gluetun:
+    container_name: arr_gluetun
+    image: qmcgaw/gluetun:latest
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
+      - VPN_TYPE=wireguard
+      - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
+      - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
+    healthcheck:
+      test: ping -c 1 www.google.com || exit 1
+      interval: 20s
+      timeout: 10s
+      retries: 5
+    networks:
+      - default
+      - web
+
+  prowlarr:
+    container_name: arr_prowlarr
+    image: ghcr.io/linuxserver/prowlarr:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - prowlarr-config:/config:rw
+    networks:
+      - default
+      - web
+
+  flaresolverr:
+    container_name: arr_flaresolverr
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    networks:
+      - default
+      - web
+
+  radarr:
+    container_name: arr_radarr
+    image: ghcr.io/linuxserver/radarr:latest
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+    networks:
+      - default
+      - web
+    volumes:
+      - radarr-data:/config:rw
+      - /var/lib/docker/volumes/shared_media/_data/movies:/movies:rw
+      - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
+
+  sonarr:
+    container_name: arr_sonarr
+    image: ghcr.io/linuxserver/sonarr:latest
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+    networks:
+      - default
+      - web
+    volumes:
+      - sonarr-data:/config:rw
+      - /var/lib/docker/volumes/shared_media/_data/shows:/shows:rw
+      - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
+
+  tor:
+    container_name: arr_tor
+    image: dockurr/tor:latest
+    restart: unless-stopped
+    networks:
+      - default
+      - web
+    volumes:
+      - tor-config:/etc/tor:rw
+      - tor-data:/var/lib/tor:rw
+
+  qbittorrent:
+    container_name: arr_qbittorrent
+    image: ghcr.io/linuxserver/qbittorrent:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - qbittorrent-config:/config:rw
+      - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
+    network_mode: service:gluetun
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+
+  sabnzbd:
+    container_name: arr_sabnzbd
+    image: lscr.io/linuxserver/sabnzbd:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - sabnzbd-config:/config:rw
+      - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
+    network_mode: service:gluetun
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+
+volumes:
+  jellyfin-config:
+  jellyfin-cache:
+  jellyseerr-config:
+  prowlarr-config:
+  radarr-data:
+  sonarr-data:
+  qbittorrent-config:
+  tor-config:
+  tor-data:
+  sabnzbd-config:
+  shared_media:
+    external: true
+    name: shared_media
+
+networks:
+  web:
+    external: true
