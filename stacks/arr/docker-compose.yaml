@@ -31,28 +31,6 @@ services:
       - default
       - web
 
-  gluetun:
-    container_name: arr_gluetun
-    image: qmcgaw/gluetun:latest
-    restart: unless-stopped
-    cap_add:
-      - NET_ADMIN
-    devices:
-      - /dev/net/tun:/dev/net/tun
-    environment:
-      - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
-      - VPN_TYPE=wireguard
-      - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
-      - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
-    healthcheck:
-      test: ping -c 1 www.google.com || exit 1
-      interval: 20s
-      timeout: 10s
-      retries: 5
-    networks:
-      - default
-      - web
-
   prowlarr:
     container_name: arr_prowlarr
     image: ghcr.io/linuxserver/prowlarr:latest
@@ -120,6 +98,28 @@ services:
       - tor-config:/etc/tor:rw
       - tor-data:/var/lib/tor:rw
 
+  gluetun:
+    container_name: arr_gluetun
+    image: qmcgaw/gluetun:latest
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
+      - VPN_TYPE=wireguard
+      - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
+      - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
+    healthcheck:
+      test: ping -c 1 www.google.com || exit 1
+      interval: 20s
+      timeout: 10s
+      retries: 5
+    networks:
+      - default
+      - web
+
   qbittorrent:
     container_name: arr_qbittorrent
     image: ghcr.io/linuxserver/qbittorrent:latest
@@ -161,9 +161,9 @@ volumes:
   prowlarr-config:
   radarr-data:
   sonarr-data:
-  qbittorrent-config:
   tor-config:
   tor-data:
+  qbittorrent-config:
   sabnzbd-config:
   shared_media:
     external: true
