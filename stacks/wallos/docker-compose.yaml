@@ -16,7 +16,7 @@ services:
 
 volumes:
   app-db:
-  app-logo:
+  app-logos:
 
 networks:
   web:
