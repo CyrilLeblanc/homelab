@@ -1,0 +1,23 @@
+services:
+
+  app:
+    container_name: wallos_app
+    image: bellamy/wallos:latest
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - app-db:/var/www/html/db:rw
+      - app-logos:/var/www/html/images/uploads/logos:rw
+    networks:
+      - web
+    # ports:
+    #   - 80:80
+
+volumes:
+  app-db:
+  app-logo:
+
+networks:
+  web:
+    external: true
