@@ -19,8 +19,8 @@ services:
     networks:
       - web
       - default
-    # ports:
-    #   - 2283:2283
+    ports:
+      - 2283:2283
 
   machine-learning:
     container_name: immich_machine-learning
