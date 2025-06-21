@@ -7,8 +7,12 @@ services:
     volumes:
       - app-upload:/usr/src/app/upload:rw
       - /etc/localtime:/etc/localtime:ro
-    env_file:
-      - stack.env
+    environment:
+      - TZ=${TZ}
+      - IMMICH_VERSION=${IMMICH_VERSION}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_DATABASE_NAME=${DB_DATABASE_NAME}
     depends_on:
       - redis
       - database
@@ -24,8 +28,12 @@ services:
     restart: unless-stopped
     volumes:
       - machine-learning-cache:/cache:rw
-    env_file:
-      - stack.env
+    environment:
+      - TZ=${TZ}
+      - IMMICH_VERSION=${IMMICH_VERSION}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_DATABASE_NAME=${DB_DATABASE_NAME}
 
   redis:
     container_name: immich_redis
