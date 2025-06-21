@@ -22,7 +22,7 @@ services:
     ports:
       - 2283:2283
 
-  machine-learning:
+  immich-machine-learning:
     container_name: immich_machine-learning
     image: ghcr.io/immich-app/immich-machine-learning:release
     restart: unless-stopped
