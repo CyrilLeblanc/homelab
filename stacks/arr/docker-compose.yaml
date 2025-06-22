@@ -1,4 +1,5 @@
 services:
+
   jellyfin:
     container_name: arr_jellyfin
     image: jellyfin/jellyfin:latest
@@ -44,6 +45,8 @@ services:
     networks:
       - default
       - web
+    # ports:
+    #   - 9696:9696 # Prowlarr web interface
 
   flaresolverr:
     container_name: arr_flaresolverr
@@ -54,6 +57,8 @@ services:
     networks:
       - default
       - web
+    # ports:
+    #   - 8191:8191
 
   radarr:
     container_name: arr_radarr
@@ -63,13 +68,15 @@ services:
       - TZ=${TZ}
       - PUID=${PUID}
       - PGID=${PGID}
-    networks:
-      - default
-      - web
     volumes:
       - radarr-data:/config:rw
       - /var/lib/docker/volumes/shared_media/_data/movies:/movies:rw
       - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
+    networks:
+      - default
+      - web
+    # ports:
+    #   - 7878:7878 # Radarr web interface
 
   sonarr:
     container_name: arr_sonarr
@@ -79,13 +86,15 @@ services:
       - TZ=${TZ}
       - PUID=${PUID}
       - PGID=${PGID}
-    networks:
-      - default
-      - web
     volumes:
       - sonarr-data:/config:rw
       - /var/lib/docker/volumes/shared_media/_data/shows:/shows:rw
       - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
+    networks:
+      - default
+      - web
+    # ports:
+    #   - 8989:8989 # Sonarr web interface
 
   tor:
     container_name: arr_tor
@@ -94,6 +103,9 @@ services:
     networks:
       - default
       - web
+    # ports:
+    #   - 9050:9050
+    #   - 9051:9051
     volumes:
       - tor-config:/etc/tor:rw
       - tor-data:/var/lib/tor:rw
@@ -119,6 +131,8 @@ services:
     networks:
       - default
       - web
+    # ports:
+    #   - 8080:8080 # Qbittorrent web UI
 
   qbittorrent:
     container_name: arr_qbittorrent
@@ -137,22 +151,55 @@ services:
         condition: service_healthy
         restart: true
 
-  sabnzbd:
-    container_name: arr_sabnzbd
-    image: lscr.io/linuxserver/sabnzbd:latest
+  tdarr:
+    container_name: arr_tdarr
+    image: ghcr.io/haveagitgat/tdarr:latest
     restart: unless-stopped
     environment:
+      - TZ=${TZ}
       - PUID=${PUID}
       - PGID=${PGID}
-      - TZ=${TZ}
+      - internalNode=true
+      - inContainer=true
+      - ffmpegVersion=7
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - sabnzbd-config:/config:rw
-      - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
-    network_mode: service:gluetun
-    depends_on:
-      gluetun:
-        condition: service_healthy
-        restart: true
+      - tdarr-server:/app/server:rw
+      - tdarr-configs:/app/configs:rw
+      - shared_media:/media:rw
+    devices:
+      - /dev/dri:/dev/dri
+    networks:
+      - default
+      - web
+    # ports:
+    #   - 8265:8265 # webUI port
+    #   - 8266:8266 # server port
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
+
+  # sabnzbd:
+  #   container_name: arr_sabnzbd
+  #   image: lscr.io/linuxserver/sabnzbd:latest
+  #   restart: unless-stopped
+  #   environment:
+  #     - PUID=${PUID}
+  #     - PGID=${PGID}
+  #     - TZ=${TZ}
+  #   volumes:
+  #     - sabnzbd-config:/config:rw
+  #     - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
+  #   network_mode: service:gluetun
+  #   depends_on:
+  #     gluetun:
+  #       condition: service_healthy
+  #       restart: true
 
 volumes:
   jellyfin-config:
@@ -164,7 +211,9 @@ volumes:
   tor-config:
   tor-data:
   qbittorrent-config:
-  sabnzbd-config:
+  tdarr-server:
+  tdarr-configs:
+  # sabnzbd-config:
   shared_media:
     external: true
     name: shared_media
