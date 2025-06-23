@@ -96,6 +96,23 @@ services:
     # ports:
     #   - 8989:8989 # Sonarr web interface
 
+  lidarr:
+    container_name: lidarr_app
+    image: lscr.io/linuxserver/lidarr:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - GUID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - lidarr-config:/config:rw
+      - /var/lib/docker/volumes/shared_media/_data/music:/music:rw
+      - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
+    # ports:
+    #   - 8686:8686
+    networks:
+      - web
+
   tor:
     container_name: arr_tor
     image: dockurr/tor:latest
@@ -208,6 +225,7 @@ volumes:
   prowlarr-config:
   radarr-data:
   sonarr-data:
+  lidarr-config:
   tor-config:
   tor-data:
   qbittorrent-config:
