@@ -97,7 +97,7 @@ services:
     #   - 8989:8989 # Sonarr web interface
 
   lidarr:
-    container_name: lidarr_app
+    container_name: arr_lidarr
     image: lscr.io/linuxserver/lidarr:latest
     restart: unless-stopped
     environment:
