@@ -111,6 +111,7 @@ services:
     # ports:
     #   - 8686:8686
     networks:
+      - default
       - web
 
   tor:
