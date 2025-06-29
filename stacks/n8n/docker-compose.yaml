@@ -35,6 +35,7 @@ services:
 volumes:
   app-data:
   app-files:
+  postgres-data:
 
 networks:
   web:
