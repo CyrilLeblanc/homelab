@@ -12,6 +12,8 @@ services:
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
       - NODE_ENV=production
       - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_RUNNERS_MODE=internal
     networks:
       - web
       - default
