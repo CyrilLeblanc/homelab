@@ -38,6 +38,7 @@ services:
   redis:
     container_name: paperless-ngx_redis
     image: docker.io/library/redis:8
+    restart: unless-stopped
     volumes:
       - redis-data:/data:rw
 
