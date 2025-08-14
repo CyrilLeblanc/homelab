@@ -12,7 +12,7 @@ services:
     depends_on:
       - redis
     volumes:
-      - app_data:/etc/searxng:rw
+      - app-data:/etc/searxng:rw
     networks:
       - default
       - web
