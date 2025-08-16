@@ -13,12 +13,12 @@ services:
     networks:
       - web
     volumes:
-      - app-data:/config:rw
+      - app-config:/config:rw
       - /var/lib/docker/volumes/shared_media/_data/shows:/shows:rw
       - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
 
 volumes:
-  app-data:
+  app-config:
 
 networks:
   web:
