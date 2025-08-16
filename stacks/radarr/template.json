@@ -21,5 +21,8 @@
             "description": "Group ID for running the container",
             "default": "1000"
         }
+    ],
+    "backup-volumes": [
+        "app-data"
     ]
 }

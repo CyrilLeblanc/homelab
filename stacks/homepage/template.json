@@ -15,5 +15,8 @@
             "description": "A comma-separated list of allowed hosts for the Homepage application",
             "default": "homepage.local"
         }
+    ],
+    "backup-volumes": [
+        "app-config"
     ]
 }

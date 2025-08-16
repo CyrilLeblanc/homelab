@@ -38,5 +38,10 @@
             "description": "The URL for accessing BookStack",
             "default": "https://bookstack.example.com"
         }
+    ],
+    "backup-volumes": [
+        "app-data",
+        "mariadb-data",
+        "redis-data"
     ]
 }

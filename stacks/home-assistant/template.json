@@ -9,5 +9,8 @@
             "description": "The timezone for Home Assistant",
             "default": "Europe/Paris"
         }
+    ],
+    "backup-volumes": [
+        "app-data"
     ]
 }

@@ -1,0 +1,6 @@
+{
+    "backup-volumes": [
+        "app-db",
+        "app-logos"
+    ]
+}

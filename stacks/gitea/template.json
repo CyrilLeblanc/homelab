@@ -21,5 +21,9 @@
             "description": "The password for the Gitea database",
             "default": "changeMe"
         }
+    ],
+    "backup-volumes": [
+        "app-data",
+        "postgres-data"
     ]
 }

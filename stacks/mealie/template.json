@@ -1,0 +1,6 @@
+{
+    "backup-volumes": [
+        "app-data",
+        "postgres-data"
+    ]
+}

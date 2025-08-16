@@ -9,5 +9,12 @@
             "description": "The timezone for Crafty Controller",
             "default": "Europe/Paris"
         }
+    ],
+    "backup-volumes": [
+        "app_backups",
+        "app_logs",
+        "app_servers",
+        "app_config",
+        "app_import"
     ]
 }

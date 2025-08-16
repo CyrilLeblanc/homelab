@@ -11,18 +11,18 @@ services:
     ports:
         - 25565:25565
     volumes:
-        - crafty_backups:/crafty/backups
-        - crafty_logs:/crafty/logs
-        - crafty_servers:/crafty/servers
-        - crafty_config:/crafty/app/config
-        - crafty_import:/crafty/import
+        - app_backups:/crafty/backups
+        - app_logs:/crafty/logs
+        - app_servers:/crafty/servers
+        - app_config:/crafty/app/config
+        - app_import:/crafty/import
 
 volumes:
-  crafty_backups:
-  crafty_logs:
-  crafty_servers:
-  crafty_config:
-  crafty_import:
+  app_backups:
+  app_logs:
+  app_servers:
+  app_config:
+  app_import:
 
 networks:
   web:

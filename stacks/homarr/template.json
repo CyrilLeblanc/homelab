@@ -8,5 +8,8 @@
             "label": "Secret Encryption Key",
             "description": "The secret encryption key for Homarr"
         }
+    ],
+    "backup-volumes": [
+        "app-data"
     ]
 }

@@ -1,6 +1,6 @@
 {
     "title": "Affine",
-    "description": "Affine is a next-generation collaborative knowledge base for teams, combining docs, whiteboards, and databases.",
+    "description": "Collaborative knowledge base and workspace",
     "categories": ["productivity", "collaboration"],
     "env": [
         {
@@ -21,5 +21,10 @@
             "description": "The name of the Affine database",
             "default": "affine"
         }
+    ],
+    "backup-volumes": [
+        "app-storage",
+        "app-config",
+        "postgres-data"
     ]
 }

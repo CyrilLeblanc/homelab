@@ -27,5 +27,10 @@
             "description": "The password for the MySQL database",
             "default": "changeMe"
         }
+    ],
+    "backup-volumes": [
+        "app-data",
+        "mariadb-data",
+        "nginx-config"
     ]
 }

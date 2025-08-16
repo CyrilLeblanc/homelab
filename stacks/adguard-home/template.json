@@ -1,7 +1,7 @@
 {
     "id": 1,
     "title": "AdGuard Home",
-    "description": "AdGuard Home is a network-wide software for blocking ads and trackers. It acts as a DNS server, filtering out unwanted content at the network level.",
+    "description": "Network-wide ad and tracker blocking DNS server",
     "categories": [
         "network",
         "dns"
@@ -13,5 +13,9 @@
             "description": "The ip of the host machine",
             "default": "192.168.1.X"
         }
+    ],
+    "backup-volumes": [
+        "app-work",
+        "app-conf"
     ]
 }

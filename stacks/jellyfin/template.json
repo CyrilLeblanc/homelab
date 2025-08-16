@@ -9,5 +9,9 @@
             "description": "The URL that Jellyfin will use to access the server externally",
             "default": "http://jellyfin.local"
         }
+    ],
+    "backup-volumes": [
+        "app-config",
+        "app-cache"
     ]
 }

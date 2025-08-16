@@ -20,5 +20,8 @@
             "label": "Password Hash",
             "description": "The password hash for WireGuard Easy"
         }
+    ],
+    "backup-volumes": [
+        "app-data"
     ]
 }

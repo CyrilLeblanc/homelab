@@ -33,5 +33,10 @@
             "description": "The password for the Postgres database",
             "default": "changeMe"
         }
+    ],
+    "backup-volumes": [
+        "app-data",
+        "app-files",
+        "postgres-data"
     ]
 }

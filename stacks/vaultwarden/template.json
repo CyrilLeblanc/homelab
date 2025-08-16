@@ -9,5 +9,8 @@
             "description": "Allow new user signups (true/false)",
             "default": "false"
         }
+    ],
+    "backup-volumes": [
+        "app-data"
     ]
 }

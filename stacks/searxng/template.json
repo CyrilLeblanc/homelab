@@ -15,5 +15,9 @@
             "description": "Redis URL for SearxNG",
             "default": "redis://redis:6379/0"
         }
+    ],
+    "backup-volumes": [
+        "app-data",
+        "redis-data"
     ]
 }

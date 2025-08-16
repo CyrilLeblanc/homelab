@@ -21,5 +21,8 @@
             "description": "Timezone for the container",
             "default": "Europe/Paris"
         }
+    ],
+    "backup-volumes": [
+        "app-config"
     ]
 }

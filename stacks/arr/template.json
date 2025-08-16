@@ -1,0 +1,14 @@
+{
+    "backup-volumes": [
+        "jellyfin-config",
+        "jellyfin-cache",
+        "jellyseerr-config",
+        "prowlarr-config",
+        "radarr-data",
+        "sonarr-data",
+        "lidarr-config",
+        "tor-config",
+        "tor-data",
+        "qbittorrent-config"
+    ]
+}

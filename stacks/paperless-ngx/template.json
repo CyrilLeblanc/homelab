@@ -36,5 +36,13 @@
             "default": "paperless",
             "preset": true
         }
+    ],
+    "backup-volumes": [
+        "app-data",
+        "app-media",
+        "app-export",
+        "app-consume",
+        "postgres-data",
+        "redis-data"
     ]
 }

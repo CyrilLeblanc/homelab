@@ -1,5 +1,9 @@
 {
     "title": "Tor",
     "description": "Tor is free and open-source software for enabling anonymous communication and privacy online.",
-    "categories": ["privacy", "network"]
+    "categories": ["privacy", "network"],
+    "backup-volumes": [
+        "app-config",
+        "app-data"
+    ]
 }

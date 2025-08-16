@@ -1,0 +1,7 @@
+{
+    "backup-volumes": [
+        "app-upload",
+        "machine-learning-cache",
+        "database-data"
+    ]
+}

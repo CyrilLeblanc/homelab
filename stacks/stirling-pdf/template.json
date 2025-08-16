@@ -9,5 +9,12 @@
             "default": "en_GB",
             "description": "Comma-separated list of languages to support in the application. Default is 'en_GB' for English."
         }
+    ],
+    "backup-volumes": [
+        "app-training_data",
+        "app-config",
+        "app-custom_files",
+        "app-logs",
+        "app-pipeline"
     ]
 }
