@@ -3,11 +3,15 @@ services:
     image: louislam/uptime-kuma:latest
     container_name: uptimekuma
     volumes:
-      - ./data:/app/data
+      - app-data:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
     networks:
       - web
+
+volumes:
+  app-data:
+
 networks:
   web:
     external: true
