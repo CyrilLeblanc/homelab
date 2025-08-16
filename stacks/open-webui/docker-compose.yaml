@@ -5,12 +5,12 @@ services:
     image: ghcr.io/open-webui/open-webui:latest
     restart: unless-stopped
     volumes:
-      - open-webui-data:/app/backend/data
+      - app-data:/app/backend/data
     networks:
       - web
 
 volumes:
-  open-webui-data:
+  app-data:
 
 networks:
   web:
