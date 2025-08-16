@@ -7,10 +7,7 @@ services:
     volumes:
       - open-webui-data:/app/backend/data
     networks:
-      - default
       - web
-    extra_hosts:
-      - host.docker.internal:host-gateway
 
 volumes:
   open-webui-data:
