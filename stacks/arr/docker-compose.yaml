@@ -31,6 +31,8 @@ services:
     networks:
       - default
       - web
+    # ports:
+    #  - 5055:5055 # Jellyseerr web interface
 
   prowlarr:
     container_name: arr_prowlarr
@@ -169,56 +171,6 @@ services:
         condition: service_healthy
         restart: true
 
-  # tdarr:
-  #   container_name: arr_tdarr
-  #   image: ghcr.io/haveagitgat/tdarr:latest
-  #   restart: unless-stopped
-  #   environment:
-  #     - TZ=${TZ}
-  #     - PUID=${PUID}
-  #     - PGID=${PGID}
-  #     - internalNode=true
-  #     - inContainer=true
-  #     - ffmpegVersion=7
-  #     - NVIDIA_DRIVER_CAPABILITIES=all
-  #     - NVIDIA_VISIBLE_DEVICES=all
-  #   volumes:
-  #     - tdarr-server:/app/server:rw
-  #     - tdarr-configs:/app/configs:rw
-  #     - shared_media:/media:rw
-  #   devices:
-  #     - /dev/dri:/dev/dri
-  #   networks:
-  #     - default
-  #     - web
-  #   # ports:
-  #   #   - 8265:8265 # webUI port
-  #   #   - 8266:8266 # server port
-  #   deploy:
-  #     resources:
-  #       reservations:
-  #         devices:
-  #         - driver: nvidia
-  #           count: all
-  #           capabilities: [gpu]
-
-  # sabnzbd:
-  #   container_name: arr_sabnzbd
-  #   image: lscr.io/linuxserver/sabnzbd:latest
-  #   restart: unless-stopped
-  #   environment:
-  #     - PUID=${PUID}
-  #     - PGID=${PGID}
-  #     - TZ=${TZ}
-  #   volumes:
-  #     - sabnzbd-config:/config:rw
-  #     - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
-  #   network_mode: service:gluetun
-  #   depends_on:
-  #     gluetun:
-  #       condition: service_healthy
-  #       restart: true
-
 volumes:
   jellyfin-config:
   jellyfin-cache:
@@ -230,9 +182,6 @@ volumes:
   tor-config:
   tor-data:
   qbittorrent-config:
-  # tdarr-server:
-  # tdarr-configs:
-  # sabnzbd-config:
   shared_media:
     external: true
     name: shared_media
