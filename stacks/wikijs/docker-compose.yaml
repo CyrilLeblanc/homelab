@@ -15,6 +15,7 @@ services:
       - postgres
     networks:
       - web
+      - default
     # ports:
     #   - 3000:3000
 
