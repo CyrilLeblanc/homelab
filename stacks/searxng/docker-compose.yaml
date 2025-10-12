@@ -25,6 +25,17 @@ services:
     volumes:
       - redis-data:/data
 
+  flaresolverr:
+    container_name: searxng_flaresolverr
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    networks:
+      - default
+    # ports:
+    #   - 8191:8191
+
 volumes:
   app-data:
   redis-data:
