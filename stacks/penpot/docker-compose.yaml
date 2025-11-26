@@ -23,6 +23,7 @@ services:
     container_name: penpot_backend
     image: penpotapp/backend:latest
     restart: unless-stopped
+    hostname: penpot-backend
     volumes:
       - assets:/opt/data/assets
     environment:
