@@ -93,6 +93,13 @@ services:
       timeout: 3s
       retries: 5
 
+  mailcatcher:
+    container_name: penpot_mailcatcher
+    image: sj26/mailcatcher:latest
+    restart: unless-stopped
+    ports:
+      - 1080:1080
+
 volumes:
   postgres-data:
   assets:
