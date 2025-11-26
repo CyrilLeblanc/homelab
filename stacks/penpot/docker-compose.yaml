@@ -57,6 +57,7 @@ services:
     container_name: penpot_exporter
     image: penpotapp/exporter:latest
     restart: unless-stopped
+    hostname: penpot-exporter
     environment:
       - PENPOT_PUBLIC_URI=http://frontend:8080
       - PENPOT_REDIS_URI=redis://valkey/0
