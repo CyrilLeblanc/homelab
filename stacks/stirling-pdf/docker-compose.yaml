@@ -11,6 +11,8 @@ services:
     environment:
       - DOCKER_ENABLE_SECURITY=false
       - LANGS=${LANGS}
+      - DISABLE_ADDITIONAL_FEATURES=true
+      - SECURITY_ENABLELOGIN=false
     volumes:
       - app-training_data:/usr/share/tessdata:rw
       - app-config:/configs:rw
