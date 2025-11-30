@@ -2,7 +2,7 @@ services:
 
   app:
     container_name: stirling-pdf_app
-    image: docker.stirlingpdf.com/stirlingtools/stirling-pdf:latest
+    image: stirlingtools/stirling-pdf:latest-fat
     restart: unless-stopped
     networks:
       - web
@@ -16,7 +16,6 @@ services:
     volumes:
       - app-training_data:/usr/share/tessdata:rw
       - app-config:/configs:rw
-      - app-custom_files:/customFiles:rw
       - app-logs:/logs:rw
       - app-pipeline:/pipeline:rw
 
