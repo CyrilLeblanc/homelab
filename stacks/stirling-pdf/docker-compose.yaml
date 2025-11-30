@@ -2,17 +2,17 @@ services:
 
   app:
     container_name: stirling-pdf_app
-    image: stirlingtools/stirling-pdf:latest-fat
+    image: stirlingtools/stirling-pdf:latest
     restart: unless-stopped
     networks:
       - web
     # ports:
     #   - 8080:8080
     environment:
-      - DOCKER_ENABLE_SECURITY=false
+      - SECURITY_ENABLELOGIN=false
+      - SYSTEM_GOOGLEVISIBILITY=false
       - LANGS=${LANGS}
       - DISABLE_ADDITIONAL_FEATURES=true
-      - SECURITY_ENABLELOGIN=false
     volumes:
       - app-training_data:/usr/share/tessdata:rw
       - app-config:/configs:rw
