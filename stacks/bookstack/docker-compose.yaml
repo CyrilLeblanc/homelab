@@ -22,7 +22,7 @@ services:
       - DB_USERNAME=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_DATABASE=${DB_NAME}
-      - QUEUE_CONNECTION=redis
+      - QUEUE_CONNECTION=database
 
   mariadb:
     container_name: bookstack_mariadb
@@ -36,17 +36,9 @@ services:
       - MYSQL_USER=${DB_USER}
       - MYSQL_PASSWORD=${DB_PASSWORD}
 
-  redis:
-    container_name: bookstack_redis
-    image: redis:alpine
-    restart: unless-stopped
-    volumes:
-      - redis-data:/data:rw
-
 volumes:
   app-data:
   mariadb-data:
-  redis-data:
 
 networks:
   web:
