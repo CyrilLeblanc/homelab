@@ -3,9 +3,9 @@ services:
     image: cyrale/project-zomboid
     restart: unless-stopped
     environment:
-      - SERVER_NAME: ${PZ_SERVER_NAME:-"My PZ Server"}
-      - ADMIN_PASSWORD: ${PZ_ADMIN_PASSWORD:-"adminpass"}
-      - RCON_PASSWORD: ${PZ_RCON_PASSWORD:-"rconpass"}
+      SERVER_NAME: ${PZ_SERVER_NAME:-"My PZ Server"}
+      ADMIN_PASSWORD: ${PZ_ADMIN_PASSWORD:-"adminpass"}
+      RCON_PASSWORD: ${PZ_RCON_PASSWORD:-"rconpass"}
     ports:
       # - 8766:8766/udp # steam port 1
       # - 8767:8767/udp # steam port 2
