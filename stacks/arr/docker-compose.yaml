@@ -171,6 +171,35 @@ services:
         condition: service_healthy
         restart: true
 
+  tdarr:
+    container_name: arr_tdarr
+    image: ghcr.io/haveagitgat/tdarr:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - serverIP=0.0.0.0
+      - serverPort=8266
+      - webUIPort=8265
+      - internalNode=true
+      - nodeName=MainNode
+    volumes:
+      - tdarr-config:/app/configs:rw
+      - tdarr-server:/app/server:rw
+      - tdarr-logs:/app/logs:rw
+      - /var/lib/docker/volumes/shared_media/_data/movies:/media/movies:rw
+      - /var/lib/docker/volumes/shared_media/_data/shows:/media/shows:rw
+      - tdarr-transcode:/temp:rw
+    networks:
+      - default
+      - web
+    devices:
+      - /dev/dri:/dev/dri  # HW accel Intel/AMD (tu l'as déjà pour Jellyfin)
+    # ports:
+    #   - 8265:8265  # Web UI
+    #   - 8266:8266  # Server port
+
 volumes:
   jellyfin-config:
   jellyfin-cache:
@@ -182,6 +211,10 @@ volumes:
   tor-config:
   tor-data:
   qbittorrent-config:
+  tdarr-config:
+  tdarr-server:
+  tdarr-logs:
+  tdarr-transcode:
   shared_media:
     external: true
     name: shared_media
