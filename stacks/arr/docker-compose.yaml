@@ -196,6 +196,7 @@ services:
       - internalNode=true
       - nodeName=MainNode
       - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
     volumes:
       - tdarr-config:/app/configs:rw
       - tdarr-server:/app/server:rw
