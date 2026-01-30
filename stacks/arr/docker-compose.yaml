@@ -4,6 +4,7 @@ services:
     container_name: arr_jellyfin
     image: jellyfin/jellyfin:latest
     restart: unless-stopped
+    runtime: nvidia
     volumes:
       - jellyfin-config:/config:rw
       - jellyfin-cache:/cache:rw
@@ -11,6 +12,7 @@ services:
     environment:
       - JELLYFIN_PublishedServerUrl=${JELLYFIN_PublishedServerUrl}
       - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
     networks:
       - default
       - web
@@ -183,6 +185,7 @@ services:
     container_name: arr_tdarr
     image: ghcr.io/haveagitgat/tdarr:latest
     restart: unless-stopped
+    runtime: nvidia
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
