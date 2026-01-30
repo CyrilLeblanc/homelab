@@ -10,6 +10,7 @@ services:
       - shared_media:/media:rw
     environment:
       - JELLYFIN_PublishedServerUrl=${JELLYFIN_PublishedServerUrl}
+      - NVIDIA_VISIBLE_DEVICES=all
     networks:
       - default
       - web
@@ -17,6 +18,14 @@ services:
       - 8096:8096
     devices:
       - /dev/dri:/dev/dri # For hardware acceleration
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
 
   jellyseerr:
     container_name: arr_jellyseerr
@@ -196,10 +205,17 @@ services:
       - default
       - web
     devices:
-      - /dev/dri:/dev/dri  # HW accel Intel/AMD (tu l'as déjà pour Jellyfin)
+      - /dev/dri:/dev/dri # For hardware acceleration
     # ports:
     #   - 8265:8265  # Web UI
     #   - 8266:8266  # Server port
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 
 volumes:
   jellyfin-config:
