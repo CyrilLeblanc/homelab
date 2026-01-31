@@ -7,9 +7,12 @@ services:
     volumes:
       - app-data:/app/backend/data
     networks:
+      - default
       - web
     # ports:
     #   - 8000:8000
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
     deploy:
     resources:
       reservations:
@@ -18,8 +21,26 @@ services:
             count: all
             capabilities: [gpu]
 
+  ollama:
+    container_name: open-webui_ollama
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - default
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+
 volumes:
   app-data:
+  ollama-data:
 
 networks:
   web:
