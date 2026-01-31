@@ -2,12 +2,21 @@ services:
 
   app:
     container_name: open-webui_app
-    image: ghcr.io/open-webui/open-webui:latest
+    image: ghcr.io/open-webui/open-webui:main
     restart: unless-stopped
     volumes:
       - app-data:/app/backend/data
     networks:
       - web
+    # ports:
+    #   - 8000:8000
+    deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
 
 volumes:
   app-data:
