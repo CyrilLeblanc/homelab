@@ -2,7 +2,7 @@ services:
 
   app:
     container_name: watchtower_app
-    image: containrrr/watchtower:latest
+    image: nickfedor/watchtower:latest
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
