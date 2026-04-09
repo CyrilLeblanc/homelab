@@ -13,6 +13,8 @@ services:
       - OVERPASS_META=no
       - OVERPASS_MODE=${OVERPASS_MODE:-init}
       - OVERPASS_PLANET_URL=file:///data/planet.osm.bz2
+      - OVERPASS_ALLOW_DUPLICATE_QUERIES=yes
+      - OVERPASS_SPACE=4000000000
     healthcheck:
       test: curl --noproxy '*' -qfg 'http://localhost/api/interpreter?data=[out:json];node(1);out;' | jq '.generator' |grep -q Overpass || exit 1
       start_period: 48h
