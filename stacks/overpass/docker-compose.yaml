@@ -1,0 +1,31 @@
+services:
+  app:
+    container_name: overpass_app
+    image: wiktorn/overpass-api:latest
+    # ports:
+    #   - 12345:80
+    networks:
+      - web
+    volumes:
+      - app_data:/data:ro
+      - app_db:/db
+    environment:
+      - OVERPASS_META=no
+      - OVERPASS_MODE=${OVERPASS_MODE:-init}
+      - OVERPASS_PLANET_URL=file:///data/planet.osm.bz2
+    healthcheck:
+      test: curl --noproxy '*' -qfg 'http://localhost/api/interpreter?data=[out:json];node(1);out;' | jq '.generator' |grep -q Overpass || exit 1
+      start_period: 48h
+      interval: 5m
+      timeout: 30s
+      retries: 10
+    mem_limit: 4g
+    command: 
+
+volumes:
+  app_data:
+  app_db:
+
+networks:
+  web:
+    external: true
