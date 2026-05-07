@@ -12,28 +12,45 @@ services:
     # ports:
     #   - 8000:8000
     environment:
-      - OLLAMA_BASE_URL=http://ollama:11434
+      # Set the API base URL and key for the OpenAI-compatible API (Litellm)
       - OPENAI_API_BASE_URL=http://litellm:4000/v1
-      - OPENAI_API_KEY=dummy
+      - OPENAI_API_KEY=${LITELLM_MASTER_KEY}
+      # Set the STT engine to use Whisper via the OpenAI-compatible API
+      - AUDIO_STT_ENGINE=openai
+      - AUDIO_STT_OPENAI_API_BASE_URL=http://litellm:4000/v1
+      - AUDIO_STT_OPENAI_API_KEY=${LITELLM_MASTER_KEY}
+      - AUDIO_STT_MODEL=whisper-1
+      # Set the API base URL and key for the Open Terminal API
       - OPEN_TERMINAL_URL=http://open-terminal:8000
       - OPEN_TERMINAL_API_KEY=${OPEN_TERMINAL_API_KEY:-}
       - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
+      # Disable Ollama API since we're using Litellm as the OpenAI-compatible API
+      - ENABLE_OLLAMA_API=false
+    depends_on:
+      - litellm
+      - open-terminal
+
   litellm:
     container_name: open-webui_litellm
     image: ghcr.io/berriai/litellm:main-latest
     restart: unless-stopped
     volumes:
       - ./litellm_config.yaml:/app/config.yaml
-    command: --config /app/config.yaml --port 4000
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    networks:
+      - default
+      - web
+    # ports:
+    #   - 4000:4000
     environment:
-      - GLM_API_KEY=${GLM_API_KEY}
+      - LITELLM_MASTER_KEY=${LITELLM_MASTER_KEY}
+      - LITELLM_SALT_KEY=${LITELLM_SALT_KEY}
+      - ZAI_API_KEY=${ZAI_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - OLLAMA_CLOUD_API_KEY=${OLLAMA_CLOUD_API_KEY}
+    depends_on:
+      - ollama
+      - whisper
 
   ollama:
     container_name: open-webui_ollama
@@ -41,6 +58,25 @@ services:
     restart: unless-stopped
     volumes:
       - ollama-data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  whisper:
+    image: fedirz/faster-whisper-server:latest-cuda
+    container_name: open-webui_whisper
+    restart: unless-stopped
+    # ports:
+    #   - "8000:8000"
+    volumes:
+      - whisper_data:/root/.cache/huggingface
+    environment:
+      - WHISPER__MODEL=Systran/faster-whisper-medium
+      - WHISPER__INFERENCE_DEVICE=cuda
     deploy:
       resources:
         reservations:
@@ -58,15 +94,15 @@ services:
       - OPEN_TERMINAL_PACKAGES=${OPEN_TERMINAL_PACKAGES:-}
       - OPEN_TERMINAL_PIP_PACKAGES=${OPEN_TERMINAL_PIP_PACKAGES:-}
       - OPEN_TERMINAL_NPM_PACKAGES=${OPEN_TERMINAL_NPM_PACKAGES:-}
-    ports:
-      - 8000:8000
+    # ports:
+    #   - 8000:8000
     volumes:
       - open-terminal-data:/home/user
-
 
 volumes:
   app-data:
   ollama-data:
+  whisper_data:
   open-terminal-data:
 
 networks:

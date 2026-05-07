@@ -1,0 +1,130 @@
+# ============================================
+# DÉFINITIONS RÉUTILISABLES (YAML anchors)
+# ============================================
+# Ces blocs ne sont pas lus par LiteLLM directement,
+# ils servent juste de templates pour la suite via <<: *anchor
+provider_defaults:
+  zai: &zai
+    api_base: https://api.z.ai/api/coding/paas/v4
+    api_key: os.environ/ZAI_API_KEY
+
+  groq: &groq
+    api_base: https://api.groq.com/openai/v1
+    api_key: os.environ/GROQ_API_KEY
+
+  ollama_cloud: &ollama_cloud
+    api_base: https://ollama.com/v1
+    api_key: os.environ/OLLAMA_CLOUD_API_KEY
+
+  ollama_local: &ollama_local
+    api_base: http://ollama:11434
+    api_key: dummy-key
+
+  whisper_local: &whisper_local
+    api_base: http://whisper:8000/v1
+    api_key: dummy-key
+
+
+model_list:
+
+  # ============================================
+  # Z.AI
+  # ============================================
+  - model_name: glm-5-turbo
+    litellm_params:
+      <<: *zai
+      model: openai/glm-5-turbo
+
+  - model_name: glm-5.1
+    litellm_params:
+      <<: *zai
+      model: openai/glm-5.1
+
+  - model_name: glm-4.7
+    litellm_params:
+      <<: *zai
+      model: openai/glm-4.7
+
+  # ============================================
+  # GROQ
+  # ============================================
+  - model_name: qwen3-32b
+    litellm_params:
+      <<: *groq
+      model: openai/qwen/qwen3-32b
+
+  # ============================================
+  # OLLAMA CLOUD
+  # ============================================
+  - model_name: gemma4-31b
+    litellm_params:
+      <<: *ollama_cloud
+      model: openai/gemma4:31b
+
+  - model_name: deepseek-v4-flash
+    litellm_params:
+      <<: *ollama_cloud
+      model: openai/deepseek-v4-flash
+
+  - model_name: deepseek-v4-pro
+    litellm_params:
+      <<: *ollama_cloud
+      model: openai/deepseek-v4-pro
+
+  - model_name: kimi-k2.6
+    litellm_params:
+      <<: *ollama_cloud
+      model: openai/kimi-k2.6
+
+  - model_name: minimax-m2.7
+    litellm_params:
+      <<: *ollama_cloud
+      model: openai/minimax-m2.7
+
+  # ============================================
+  # OLLAMA LOCAL
+  # ============================================
+  - model_name: nomic-embed-text
+    litellm_params:
+      <<: *ollama_local
+      model: ollama/nomic-embed-text
+
+  # ============================================
+  # WHISPER
+  # ============================================
+  - model_name: whisper-1
+    litellm_params:
+      <<: *whisper_local
+      model: openai/Systran/faster-whisper-medium
+
+  # ============================================
+  # ALIAS PAR PROJET
+  # ============================================
+  - model_name: coach-chat
+    litellm_params:
+      <<: *zai
+      model: openai/glm-4.7
+
+  - model_name: coach-vision
+    litellm_params:
+      <<: *groq
+      model: openai/meta-llama/llama-4-scout-17b-16e-instruct
+
+  - model_name: coach-stt
+    litellm_params:
+      <<: *whisper_local
+      model: openai/Systran/faster-whisper-medium
+
+  - model_name: coach-embed
+    litellm_params:
+      <<: *ollama_local
+      model: ollama/nomic-embed-text
+
+
+litellm_settings:
+  drop_params: true
+  json_logs: true
+  request_timeout: 600
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
