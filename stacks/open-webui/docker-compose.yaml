@@ -75,6 +75,8 @@ services:
     #   - "8080:8000"
     volumes:
       - speaches_cache:/home/ubuntu/.cache/huggingface
+    environment:
+      - TTS_MODEL=rhasspy/piper-voices
     deploy:
       resources:
         reservations:

@@ -92,10 +92,10 @@ model_list:
   - model_name: piper
     litellm_params:
       model: openai/rhasspy/piper-voices
-      api_base: http://speaches:8000
+      api_base: http://speaches:8000/v1
       api_key: dummy-key
     model_info:
-      mode: text_to_speech
+      mode: audio_speech
 
   # ============================================
   # ALIAS PAR PROJET
