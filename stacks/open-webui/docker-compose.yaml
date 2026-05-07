@@ -68,7 +68,7 @@ services:
       - speaches
 
   speaches:
-    image: ghcr.io/speaches-ai/speaches:latest-cuda
+    image: ghcr.io/speaches-ai/speaches:latest-cuda-12.4.1
     container_name: open-webui_speaches
     restart: unless-stopped
     # ports:
