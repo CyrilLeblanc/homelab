@@ -87,6 +87,17 @@ model_list:
       mode: audio_transcription
 
   # ============================================
+  # PIPER
+  # ============================================
+  - model_name: piper
+    litellm_params:
+      model: openai/rhasspy/piper-voices
+      api_base: http://speaches:8000
+      api_key: dummy-key
+    model_info:
+      mode: text_to_speech
+
+  # ============================================
   # ALIAS PAR PROJET
   # ============================================
   - model_name: coach-chat
