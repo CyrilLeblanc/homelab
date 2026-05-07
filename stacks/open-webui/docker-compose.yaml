@@ -75,8 +75,6 @@ services:
     #   - "8080:8000"
     volumes:
       - speaches_cache:/root/.cache/huggingface
-    environment:
-      - ALLOW_ORIGINS=*
     deploy:
       resources:
         reservations:
