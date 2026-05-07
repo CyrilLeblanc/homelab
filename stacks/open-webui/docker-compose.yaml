@@ -29,6 +29,15 @@ services:
     depends_on:
       - litellm
       - open-terminal
+      - playwright
+
+  playwright:
+    container_name: open-webui_playwright
+    image: mcr.microsoft.com/playwright:v1.44.0-jammy
+    # ports:
+    #   - "3000:3000"
+    command: npx playwright run-server --port 3000 --host 0.0.0.0
+    restart: unless-stopped
 
   litellm:
     container_name: open-webui_litellm
