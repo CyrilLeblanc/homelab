@@ -74,7 +74,7 @@ services:
     # ports:
     #   - "8080:8000"
     volumes:
-      - speaches_cache:/root/.cache/huggingface
+      - speaches_cache:/home/ubuntu/.cache/huggingface
     deploy:
       resources:
         reservations:
