@@ -91,7 +91,7 @@ model_list:
   # ============================================
   - model_name: piper
     litellm_params:
-      model: openai/rhasspy/piper-voices
+      model: openai/speaches-ai/piper-fr_FR-siwis-medium
       api_base: http://speaches:8000/v1
       api_key: dummy-key
     model_info:
