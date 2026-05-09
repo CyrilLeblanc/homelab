@@ -97,30 +97,16 @@ model_list:
     model_info:
       mode: audio_speech
 
-  # ============================================
-  # ALIAS PAR PROJET
-  # ============================================
-  - model_name: coach-chat
-    litellm_params:
-      model: glm-4.7
-
-  - model_name: coach-vision
-    litellm_params:
-      model: meta-llama/llama-4-scout-17b-16e-instruct
-
-  - model_name: coach-stt
-    litellm_params:
-      model: whisper-1
-
-  - model_name: coach-embed
-    litellm_params:
-      model: nomic-embed-text
-
-
 litellm_settings:
   drop_params: true
   json_logs: true
   request_timeout: 600
+  merge_consecutive_messages: true
+  model_alias:
+    coach-chat: glm-4.7
+    coach-vision: meta-llama/llama-4-scout-17b-16e-instruct
+    coach-stt: whisper-1
+    coach-embed: nomic-embed-text
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY

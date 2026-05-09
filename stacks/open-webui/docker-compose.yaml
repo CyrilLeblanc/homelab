@@ -31,6 +31,15 @@ services:
       - open-terminal
       - playwright
 
+  pipeline:
+    container_name: open-webui_pipeline
+    image: ghcr.io/open-webui/pipelines:main
+    restart: unless-stopped
+    # ports:
+    #   - 9099:9099
+    volumes:
+      - pipeline-data:/app/pipelines
+
   playwright:
     container_name: open-webui_playwright
     image: mcr.microsoft.com/playwright:v1.44.0-jammy
@@ -150,6 +159,7 @@ services:
 
 volumes:
   app-data:
+  pipeline-data:
   ollama-data:
   whisper_data:
   open-terminal-data:
