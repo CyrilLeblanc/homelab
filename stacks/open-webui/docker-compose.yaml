@@ -29,24 +29,7 @@ services:
     depends_on:
       - litellm
       - open-terminal
-      - playwright
-
-  pipeline:
-    container_name: open-webui_pipeline
-    image: ghcr.io/open-webui/pipelines:main
-    restart: unless-stopped
-    # ports:
-    #   - 9099:9099
-    volumes:
-      - pipeline-data:/app/pipelines
-
-  playwright:
-    container_name: open-webui_playwright
-    image: mcr.microsoft.com/playwright:v1.58.0-noble
-    # ports:
-    #   - "3000:3000"
-    command: npx playwright@1.58.0 run-server --port 3000 --host 0.0.0.0
-    restart: unless-stopped
+      - crawl4ai-proxy
 
   litellm:
     container_name: open-webui_litellm
@@ -157,9 +140,24 @@ services:
     volumes:
       - open-terminal-data:/home/user
 
+  crawl4ai-proxy:
+    container_name: open-webui_crawl4ai-proxy
+    image: ghcr.io/lennyerik/crawl4ai-proxy:latest
+    restart: unless-stopped
+    environment:
+      - LISTEN_PORT=8000
+      - CRAWL4AI_ENDPOINT=http://crawl4ai:11235/crawl
+    depends_on:
+      - crawl4ai
+
+  crawl4ai:
+    container_name: open-webui_crawl4ai
+    image: unclecode/crawl4ai:0.6.0-r2
+    restart: unless-stopped
+    shm_size: 1g
+
 volumes:
   app-data:
-  pipeline-data:
   ollama-data:
   whisper_data:
   open-terminal-data:
