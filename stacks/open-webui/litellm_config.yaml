@@ -147,6 +147,20 @@ model_list:
       mode: embedding
       max_input_tokens: 8192
 
+  - model_name: gemma4-e2b
+    litellm_params:
+      <<: *ollama_local
+      model: ollama/gemma4:e2b
+      # Gemma 4 E2B (Google DeepMind), modèle edge ~2B params
+      # Nativement multimodal (texte + image), thinking mode configurable
+      # 256K context window, conçu pour tourner sur 4GB VRAM (GTX 1650)
+    model_info:
+      mode: chat
+      max_input_tokens: 262144
+      max_tokens: 8192
+      supports_function_calling: true
+      supports_vision: true
+
   # ============================================
   # WHISPER (STT - Speech-to-Text)
   # ============================================
