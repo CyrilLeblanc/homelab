@@ -28,72 +28,150 @@ provider_defaults:
 model_list:
 
   # ============================================
-  # Z.AI
+  # Z.AI — GLM (General Language Model)
   # ============================================
+  # Famille de modèles MoE par Z.AI (ex-THUDM/BigModel)
+  # Tous accessibles via l'API Z.AI (compatible OpenAI)
+
   - model_name: glm-5-turbo
     litellm_params:
       <<: *zai
       model: openai/glm-5-turbo
+      # Modele rapide de la famille GLM-5, optimisé pour l'inférence rapide
+      # et les tâches agentiques. 744B params (40B actifs), MoE.
+      max_tokens: 131072
+    model_info:
+      mode: chat
+      max_input_tokens: 202752
+      max_tokens: 131072
+      supports_function_calling: true
+      supports_vision: false
+      input_cost_per_token: 0.0000012   # $1.20/1M input tokens
+      output_cost_per_token: 0.000004   # $4.00/1M output tokens
 
   - model_name: glm-5.1
     litellm_params:
       <<: *zai
       model: openai/glm-5.1
+      # Modèle flagship Z.AI pour tâches longues (jusqu'à 8h autonomie)
+      # Thinking mode, function calling, structured output, MCP
+      max_tokens: 128000
+    model_info:
+      mode: chat
+      max_input_tokens: 200000
+      max_tokens: 128000
+      supports_function_calling: true
+      supports_vision: false
+      input_cost_per_token: 0.0000012
+      output_cost_per_token: 0.000004
 
   - model_name: glm-4.7
     litellm_params:
       <<: *zai
       model: openai/glm-4.7
+      # Modèle MoE ~400B params, programmation et raisonnement multi-étapes
+      max_tokens: 131072
+    model_info:
+      mode: chat
+      max_input_tokens: 202752
+      max_tokens: 131072
+      supports_function_calling: true
+      supports_vision: false
+      input_cost_per_token: 0.0000004   # $0.40/1M input tokens
+      output_cost_per_token: 0.00000175 # $1.75/1M output tokens
 
   # ============================================
-  # GROQ
+  # GROQ — Inférence ultra-rapide (LPU)
   # ============================================
+
   - model_name: qwen3-32b
     litellm_params:
       <<: *groq
       model: openai/qwen/qwen3-32b
+      # Qwen3-32B (Alibaba), modèle dense 32B params
+      # Thinking mode natif, tool calling, JSON mode
+      max_tokens: 8192
+    model_info:
+      mode: chat
+      max_input_tokens: 131072
+      max_tokens: 8192
+      supports_function_calling: true
+      supports_vision: false
 
   - model_name: meta-llama/llama-4-scout-17b-16e-instruct
     litellm_params:
       <<: *groq
       model: openai/meta-llama/llama-4-scout-17b-16e-instruct
+      # Llama 4 Scout (Meta), MoE 17B actifs / 109B total, 16 experts
+      # Multimodal (texte + image), 12 langues, tool calling
+      max_tokens: 8192
+    model_info:
+      mode: chat
+      max_input_tokens: 131072
+      max_tokens: 8192
+      supports_function_calling: true
+      supports_vision: true
+      supports_parallel_function_calling: true
 
   # ============================================
   # OLLAMA CLOUD
   # ============================================
+
   - model_name: gemma4-31b
     litellm_params:
       <<: *ollama_cloud
       model: openai/gemma4:31b
+      # Gemma 4 31B (Google DeepMind), modèle dense 31B params
+      # Multimodal (texte + image), thinking mode configurable
+      # 140+ langues, 256K context window
+      max_tokens: 8192
+    model_info:
+      mode: chat
+      max_input_tokens: 262144
+      max_tokens: 8192
+      supports_function_calling: true
+      supports_vision: true
 
   # ============================================
   # OLLAMA LOCAL
   # ============================================
+
   - model_name: nomic-embed-text
     litellm_params:
       <<: *ollama_local
       model: ollama/nomic-embed-text
+      # Modèle d'embedding open-source Nomic, 137M params
+      # Context: 8192 tokens, dimensions variables (64-768, recommandé: 768)
+      # Surpasse OpenAI Ada-002 et text-embedding-3-small sur MTEB
     model_info:
       mode: embedding
+      max_input_tokens: 8192
 
   # ============================================
-  # WHISPER
+  # WHISPER (STT - Speech-to-Text)
   # ============================================
+
   - model_name: whisper-1
     litellm_params:
       <<: *whisper_local
       model: openai/Systran/faster-whisper-medium
+      # faster-whisper-medium : conversion CTranslate2 de whisper-medium
+      # ~769M params, transcription multilingue
+      # Jusqu'à 4x plus rapide que whisper original
     model_info:
       mode: audio_transcription
 
   # ============================================
-  # PIPER
+  # PIPER (TTS - Text-to-Speech)
   # ============================================
+
   - model_name: piper
     litellm_params:
       model: openai/speaches-ai/piper-fr_FR-siwis-medium
       api_base: http://speaches:8000/v1
       api_key: dummy-key
+      # Piper TTS français, voix feminine "siwis" (qualité medium)
+      # Servi via speaches (OpenAI API-compatible TTS/STT server)
     model_info:
       mode: audio_speech
 
@@ -102,11 +180,17 @@ litellm_settings:
   json_logs: true
   request_timeout: 600
   merge_consecutive_messages: true
-  model_alias:
-    coach-chat: glm-4.7
-    coach-vision: meta-llama/llama-4-scout-17b-16e-instruct
-    coach-stt: whisper-1
-    coach-embed: nomic-embed-text
+
+router_settings:
+  # model_group_alias : Alias de modèles pour le proxy
+  # Toutes les requêtes avec l'alias seront routées vers le model_name cible
+  # Ces alias sont visibles sur /v1/models, /v1/model/info, /v1/model_group/info
+  # Ref: https://docs.litellm.ai/docs/proxy/load_balancing#router-settings-on-config
+  model_group_alias:
+    coach-chat: meta-llama/llama-4-scout-17b-16e-instruct   # Alias pour le chat principal
+    coach-vision: meta-llama/llama-4-scout-17b-16e-instruct # Alias pour le modèle vision
+    coach-stt: whisper-1                                    # Alias pour le speech-to-text
+    coach-embed: nomic-embed-text                           # Alias pour les embeddings
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY

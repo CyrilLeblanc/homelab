@@ -30,6 +30,7 @@ services:
       - litellm
       - open-terminal
       - crawl4ai-proxy
+      - pipeline
 
   litellm:
     container_name: open-webui_litellm
@@ -58,24 +59,6 @@ services:
       - ollama
       - whisper
       - speaches
-
-  speaches:
-    image: ghcr.io/speaches-ai/speaches:latest-cuda-12.4.1
-    container_name: open-webui_speaches
-    restart: unless-stopped
-    # ports:
-    #   - "8080:8000"
-    volumes:
-      - speaches_cache:/home/ubuntu/.cache/huggingface
-    environment:
-      - TTS_MODEL=rhasspy/piper-voices
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
 
   litellm-db:
     container_name: open-webui_litellm-db
@@ -126,6 +109,24 @@ services:
               count: all
               capabilities: [gpu]
 
+  speaches:
+    image: ghcr.io/speaches-ai/speaches:latest-cuda-12.4.1
+    container_name: open-webui_speaches
+    restart: unless-stopped
+    # ports:
+    #   - "8080:8000"
+    volumes:
+      - speaches_cache:/home/ubuntu/.cache/huggingface
+    environment:
+      - TTS_MODEL=rhasspy/piper-voices
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
   open-terminal:
     container_name: open-webui_open-terminal
     image: ghcr.io/open-webui/open-terminal:latest
@@ -156,13 +157,25 @@ services:
     restart: unless-stopped
     shm_size: 1g
 
+  pipeline:
+    container_name: open-webui_pipeline
+    image: ghcr.io/open-webui/pipelines:main
+    restart: unless-stopped
+    # ports:
+    #   - 9099:9099
+    environment:
+      - OPENWEBUI_URL=http://app:8080
+    volumes:
+      - pipeline-data:/app/pipelines
+
 volumes:
   app-data:
+  litellm-db-data:
   ollama-data:
   whisper_data:
-  open-terminal-data:
-  litellm-db-data:
   speaches_cache:
+  open-terminal-data:
+  pipeline-data:
 
 networks:
   web:
