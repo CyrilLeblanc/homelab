@@ -136,6 +136,7 @@ services:
       - OPEN_TERMINAL_PACKAGES=${OPEN_TERMINAL_PACKAGES:-}
       - OPEN_TERMINAL_PIP_PACKAGES=${OPEN_TERMINAL_PIP_PACKAGES:-}
       - OPEN_TERMINAL_NPM_PACKAGES=${OPEN_TERMINAL_NPM_PACKAGES:-}
+      - BASH_ENV=/home/user/.bashrc
     # ports:
     #   - 8000:8000
     volumes:
