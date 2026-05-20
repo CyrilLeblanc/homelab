@@ -129,11 +129,7 @@ services:
     container_name: arr_dispatcharr
     image: ghcr.io/dispatcharr/dispatcharr:latest
     restart: unless-stopped
-    networks:
-      - default
-      - web
-    # ports:
-    #   - 9191:9191
+    network_mode: host
     volumes:
       - dispatcharr-data:/data
     environment:
