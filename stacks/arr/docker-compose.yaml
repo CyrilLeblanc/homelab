@@ -125,6 +125,29 @@ services:
       - default
       - web
 
+  dispatcharr:
+    container_name: arr_dispatcharr
+    image: ghcr.io/dispatcharr/dispatcharr:latest
+    restart: unless-stopped
+    # ports:
+    #   - 9191:9191
+    volumes:
+      - dispatcharr-data:/data
+    environment:
+      - DISPATCHARR_ENV=aio
+      - REDIS_HOST=localhost
+      - CELERY_BROKER_URL=redis://localhost:6379/0
+      - DISPATCHARR_LOG_LEVEL=info
+    extra_hosts:
+      - "mafreebox.freebox.fr:192.168.1.254"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
   tor:
     container_name: arr_tor
     image: dockurr/tor:latest
@@ -226,6 +249,7 @@ volumes:
   radarr-data:
   sonarr-data:
   lidarr-config:
+  dispatcharr-data:
   tor-config:
   tor-data:
   qbittorrent-config:
