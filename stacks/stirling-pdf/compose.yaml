@@ -1,7 +1,6 @@
 services:
 
   app:
-    container_name: stirling-pdf_app
     image: stirlingtools/stirling-pdf:latest
     restart: unless-stopped
     networks:

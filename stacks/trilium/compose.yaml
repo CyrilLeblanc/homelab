@@ -1,7 +1,6 @@
 services:
   app:
     image: triliumnext/notes:stable
-    container_name: trilium_app
     restart: unless-stopped
     networks:
       - web

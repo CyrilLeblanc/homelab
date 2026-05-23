@@ -1,7 +1,6 @@
 services:
 
   app:
-    container_name: wallos_app
     image: bellamy/wallos:latest
     restart: unless-stopped
     environment:

@@ -1,7 +1,6 @@
 services:
 
   app:
-    container_name: mealie_app
     image: ghcr.io/mealie-recipes/mealie:v2.8.0
     restart: unless-stopped
     volumes:
@@ -27,7 +26,6 @@ services:
     #   - 9000:9000
 
   postgres:
-    container_name: mealie_postgres
     image: postgres:15
     restart: unless-stopped
     environment:

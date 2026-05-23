@@ -1,7 +1,6 @@
 services:
 
   app:
-    container_name: watchtower_app
     image: nickfedor/watchtower:latest
     restart: unless-stopped
     volumes:

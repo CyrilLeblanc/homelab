@@ -2,7 +2,6 @@ services:
 
   app:
     image: binwiederhier/ntfy:latest
-    container_name: ntfy_app
     restart: unless-stopped
     command: serve
     environment:

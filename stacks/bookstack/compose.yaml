@@ -1,7 +1,6 @@
 services:
 
   app:
-    container_name: bookstack_app
     image: lscr.io/linuxserver/bookstack:latest
     restart: unless-stopped
     networks:
@@ -25,7 +24,6 @@ services:
       - QUEUE_CONNECTION=database
 
   mariadb:
-    container_name: bookstack_mariadb
     image: mariadb:latest
     restart: unless-stopped
     volumes:

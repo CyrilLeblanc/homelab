@@ -1,7 +1,6 @@
 services:
 
   app:
-    container_name: home-assistant_app
     image: ghcr.io/home-assistant/home-assistant:stable
     restart: unless-stopped
     environment:

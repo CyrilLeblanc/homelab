@@ -1,7 +1,6 @@
 services:
 
   app:
-    container_name: crafty_app
     image: registry.gitlab.com/crafty-controller/crafty-4:latest
     restart: unless-stopped
     environment:

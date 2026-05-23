@@ -1,7 +1,6 @@
 
 services:
   app:
-    container_name: homepage_app
     image: ghcr.io/gethomepage/homepage:latest
     restart: unless-stopped
     volumes:

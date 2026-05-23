@@ -1,7 +1,6 @@
 services:
 
   app:
-    container_name: wikijs_app
     image: ghcr.io/requarks/wiki:2
     restart: unless-stopped
     environment:
@@ -20,7 +19,6 @@ services:
     #   - 3000:3000
 
   postgres:
-    container_name: wikijs_postgres
     image: postgres:15-alpine
     restart: unless-stopped
     environment:

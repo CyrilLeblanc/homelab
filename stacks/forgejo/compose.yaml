@@ -1,7 +1,6 @@
 services:
 
   app:
-    container_name: forgejo_app
     image: codeberg.org/forgejo/forgejo:14
     restart: unless-stopped
     volumes:
@@ -25,7 +24,6 @@ services:
       # - 3000:3000
 
   postgres:
-    container_name: forgejo_postgres
     image: docker.io/library/postgres:14
     restart: unless-stopped
     environment:

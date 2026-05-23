@@ -1,7 +1,6 @@
 services:
 
   jellyfin:
-    container_name: arr_jellyfin
     image: jellyfin/jellyfin:latest
     restart: unless-stopped
     runtime: nvidia
@@ -28,7 +27,6 @@ services:
 
 
   jellyseerr:
-    container_name: arr_jellyseerr
     image: fallenbagel/jellyseerr:latest
     restart: unless-stopped
     environment:
@@ -44,7 +42,6 @@ services:
     #  - 5055:5055 # Jellyseerr web interface
 
   prowlarr:
-    container_name: arr_prowlarr
     image: ghcr.io/linuxserver/prowlarr:latest
     restart: unless-stopped
     environment:
@@ -60,7 +57,6 @@ services:
     #   - 9696:9696 # Prowlarr web interface
 
   flaresolverr:
-    container_name: arr_flaresolverr
     image: ghcr.io/flaresolverr/flaresolverr:latest
     restart: unless-stopped
     environment:
@@ -72,7 +68,6 @@ services:
     #   - 8191:8191
 
   radarr:
-    container_name: arr_radarr
     image: ghcr.io/linuxserver/radarr:latest
     restart: unless-stopped
     environment:
@@ -90,7 +85,6 @@ services:
     #   - 7878:7878 # Radarr web interface
 
   sonarr:
-    container_name: arr_sonarr
     image: ghcr.io/linuxserver/sonarr:latest
     restart: unless-stopped
     environment:
@@ -108,7 +102,6 @@ services:
     #   - 8989:8989 # Sonarr web interface
 
   lidarr:
-    container_name: arr_lidarr
     image: lscr.io/linuxserver/lidarr:latest
     restart: unless-stopped
     environment:
@@ -126,7 +119,6 @@ services:
       - web
 
   # dispatcharr:
-  #   container_name: arr_dispatcharr
   #   image: ghcr.io/dispatcharr/dispatcharr:latest
   #   restart: unless-stopped
   #   network_mode: host
@@ -148,7 +140,6 @@ services:
   #             capabilities: [gpu]
 
   tor:
-    container_name: arr_tor
     image: dockurr/tor:latest
     restart: unless-stopped
     networks:
@@ -162,7 +153,6 @@ services:
       - tor-data:/var/lib/tor:rw
 
   gluetun:
-    container_name: arr_gluetun
     image: qmcgaw/gluetun:latest
     restart: unless-stopped
     cap_add:
@@ -187,7 +177,6 @@ services:
     #   - 8080:8080 # Qbittorrent web UI
 
   qbittorrent:
-    container_name: arr_qbittorrent
     image: ghcr.io/linuxserver/qbittorrent:latest
     restart: unless-stopped
     environment:
@@ -204,7 +193,6 @@ services:
         restart: true
 
   tdarr:
-    container_name: arr_tdarr
     image: ghcr.io/haveagitgat/tdarr:latest
     restart: unless-stopped
     runtime: nvidia
