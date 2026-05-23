@@ -1,1 +1,0 @@
-It only works for Plex.
