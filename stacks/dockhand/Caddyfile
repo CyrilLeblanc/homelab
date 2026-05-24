@@ -1,7 +1,7 @@
-homepage.{$DOMAIN} {
+dockhand.{$DOMAIN} {
     @allowed remote_ip {$ALLOWED_IPS}
     handle @allowed {
-        reverse_proxy homepage-app-1:3000
+        reverse_proxy dockhand-app-1:3000
     }
     respond 403
 }
