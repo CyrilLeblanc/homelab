@@ -19,6 +19,7 @@ services:
       - DOMAIN=${DOMAIN}
       - INFOMANIAK_API_TOKEN=${INFOMANIAK_API_TOKEN}
       - ACME_EMAIL=${ACME_EMAIL}
+      - ALLOWED_IPS=${ALLOWED_IPS}
 
 volumes:
   app-data:
