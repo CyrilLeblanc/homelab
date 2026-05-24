@@ -1,7 +1,7 @@
 services:
 
   app:
-    image: caddy:latest
+    image: cloubit/caddy-infomaniak:latest
     restart: unless-stopped
     networks:
       - web
@@ -17,6 +17,7 @@ services:
     environment:
       - TZ=${TZ}
       - DOMAIN=${DOMAIN}
+      - INFOMANIAK_API_TOKEN=${INFOMANIAK_API_TOKEN}
       - ACME_EMAIL=${ACME_EMAIL}
 
 volumes:
