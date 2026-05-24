@@ -17,6 +17,7 @@ services:
     environment:
       - TZ=${TZ}
       - DOMAIN=${DOMAIN}
+      - ACME_EMAIL=${ACME_EMAIL}
 
 volumes:
   app-data:
