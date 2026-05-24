@@ -16,12 +16,11 @@ services:
       - FORGEJO__database__DB_PASSWD=${DB_PASSWORD}
     networks:
       - default
-      - web
     depends_on:
       - postgres
     ports:
       - 222:22
-      # - 3000:3000
+      - 3000:3000
 
   postgres:
     image: docker.io/library/postgres:14
@@ -36,7 +35,3 @@ services:
 volumes:
   app-data:
   postgres-data:
-
-networks:
-  web:
-    external: true
