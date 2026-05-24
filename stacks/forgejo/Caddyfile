@@ -1,7 +1,7 @@
 forgejo.{$DOMAIN} {
     @allowed remote_ip {$ALLOWED_IPS}
     handle @allowed {
-        reverse_proxy forgejo-app-1:3000
+        reverse_proxy {APPS01_HOST}:3000
     }
     respond 403
 }
