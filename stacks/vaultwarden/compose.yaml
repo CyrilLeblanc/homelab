@@ -7,8 +7,8 @@ services:
       - app-data:/data:rw
     networks:
       - web
-    # ports:
-    #   - 80:80
+    ports:
+      - 81:80
     environment:
       - SIGNUPS_ALLOWED=${SIGNUPS_ALLOWED}
 
