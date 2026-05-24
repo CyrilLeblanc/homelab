@@ -1,0 +1,7 @@
+immich.{$DOMAIN} {
+    @allowed remote_ip {$ALLOWED_IPS}
+    handle @allowed {
+        reverse_proxy {$APPS01_HOST}:2283
+    }
+    respond 403
+}
