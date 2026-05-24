@@ -1,7 +1,7 @@
 ntfy.{$DOMAIN} {
     @allowed remote_ip {$ALLOWED_IPS}
     handle @allowed {
-        reverse_proxy ntfy-app-1:3000
+        reverse_proxy ntfy-app-1:80
     }
     respond 403
 }
