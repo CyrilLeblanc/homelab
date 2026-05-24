@@ -14,6 +14,9 @@ services:
       - /opt/homelab/stacks:/config/stacks:ro
       - app-data:/data
       - app-config:/config
+    environment:
+      - TZ=${TZ}
+      - DOMAIN=${DOMAIN}
 
 volumes:
   app-data:
