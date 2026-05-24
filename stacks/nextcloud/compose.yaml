@@ -39,6 +39,8 @@ services:
     networks:
       - default
       - web
+    ports:
+      - 51601:80
 
   cron:
     image: nextcloud:fpm-alpine

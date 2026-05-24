@@ -1,0 +1,7 @@
+nextcloud.{$DOMAIN} {
+    @allowed remote_ip {$ALLOWED_IPS}
+    handle @allowed {
+        reverse_proxy {$APPS01_HOST}:51601
+    }
+    respond 403
+}
