@@ -3,6 +3,8 @@ services:
   app:
     image: fnsys/dockhand:latest
     restart: unless-stopped
+    networks:
+      - web
     ports:
       - 3000:3000
     volumes:
@@ -12,3 +14,7 @@ services:
 
 volumes:
   app_data:
+
+networks:
+  web:
+    external: true
