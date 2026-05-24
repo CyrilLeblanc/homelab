@@ -4,8 +4,7 @@ services:
     image: ghcr.io/wg-easy/wg-easy:15
     restart: unless-stopped
     environment:
-      - WG_HOST=0.0.0.0
-      - PASSWORD_HASH=${PASSWORD_HASH}
+      - HOST=0.0.0.0
     volumes:
       - app-data:/etc/wireguard
       - /lib/modules:/lib/modules:ro
