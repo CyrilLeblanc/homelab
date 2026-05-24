@@ -124,17 +124,18 @@
         widget:
             type: caddy
             url: http://{{HOMEPAGE_VAR_CADDY_APP_HOST}}:2019
-    - WireGuard:
-        href: https://wireguard-easy.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://wireguard-easy.{{HOMEPAGE_VAR_DOMAIN}}/
+    - Wg-Easy:
+        href: https://wg-easy.{{HOMEPAGE_VAR_DOMAIN}}/
+        siteMonitor: https://wg-easy.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: wireguard
         description: Fast, modern VPN tunnel protocol
         container: wireguard-easy_app
         widget:
             type: wgeasy
-            url: https://wireguard-easy.{{HOMEPAGE_VAR_DOMAIN}}/
-            version: 1
-            password: {{HOMEPAGE_VAR_WIREGUARD_EASY_APP_PASSWORD}}
+            url: https://wg-easy.{{HOMEPAGE_VAR_DOMAIN}}/
+            version: 2
+            username: {{HOMEPAGE_VAR_WG_EASY_USERNAME}}
+            password: {{HOMEPAGE_VAR_WG_EASY_PASSWORD}}
 
 - Knowledge:
     - WikiJs:
