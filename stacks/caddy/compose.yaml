@@ -1,0 +1,24 @@
+services:
+
+  app:
+    image: caddy:latest
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - 80:80
+      - 443:443
+      - 443:443/udp
+    volumes:
+      - ./conf:/etc/caddy
+      - /opt/homelab/stacks:/config/stacks:ro
+      - app-data:/data
+      - app-config:/config
+
+volumes:
+  app-data:
+  app-config:
+
+networks:
+  web:
+    external: true
