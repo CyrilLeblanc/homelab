@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     environment:
       - HOST=0.0.0.0
+      - DISABLE_IPV6=true
     volumes:
       - app-data:/etc/wireguard
       - /lib/modules:/lib/modules:ro
