@@ -9,8 +9,8 @@ services:
     networks:
       - web
       - default
-#    ports:
-#      - 8000:8000
+    ports:
+      - 8000:8000
     volumes:
       - app-data:/usr/src/paperless/data:rw
       - app-media:/usr/src/paperless/media:rw
