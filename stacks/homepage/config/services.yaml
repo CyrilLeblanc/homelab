@@ -119,11 +119,11 @@
         href: https://caddy.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://caddy.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: caddy
-        description: Simple web UI for managing Nginx reverse proxy
+        description: Reverse proxy with automatic HTTPS
         container: caddy_app
         widget:
             type: caddy
-            url: http://caddy.{{HOMEPAGE_VAR_DOMAIN}}:2019
+            url: http://{{HOMEPAGE_VAR_CADDY_APP_HOST}}:2019
     - WireGuard:
         href: https://wireguard-easy.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://wireguard-easy.{{HOMEPAGE_VAR_DOMAIN}}/
