@@ -1,6 +1,7 @@
 {
     email {$ACME_EMAIL}
     acme_dns infomaniak {$INFOMANIAK_API_TOKEN}
+    admin 0.0.0.0:2019
 }
 
 import /config/stacks/*/Caddyfile
