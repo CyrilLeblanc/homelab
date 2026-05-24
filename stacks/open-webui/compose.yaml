@@ -8,8 +8,8 @@ services:
     networks:
       - default
       - web
-    # ports:
-    #   - 8000:8000
+    ports:
+      - 52832:8000
     environment:
       # Set the API base URL and key for the OpenAI-compatible API (Litellm)
       - OPENAI_API_BASE_URL=http://litellm:4000/v1
