@@ -16,7 +16,7 @@ services:
       - default
       - web
     ports:
-      - 8096:8096
+      - 61290:8096
     deploy:
       resources:
         reservations:
@@ -38,8 +38,8 @@ services:
     networks:
       - default
       - web
-    # ports:
-    #  - 5055:5055 # Jellyseerr web interface
+    ports:
+     - 52998:5055 # Jellyseerr web interface
 
   prowlarr:
     image: ghcr.io/linuxserver/prowlarr:latest
@@ -53,8 +53,8 @@ services:
     networks:
       - default
       - web
-    # ports:
-    #   - 9696:9696 # Prowlarr web interface
+    ports:
+      - 52613:9696 # Prowlarr web interface
 
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
@@ -64,8 +64,8 @@ services:
     networks:
       - default
       - web
-    # ports:
-    #   - 8191:8191
+    ports:
+      - 62758:8191
 
   radarr:
     image: ghcr.io/linuxserver/radarr:latest
@@ -81,8 +81,8 @@ services:
     networks:
       - default
       - web
-    # ports:
-    #   - 7878:7878 # Radarr web interface
+    ports:
+      - 51437:7878 # Radarr web interface
 
   sonarr:
     image: ghcr.io/linuxserver/sonarr:latest
@@ -98,8 +98,8 @@ services:
     networks:
       - default
       - web
-    # ports:
-    #   - 8989:8989 # Sonarr web interface
+    ports:
+      - 52560:8989 # Sonarr web interface
 
   lidarr:
     image: lscr.io/linuxserver/lidarr:latest
@@ -112,8 +112,8 @@ services:
       - lidarr-config:/config:rw
       - /var/lib/docker/volumes/shared_media/_data/music:/music:rw
       - /var/lib/docker/volumes/shared_media/_data/downloads:/downloads:rw
-    # ports:
-    #   - 8686:8686
+    ports:
+      - 61490:8686
     networks:
       - default
       - web
@@ -173,8 +173,8 @@ services:
     networks:
       - default
       - web
-    # ports:
-    #   - 8080:8080 # Qbittorrent web UI
+    ports:
+      - 64935:8080 # Qbittorrent web UI
 
   qbittorrent:
     image: ghcr.io/linuxserver/qbittorrent:latest
@@ -217,8 +217,8 @@ services:
     networks:
       - default
       - web
-    # ports:
-    #   - 8265:8265  # Web UI
+    ports:
+      - 62902:8265  # Web UI
     #   - 8266:8266  # Server port
     deploy:
       resources:

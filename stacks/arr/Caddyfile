@@ -1,0 +1,63 @@
+jellyfin.{$DOMAIN} {
+	@allowed remote_ip {$ALLOWED_IPS}
+	handle @allowed {
+		reverse_proxy {$APPS01_HOST}:61290
+	}
+	respond 403
+}
+
+jellyseerr.{$DOMAIN} {
+	@allowed remote_ip {$ALLOWED_IPS}
+	handle @allowed {
+		reverse_proxy {$APPS01_HOST}:52998
+	}
+	respond 403
+}
+
+prowlarr.{$DOMAIN} {
+	@allowed remote_ip {$ALLOWED_IPS}
+	handle @allowed {
+		reverse_proxy {$APPS01_HOST}:52613
+	}
+	respond 403
+}
+
+radarr.{$DOMAIN} {
+	@allowed remote_ip {$ALLOWED_IPS}
+	handle @allowed {
+		reverse_proxy {$APPS01_HOST}:51437
+	}
+	respond 403
+}
+
+sonarr.{$DOMAIN} {
+	@allowed remote_ip {$ALLOWED_IPS}
+	handle @allowed {
+		reverse_proxy {$APPS01_HOST}:52560
+	}
+	respond 403
+}
+
+lidarr.{$DOMAIN} {
+	@allowed remote_ip {$ALLOWED_IPS}
+	handle @allowed {
+		reverse_proxy {$APPS01_HOST}:61490
+	}
+	respond 403
+}
+
+qbittorrent.{$DOMAIN} {
+	@allowed remote_ip {$ALLOWED_IPS}
+	handle @allowed {
+		reverse_proxy {$APPS01_HOST}:64935
+	}
+	respond 403
+}
+
+tdarr.{$DOMAIN} {
+	@allowed remote_ip {$ALLOWED_IPS}
+	handle @allowed {
+		reverse_proxy {$APPS01_HOST}:62902
+	}
+	respond 403
+}
