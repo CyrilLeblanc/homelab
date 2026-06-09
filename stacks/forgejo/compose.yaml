@@ -1,7 +1,7 @@
 services:
 
   app:
-    image: codeberg.org/forgejo/forgejo:14
+    image: codeberg.org/forgejo/forgejo:15
     restart: unless-stopped
     volumes:
       - app-data:/data:rw
