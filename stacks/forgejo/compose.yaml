@@ -14,26 +14,11 @@ services:
       - FORGEJO__database__DB_NAME=${DB_NAME}
       - FORGEJO__database__DB_USER=${DB_USER}
       - FORGEJO__database__DB_PASSWD=${DB_PASSWORD}
-      - FORGEJO__actions__ENABLED=true
-    networks:
-      - default
     depends_on:
       - postgres
     ports:
       - 222:22
       - 3000:3000
-
-  runner:
-    image: code.forgejo.org/forgejo/runner:6
-    restart: unless-stopped
-    volumes:
-      - runner-data:/data
-      - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - FORGEJO_INSTANCE_URL=http://app:3000
-      - FORGEJO_RUNNER_REGISTRATION_TOKEN=${RUNNER_TOKEN}
-    depends_on:
-      - app
 
   postgres:
     image: docker.io/library/postgres:14
@@ -47,5 +32,4 @@ services:
 
 volumes:
   app-data:
-  runner-data:
   postgres-data:
