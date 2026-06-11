@@ -15,7 +15,7 @@ services:
       - OVERPASS_ALLOW_DUPLICATE_QUERIES=yes
       - OVERPASS_SPACE=4000000000
       - OVERPASS_DIFF_URL=https://download.geofabrik.de/europe/france/rhone-alpes-updates/
-      - OVERPASS_UPDATE_SLEEP=3600
+      - OVERPASS_UPDATE_SLEEP=86400
       - OVERPASS_STOP_AFTER_INIT=false
       - OVERPASS_USE_AREAS=true
     healthcheck:
