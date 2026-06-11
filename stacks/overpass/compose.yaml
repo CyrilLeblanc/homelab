@@ -1,32 +1,32 @@
 services:
   app:
     image: wiktorn/overpass-api:latest
-    # ports:
-    #   - 12345:80
-    networks:
-      - web
+    ports:
+      - 62239:80
     volumes:
-      - app_data:/data:ro
+      - app_data:/data
       - app_db:/db
+      - ./entrypoint.sh:/entrypoint-custom.sh:ro
     environment:
       - OVERPASS_META=no
-      - OVERPASS_MODE=${OVERPASS_MODE:-init}
-      - OVERPASS_PLANET_URL=file:///data/planet.osm.bz2
+      - OVERPASS_MODE=init
+      - OVERPASS_PLANET_URL=file:///db/input.osm.bz2
+      - OVERPASS_PLANET_PREPROCESS=mv /db/input.osm.bz2 /db/planet.osm.bz2
       - OVERPASS_ALLOW_DUPLICATE_QUERIES=yes
       - OVERPASS_SPACE=4000000000
+      - OVERPASS_DIFF_URL=https://download.geofabrik.de/europe/france/rhone-alpes-updates/
+      - OVERPASS_UPDATE_SLEEP=3600
+      - OVERPASS_STOP_AFTER_INIT=false
+      - OVERPASS_USE_AREAS=true
     healthcheck:
-      test: curl --noproxy '*' -qfg 'http://localhost/api/interpreter?data=[out:json];node(1);out;' | jq '.generator' |grep -q Overpass || exit 1
+      test: ["CMD-SHELL", "/app/docker-healthcheck.sh"]
       start_period: 48h
       interval: 5m
       timeout: 30s
       retries: 10
     mem_limit: 4g
-    command: 
+    entrypoint: ["/bin/bash", "/entrypoint-custom.sh"]
 
 volumes:
   app_data:
   app_db:
-
-networks:
-  web:
-    external: true
