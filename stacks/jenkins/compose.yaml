@@ -1,0 +1,19 @@
+services:
+
+  app:
+    image: jenkins/jenkins:lts-slim
+    restart: unless-stopped
+    volumes:
+      - app-data:/var/jenkins_home:rw
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 54861:8080
+      - 55615:50000
+    group_add:
+      - "${DOCKER_GID:-125}"
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+
+volumes:
+  app-data:
