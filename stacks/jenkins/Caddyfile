@@ -1,7 +1,7 @@
 jenkins.{$DOMAIN} {
 	@allowed remote_ip {$ALLOWED_IPS}
 	handle @allowed {
-		reverse_proxy {$APPS01_HOST}:54861
+		reverse_proxy jenkins-app-1:8080
 	}
 	respond 403
 }
