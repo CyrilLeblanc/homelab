@@ -1,4 +1,13 @@
 services:
+  postgres:
+    image: docker.io/library/postgres:14
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data:rw
 
   app:
     image: codeberg.org/forgejo/forgejo:15
@@ -17,18 +26,22 @@ services:
     depends_on:
       - postgres
     ports:
-      - 222:22
+      - 222:222
       - 3000:3000
 
-  postgres:
-    image: docker.io/library/postgres:14
+  runner:
+    image: code.forgejo.org/forgejo/runner:6
     restart: unless-stopped
-    environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
+    depends_on:
+      - app
     volumes:
-      - postgres-data:/var/lib/postgresql/data:rw
+      - runner-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - FORGEJO_INSTANCE_URL=http://app:3000
+      - FORGEJO_RUNNER_UUID=${FORGEJO_RUNNER_UUID}
+      - FORGEJO_RUNNER_SECRET=${FORGEJO_RUNNER_SECRET}
+      - FORGEJO_RUNNER_NAME=main
 
 volumes:
   app-data:
