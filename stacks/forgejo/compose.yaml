@@ -44,5 +44,6 @@ services:
       - FORGEJO_RUNNER_NAME=main
 
 volumes:
-  app-data:
   postgres-data:
+  app-data:
+  runner-data:
