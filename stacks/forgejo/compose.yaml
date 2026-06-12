@@ -29,21 +29,25 @@ services:
       - 222:222
       - 3000:3000
 
-  runner:
-    image: code.forgejo.org/forgejo/runner:6
+  docker-in-docker:
+    image: docker:dind
+    privileged: true
     restart: unless-stopped
+    command: ["dockerd", "-H", "tcp://0.0.0.0:2375", "--tls=false"]
+
+  runner:
+    image: data.forgejo.org/forgejo/runner:12
     depends_on:
-      - app
-    volumes:
-      - runner-data:/data
-      - /var/run/docker.sock:/var/run/docker.sock
+      docker-in-docker:
+        condition: service_started
     environment:
-      - FORGEJO_INSTANCE_URL=http://app:3000
-      - FORGEJO_RUNNER_UUID=${FORGEJO_RUNNER_UUID}
-      - FORGEJO_RUNNER_SECRET=${FORGEJO_RUNNER_SECRET}
-      - FORGEJO_RUNNER_NAME=main
+      DOCKER_HOST: tcp://docker-in-docker:2375
+    user: 1001:1001
+    volumes:
+      - ./runner-data:/data
+    restart: unless-stopped
+    command: 'forgejo-runner daemon --config runner-config.yml'
 
 volumes:
   postgres-data:
   app-data:
-  runner-data:
