@@ -1,6 +1,0 @@
-{
-    "backup-volumes": [
-        "app-cache",
-        "app-config"
-    ]
-}
