@@ -12,9 +12,8 @@ services:
       - redis
     volumes:
       - app-data:/etc/searxng:rw
-    networks:
-      - default
-      - web
+    ports:
+      - 52073:8080
 
   redis:
     image: docker.io/valkey/valkey:8-alpine
@@ -28,16 +27,9 @@ services:
     restart: unless-stopped
     environment:
       - TZ=${TZ}
-    networks:
-      - default
     # ports:
     #   - 8191:8191
 
 volumes:
   app-data:
   redis-data:
-
-networks:
-  web:
-    external: true
-    
