@@ -12,6 +12,7 @@ services:
       - redis
     volumes:
       - app-data:/etc/searxng:rw
+      - ./settings.yml:/etc/searxng/settings.yml:ro
     ports:
       - 52073:8080
 
