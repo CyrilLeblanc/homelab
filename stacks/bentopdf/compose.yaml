@@ -1,0 +1,6 @@
+services:
+  app:
+    image: ghcr.io/alam00000/bentopdf-simple:latest
+    restart: unless-stopped
+    ports:
+      - 60773:8080
