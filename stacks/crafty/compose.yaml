@@ -10,6 +10,7 @@ services:
     ports:
         - 25565:25565
         - 25566:25566
+        - 64714:8000
     volumes:
         - app_backups:/crafty/backups
         - app_logs:/crafty/logs

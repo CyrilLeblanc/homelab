@@ -1,0 +1,7 @@
+crafty.{$DOMAIN} {
+	@allowed remote_ip {$ALLOWED_IPS}
+	handle @allowed {
+		reverse_proxy {$APPS01_HOST}:64714
+	}
+	respond 403
+}
