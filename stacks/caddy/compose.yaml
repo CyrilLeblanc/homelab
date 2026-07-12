@@ -21,6 +21,7 @@ services:
       - ACME_EMAIL=${ACME_EMAIL}
       - ALLOWED_IPS=${ALLOWED_IPS}
       - APPS01_HOST=${APPS01_HOST}
+      - HOMEASSISTANT01_HOST=${HOMEASSISTANT01_HOST}
 
 volumes:
   app-data:
