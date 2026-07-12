@@ -1,0 +1,3 @@
+homeassistant.{$DOMAIN} {
+    reverse_proxy {$HOMEASSISTANT01_HOST}:8123
+}
