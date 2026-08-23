@@ -45,6 +45,9 @@ services:
     user: 1001:1001
     volumes:
       - ./runner-data:/data
+    labels:
+      - ubuntu-latest:docker://catthehacker/ubuntu:act-22.04
+      - ubuntu-22.04:docker://catthehacker/ubuntu:act-22.04
     restart: unless-stopped
     command: 'forgejo-runner daemon --config runner-config.yml'
 
