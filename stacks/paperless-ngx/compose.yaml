@@ -22,6 +22,7 @@ services:
       - PAPERLESS_OCR_LANGUAGE=fra
       - PAPERLESS_TIME_ZONE=${PAPERLESS_TIME_ZONE}
       - PAPERLESS_URL=${PAPERLESS_URL}
+      - PAPERLESS_SECRET_KEY=${PAPERLESS_SECRET_KEY}
 
   postgres:
     image: docker.io/library/postgres:17
