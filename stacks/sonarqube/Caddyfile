@@ -1,3 +1,8 @@
 sonarqube.{$DOMAIN} {
-    reverse_proxy {$APPS01_HOST}:6871
+    @allowed remote_ip {$ALLOWED_IPS}
+	handle @allowed {
+		reverse_proxy {$APPS01_HOST}:6871
+	}
+	respond 403
 }
+
