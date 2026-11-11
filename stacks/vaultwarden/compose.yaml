@@ -1,7 +1,7 @@
 services:
 
   app:
-    image: vaultwarden/server:latest
+    image: ghcr.io/dani-garcia/vaultwarden:1.37.5-alpine
     restart: unless-stopped
     volumes:
       - app-data:/data:rw
