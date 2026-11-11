@@ -10,7 +10,7 @@ services:
       - postgres-data:/var/lib/postgresql/data:rw
 
   app:
-    image: codeberg.org/forgejo/forgejo:15
+    image: codeberg.org/forgejo/forgejo:17.0
     restart: unless-stopped
     volumes:
       - app-data:/data:rw
