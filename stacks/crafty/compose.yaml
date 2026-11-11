@@ -1,7 +1,7 @@
 services:
 
   app:
-    image: registry.gitlab.com/crafty-controller/crafty-4:latest
+    image: registry.gitlab.com/crafty-controller/crafty-4:4.11.0
     restart: unless-stopped
     environment:
         - TZ=${TZ}
