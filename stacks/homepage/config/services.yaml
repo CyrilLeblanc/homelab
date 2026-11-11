@@ -39,12 +39,6 @@
         icon: ntfy
         description: Notification sender
         # container: ntfy_app
-    - n8n:
-        href: https://n8n.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://n8n.{{HOMEPAGE_VAR_DOMAIN}}/
-        icon: n8n
-        description: Workflow automation tool
-        # container: n8n_app
     - BentoPdf:
         href: https://bentopdf.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://bentopdf.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -109,11 +103,9 @@
             username: {{HOMEPAGE_VAR_ADGUARD_HOME_USERNAME}}
             password: {{HOMEPAGE_VAR_ADGUARD_HOME_PASSWORD}}
     - Caddy:
-        href: https://caddy.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://caddy.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: caddy
         description: Reverse proxy with automatic HTTPS
-        container: caddy_app
+        container: caddy_app-1
         widget:
             type: caddy
             url: http://{{HOMEPAGE_VAR_CADDY_APP_HOST}}:2019
@@ -122,7 +114,7 @@
         siteMonitor: https://wg-easy.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: wireguard
         description: Fast, modern VPN tunnel protocol
-        container: wireguard-easy_app
+        container: wg-easy_app-1
         # widget:
         #     type: wgeasy
         #     url: https://wg-easy.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -167,13 +159,6 @@
 #             key: {{HOMEPAGE_VAR_MEALIE_APP_PASSWORD}}
 #             version: 2
 
-- Made Myself:
-    - ParkingLocator:
-        href: https://parking-locator.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://parking-locator.{{HOMEPAGE_VAR_DOMAIN}}/
-        icon: si-parking
-        description: Parking spot locator
-
 - Forge:
     - Forgejo:
         href: https://forgejo.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -197,6 +182,13 @@
         icon: penpot
         description: Open source design and prototyping platform
         # container: penpot_frontend
+
+- Made Myself:
+    - ParkingLocator:
+        href: https://parking-locator.{{HOMEPAGE_VAR_DOMAIN}}/
+        siteMonitor: https://parking-locator.{{HOMEPAGE_VAR_DOMAIN}}/
+        icon: si-parking
+        description: Parking spot locator around Grenoble
 
 - Media:
     - Jellyfin:
