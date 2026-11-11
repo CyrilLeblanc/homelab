@@ -1,7 +1,7 @@
 services:
 
   app:
-    image: adguard/adguardhome:v1.0.0-b.2
+    image: adguard/adguardhome:v0.108.0-b.91
     restart: unless-stopped
     volumes:
       - app-work:/opt/adguardhome/work:rw
