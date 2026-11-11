@@ -8,49 +8,49 @@
         siteMonitor: https://crafty.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: crafty-controller
         description: Minecraft server management panel
-        container: crafty_app
+        # container: crafty_app
     - Open WebUI:
         href: https://open-webui.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://open-webui.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: open-webui
         description: Web interface for LLMs and AI chatbots
-        container: open-webui_app
+        # container: open-webui_app
     - SearxNG:
         href: https://searxng.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://searxng.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: searxng
         description: Privacy-respecting metasearch engine
-        container: searxng_app
+        # container: searxng_app
     - Overpass:
         href: https://overpass.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://overpass.{{HOMEPAGE_VAR_DOMAIN}}/
-        icon: overpass
+        icon: openstreetmap
         description: OpenStreetMap data query tool
-        container: overpass_app
+        # container: overpass_app
     - Wallos:
         href: https://wallos.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://wallos.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: wallos
         description: Subscription tracker
-        container: wallos_app
+        # container: wallos_app
     - Ntfy:
         href: https://ntfy.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://ntfy.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: ntfy
         description: Notification sender
-        container: ntfy_app
+        # container: ntfy_app
     - n8n:
         href: https://n8n.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://n8n.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: n8n
         description: Workflow automation tool
-        container: n8n_app
+        # container: n8n_app
     - BentoPdf:
         href: https://bentopdf.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://bentopdf.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: bentopdf
         description: PDF management and annotation tool
-        container: bentopdf_app
+        # container: bentopdf_app
 
 - Cloud:
     - Nextcloud:
@@ -58,7 +58,7 @@
         siteMonitor: https://nextcloud.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: nextcloud
         description: Self-hosted productivity and file sync platform
-        container: nextcloud_app
+        # container: nextcloud_app
         widget:
             type: nextcloud
             url: https://nextcloud.{{HOMEPAGE_VAR_DOMAIN}}
@@ -68,13 +68,13 @@
         siteMonitor: https://vaultwarden.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: vaultwarden
         description: Lightweight Bitwarden-compatible password manager
-        container: vaultwarden_app
+        # container: vaultwarden_app
     - Paperless-ngx:
         href: https://paperless-ngx.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://paperless-ngx.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: paperless-ngx
         description: Document management and OCR system
-        container: paperless-ngx_app
+        # container: paperless-ngx_app
         widget:
             type: paperlessngx
             url: https://paperless-ngx.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -84,7 +84,7 @@
         siteMonitor: https://immich.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: immich
         description: Self-hosted photo and video backup solution
-        container: immich_app
+        # container: immich_app
         widget:
             type: immich
             url: https://immich.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -97,15 +97,6 @@
         siteMonitor: https://proxmox.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: proxmox
         description: Virtualization management platform
-    - Dockhand:
-        href: https://dockhand.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://dockhand.{{HOMEPAGE_VAR_DOMAIN}}/
-        icon: dockhand
-        description: Docker container management UI
-        container: dockhand_app
-        widget:
-            type: dockhand
-            url: https://dockhand.{{HOMEPAGE_VAR_DOMAIN}}/
     - Adguard Home:
         href: https://adguard-home.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://adguard-home.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -132,71 +123,56 @@
         icon: wireguard
         description: Fast, modern VPN tunnel protocol
         container: wireguard-easy_app
-        widget:
-            type: wgeasy
-            url: https://wg-easy.{{HOMEPAGE_VAR_DOMAIN}}/
-            version: 2
-            username: {{HOMEPAGE_VAR_WG_EASY_USERNAME}}
-            password: {{HOMEPAGE_VAR_WG_EASY_PASSWORD}}
+        # widget:
+        #     type: wgeasy
+        #     url: https://wg-easy.{{HOMEPAGE_VAR_DOMAIN}}/
+        #     version: 2
+        #     username: {{HOMEPAGE_VAR_WG_EASY_USERNAME}}
+        #     password: {{HOMEPAGE_VAR_WG_EASY_PASSWORD}}
 
-- Knowledge:
-    - WikiJs:
-        href: https://wikijs.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://wikijs.{{HOMEPAGE_VAR_DOMAIN}}/
-        icon: wikijs
-        description: Powerful and extensible wiki platform
-        container: wikijs_app
-    - Affine:
-        href: https://affine.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://affine.{{HOMEPAGE_VAR_DOMAIN}}/
-        icon: affine
-        description: Collaborative knowledge base and workspace
-        container: affine_app
-    - BookStack:
-        href: https://bookstack.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://bookstack.{{HOMEPAGE_VAR_DOMAIN}}/
-        icon: bookstack
-        description: Simple self-hosted wiki platform
-        container: bookstack_app
-    - Trilium Notes:
-        href: https://trilium.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://trilium.{{HOMEPAGE_VAR_DOMAIN}}/
-        icon: trilium
-        description: Hierarchical note-taking application
-        container: trilium_app
-    - Mealie:
-        href: https://mealie.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://mealie.{{HOMEPAGE_VAR_DOMAIN}}/
-        icon: mealie
-        description: Self-hosted meal planning and recipe management
-        container: mealie_app
-        widget:
-            type: mealie
-            url: https://mealie.{{HOMEPAGE_VAR_DOMAIN}}/
-            key: {{HOMEPAGE_VAR_MEALIE_APP_PASSWORD}}
-            version: 2
+# - Knowledge:
+#     - WikiJs:
+#         href: https://wikijs.{{HOMEPAGE_VAR_DOMAIN}}/
+#         siteMonitor: https://wikijs.{{HOMEPAGE_VAR_DOMAIN}}/
+#         icon: wikijs
+#         description: Powerful and extensible wiki platform
+#         container: wikijs_app
+#     - Affine:
+#         href: https://affine.{{HOMEPAGE_VAR_DOMAIN}}/
+#         siteMonitor: https://affine.{{HOMEPAGE_VAR_DOMAIN}}/
+#         icon: affine
+#         description: Collaborative knowledge base and workspace
+#         container: affine_app
+#     - BookStack:
+#         href: https://bookstack.{{HOMEPAGE_VAR_DOMAIN}}/
+#         siteMonitor: https://bookstack.{{HOMEPAGE_VAR_DOMAIN}}/
+#         icon: bookstack
+#         description: Simple self-hosted wiki platform
+#         container: bookstack_app
+#     - Trilium Notes:
+#         href: https://trilium.{{HOMEPAGE_VAR_DOMAIN}}/
+#         siteMonitor: https://trilium.{{HOMEPAGE_VAR_DOMAIN}}/
+#         icon: trilium
+#         description: Hierarchical note-taking application
+#         container: trilium_app
+#     - Mealie:
+#         href: https://mealie.{{HOMEPAGE_VAR_DOMAIN}}/
+#         siteMonitor: https://mealie.{{HOMEPAGE_VAR_DOMAIN}}/
+#         icon: mealie
+#         description: Self-hosted meal planning and recipe management
+#         container: mealie_app
+#         widget:
+#             type: mealie
+#             url: https://mealie.{{HOMEPAGE_VAR_DOMAIN}}/
+#             key: {{HOMEPAGE_VAR_MEALIE_APP_PASSWORD}}
+#             version: 2
 
 - Made Myself:
-    - Weekli:
-        href: https://weekli.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://weekli.{{HOMEPAGE_VAR_DOMAIN}}/
-        description: Weekly budget manager
-        container: weekli_php
-    - Stellar Map:
-        href: https://stellar-map.cyrleb.dev/
-        siteMonitor: https://stellar-map.cyrleb.dev/
-        description: Star map viewer
-        container: stellar-map_app
-    - Budget Weekly:
-        href: https://budget-weekly.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://budget-weekly.{{HOMEPAGE_VAR_DOMAIN}}/
-        description: Personal budgeting tool
-        container: budget-weekly_app
-    - Diamond Maker:
-        href: https://diamond-maker.cyrleb.dev/
-        siteMonitor: https://diamond-maker.cyrleb.dev/
-        description: Diamond price calculator
-        container: diamond-maker_app
+    - ParkingLocator:
+        href: https://parking-locator.{{HOMEPAGE_VAR_DOMAIN}}/
+        siteMonitor: https://parking-locator.{{HOMEPAGE_VAR_DOMAIN}}/
+        icon: si-parking
+        description: Parking spot locator
 
 - Forge:
     - Forgejo:
@@ -204,23 +180,23 @@
         siteMonitor: https://forgejo.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: forgejo
         description: Lightweight self-hosted Git service
-        container: forgejo_app
-        widget:
-            type: gitea
-            url: https://forgejo.{{HOMEPAGE_VAR_DOMAIN}}/
-            key: {{HOMEPAGE_VAR_GITEA_API_KEY}}
+        # container: forgejo_app
+        # widget:
+        #     type: gitea
+        #     url: https://forgejo.{{HOMEPAGE_VAR_DOMAIN}}/
+        #     key: {{HOMEPAGE_VAR_GITEA_API_KEY}}
     - SonarQube:
         href: https://sonarqube.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://sonarqube.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: sonarqube
         description: Continuous code quality inspection tool
-        container: sonarqube_app
+        # container: sonarqube_app
     - PenPot:
         href: https://penpot.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://penpot.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: penpot
         description: Open source design and prototyping platform
-        container: penpot_frontend
+        # container: penpot_frontend
 
 - Media:
     - Jellyfin:
@@ -228,22 +204,22 @@
         siteMonitor: https://jellyfin.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: jellyfin
         description: Open source media server
-        container: arr_jellyfin
-        widget:
-            type: jellyfin
-            url: https://jellyfin.{{HOMEPAGE_VAR_DOMAIN}}/
-            key: {{HOMEPAGE_VAR_JELLYFIN_APP_PASSWORD}}
-            enableBlocks: true
-            enableNowPlaying: true
-            enableUser: true
-            showEpisodeNumber: true
-            expandOneStreamToTwoRows: true
+        # container: arr_jellyfin
+        # widget:
+        #     type: jellyfin
+        #     url: https://jellyfin.{{HOMEPAGE_VAR_DOMAIN}}/
+        #     key: {{HOMEPAGE_VAR_JELLYFIN_APP_PASSWORD}}
+        #     enableBlocks: true
+        #     enableNowPlaying: true
+        #     enableUser: true
+        #     showEpisodeNumber: true
+        #     expandOneStreamToTwoRows: true
     - Seerr:
         href: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: jellyseerr
         description: Media request and management tool for Jellyfin
-        container: arr_jellyseerr
+        # container: arr_jellyseerr
         widget:
             type: jellyseerr
             url: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -253,7 +229,7 @@
         siteMonitor: https://lidarr.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: lidarr
         description: Music collection manager for Usenet and BitTorrent
-        container: arr_lidarr
+        # container: arr_lidarr
         widget:
             type: lidarr
             url: https://lidarr.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -263,7 +239,7 @@
         siteMonitor: https://radarr.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: radarr
         description: Movie collection manager for Usenet and BitTorrent
-        container: arr_radarr
+        # container: arr_radarr
         widget:
             type: radarr
             url: https://radarr.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -274,7 +250,7 @@
         siteMonitor: https://sonarr.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: sonarr
         description: TV series collection manager for Usenet and BitTorrent
-        container: arr_sonarr
+        # container: arr_sonarr
         widget:
             type: sonarr
             url: https://sonarr.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -285,7 +261,7 @@
         siteMonitor: https://prowlarr.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: prowlarr
         description: Indexer manager and proxy for media apps
-        container: arr_prowlarr
+        # container: arr_prowlarr
         widget:
             type: prowlarr
             url: https://prowlarr.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -295,23 +271,23 @@
         siteMonitor: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: qbittorrent
         description: Lightweight BitTorrent client
-        container: arr_gluetun
-        widget:
-            type: qbittorrent
-            url: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN}}/
-            username: {{HOMEPAGE_VAR_QBITTORRENT_APP_USERNAME}}
-            password: {{HOMEPAGE_VAR_QBITTORRENT_APP_PASSWORD}}
-            enableLeechProgress: true
+        # container: arr_qbittorrent
+        # widget:
+        #     type: qbittorrent
+        #     url: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN}}/
+        #     username: {{HOMEPAGE_VAR_QBITTORRENT_APP_USERNAME}}
+        #     password: {{HOMEPAGE_VAR_QBITTORRENT_APP_PASSWORD}}
+        #     enableLeechProgress: true
     - Gluetun:
         icon: gluetun
         description: VPN client for Docker containers
-        container: arr_gluetun
+        # container: arr_gluetun
     - Tdarr:
         href: https://tdarr.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://tdarr.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: tdarr
         description: Distributed media transcoding system
-        container: arr_tdarr
+        # container: arr_tdarr
         widget:
             type: tdarr
             url: https://tdarr.{{HOMEPAGE_VAR_DOMAIN}}/
