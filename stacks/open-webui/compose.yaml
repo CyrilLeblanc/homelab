@@ -32,7 +32,7 @@ services:
       - pipeline
 
   litellm:
-    image: ghcr.io/berriai/litellm:main-latest
+    image: ghcr.io/berriai/litellm:v1.106.8 
     restart: unless-stopped
     volumes:
       - ./litellm_config.yaml:/app/config.yaml
@@ -74,7 +74,7 @@ services:
       retries: 5
 
   ollama:
-    image: ollama/ollama:latest
+    image: ollama/ollama:0.40.16
     restart: unless-stopped
     volumes:
       - ollama-data:/root/.ollama
@@ -124,7 +124,7 @@ services:
               capabilities: [gpu]
 
   open-terminal:
-    image: ghcr.io/open-webui/open-terminal:latest
+    image: ghcr.io/open-webui/open-terminal:0.17.7
     restart: unless-stopped
     environment:
       - OPEN_TERMINAL_API_KEY=${OPEN_TERMINAL_API_KEY:-}
@@ -147,7 +147,7 @@ services:
       - crawl4ai
 
   crawl4ai:
-    image: unclecode/crawl4ai:0.6.0-r2
+    image: unclecode/crawl4ai:0.9.5
     restart: unless-stopped
     shm_size: 1g
 
