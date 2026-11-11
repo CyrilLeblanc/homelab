@@ -1,7 +1,7 @@
 services:
 
   jellyfin:
-    image: jellyfin/jellyfin:latest
+    image: ghcr.io/jellyfin/jellyfin:12.4
     restart: unless-stopped
     runtime: nvidia
     volumes:
@@ -25,24 +25,24 @@ services:
               count: all
               capabilities: [gpu]
 
-
-  jellyseerr:
-    image: fallenbagel/jellyseerr:latest
+  seerr:
+    image: ghcr.io/seerr-team/seerr
     restart: unless-stopped
+    init: true
     environment:
       - PUID=${PUID}
       - GUID=${PGID}
       - TZ=${TZ}
     volumes:
-      - jellyseerr-config:/app/config:rw
+      - seerr-config:/app/config:rw
     networks:
       - default
       - web
     ports:
-     - 52998:5055 # Jellyseerr web interface
+     - 52998:5055 # Seerr web interface
 
   prowlarr:
-    image: ghcr.io/linuxserver/prowlarr:latest
+    image: ghcr.io/linuxserver/prowlarr:2.7.0
     restart: unless-stopped
     environment:
       - PUID=${PUID}
@@ -57,7 +57,7 @@ services:
       - 52613:9696 # Prowlarr web interface
 
   flaresolverr:
-    image: ghcr.io/flaresolverr/flaresolverr:latest
+    image: ghcr.io/flaresolverr/flaresolverr:v3.5.2
     restart: unless-stopped
     environment:
       - TZ=${TZ}
@@ -68,7 +68,7 @@ services:
       - 62758:8191
 
   radarr:
-    image: ghcr.io/linuxserver/radarr:latest
+    image: ghcr.io/linuxserver/radarr:6.4.4
     restart: unless-stopped
     environment:
       - TZ=${TZ}
@@ -85,7 +85,7 @@ services:
       - 51437:7878 # Radarr web interface
 
   sonarr:
-    image: ghcr.io/linuxserver/sonarr:latest
+    image: ghcr.io/linuxserver/sonarr:4.0.20
     restart: unless-stopped
     environment:
       - TZ=${TZ}
@@ -102,7 +102,7 @@ services:
       - 52560:8989 # Sonarr web interface
 
   lidarr:
-    image: lscr.io/linuxserver/lidarr:latest
+    image: ghcr.io/linuxserver/lidarr:3.1.6
     restart: unless-stopped
     environment:
       - PUID=${PUID}
@@ -118,29 +118,8 @@ services:
       - default
       - web
 
-  # dispatcharr:
-  #   image: ghcr.io/dispatcharr/dispatcharr:latest
-  #   restart: unless-stopped
-  #   network_mode: host
-  #   volumes:
-  #     - dispatcharr-data:/data
-  #   environment:
-  #     - DISPATCHARR_ENV=aio
-  #     - REDIS_HOST=localhost
-  #     - CELERY_BROKER_URL=redis://localhost:6379/0
-  #     - DISPATCHARR_LOG_LEVEL=info
-  #   extra_hosts:
-  #     - "mafreebox.freebox.fr:192.168.1.254"
-  #   deploy:
-  #     resources:
-  #       reservations:
-  #         devices:
-  #           - driver: nvidia
-  #             count: all
-  #             capabilities: [gpu]
-
   tor:
-    image: dockurr/tor:latest
+    image: ghcr.io/dockur/tor:0.4.9.16
     restart: unless-stopped
     networks:
       - default
@@ -177,7 +156,7 @@ services:
       - 64935:8080 # Qbittorrent web UI
 
   qbittorrent:
-    image: ghcr.io/linuxserver/qbittorrent:latest
+    image: ghcr.io/linuxserver/qbittorrent:5.3.0
     restart: unless-stopped
     environment:
       - PUID=${PUID}
@@ -193,7 +172,7 @@ services:
         restart: true
 
   tdarr:
-    image: ghcr.io/haveagitgat/tdarr:latest
+    image: ghcr.io/haveagitgat/tdarr:3.07.00
     restart: unless-stopped
     runtime: nvidia
     environment:
@@ -231,7 +210,7 @@ services:
 volumes:
   jellyfin-config:
   jellyfin-cache:
-  jellyseerr-config:
+  seerr-config:
   prowlarr-config:
   radarr-data:
   sonarr-data:
