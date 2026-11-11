@@ -1,7 +1,7 @@
 services:
 
   app:
-    image: nextcloud:fpm-alpine
+    image: nextcloud:35.0.2-fpm-alpine
     restart: unless-stopped
     networks:
       - default
@@ -43,7 +43,7 @@ services:
       - 51601:80
 
   cron:
-    image: nextcloud:fpm-alpine
+    image: nextcloud:35.0.2-fpm-alpine
     restart: unless-stopped
     volumes:
       - app-data:/var/www/html:z
