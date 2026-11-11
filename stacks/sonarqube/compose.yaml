@@ -15,7 +15,7 @@ services:
       SONARQUBE_JDBC_USERNAME: ${DATABASE_USER}
       SONARQUBE_JDBC_PASSWORD: ${DATABASE_PASSWORD}
     depends_on:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres
 
   postgres:
     image: postgres:18
