@@ -90,7 +90,7 @@
         siteMonitor: https://adguard-home.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: adguard-home
         description: Network-wide ad and tracker blocking DNS server
-        container: adguard-home_app
+        container: adguard-home-app-1
         widget:
             type: adguard
             url: https://adguard-home.{{HOMEPAGE_VAR_DOMAIN}}/
