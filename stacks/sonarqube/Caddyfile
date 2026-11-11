@@ -1,0 +1,3 @@
+forgejo.{$DOMAIN} {
+    reverse_proxy {$APPS01_HOST}:6871
+}
