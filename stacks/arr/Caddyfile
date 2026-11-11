@@ -6,7 +6,7 @@ jellyfin.{$DOMAIN} {
 	respond 403
 }
 
-jellyseerr.{$DOMAIN} {
+seerr.{$DOMAIN} {
 	@allowed remote_ip {$ALLOWED_IPS}
 	handle @allowed {
 		reverse_proxy {$APPS01_HOST}:52998
