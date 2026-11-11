@@ -9,16 +9,6 @@
         icon: crafty-controller
         description: Minecraft server management panel
         container: crafty_app
-    - Forgejo:
-        href: https://forgejo.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://forgejo.{{HOMEPAGE_VAR_DOMAIN}}/
-        icon: forgejo
-        description: Lightweight self-hosted Git service
-        container: forgejo_app
-        widget:
-            type: forgejo
-            url: https://forgejo.{{HOMEPAGE_VAR_DOMAIN}}/
-            key: {{HOMEPAGE_VAR_GITEA_API_KEY}}
     - Open WebUI:
         href: https://open-webui.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://open-webui.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -31,6 +21,12 @@
         icon: searxng
         description: Privacy-respecting metasearch engine
         container: searxng_app
+    - Overpass:
+        href: https://overpass.{{HOMEPAGE_VAR_DOMAIN}}/
+        siteMonitor: https://overpass.{{HOMEPAGE_VAR_DOMAIN}}/
+        icon: overpass
+        description: OpenStreetMap data query tool
+        container: overpass_app
     - Wallos:
         href: https://wallos.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://wallos.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -49,6 +45,12 @@
         icon: n8n
         description: Workflow automation tool
         container: n8n_app
+    - BentoPdf:
+        href: https://bentopdf.{{HOMEPAGE_VAR_DOMAIN}}/
+        siteMonitor: https://bentopdf.{{HOMEPAGE_VAR_DOMAIN}}/
+        icon: bentopdf
+        description: PDF management and annotation tool
+        container: bentopdf_app
 
 - Cloud:
     - Nextcloud:
@@ -196,13 +198,23 @@
         description: Diamond price calculator
         container: diamond-maker_app
 
-- Tools:
-    - BentoPdf:
-        href: https://bentopdf.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://bentopdf.{{HOMEPAGE_VAR_DOMAIN}}/
-        icon: bentopdf
-        description: PDF management and annotation tool
-        container: bentopdf_app
+- Forge:
+    - Forgejo:
+        href: https://forgejo.{{HOMEPAGE_VAR_DOMAIN}}/
+        siteMonitor: https://forgejo.{{HOMEPAGE_VAR_DOMAIN}}/
+        icon: forgejo
+        description: Lightweight self-hosted Git service
+        container: forgejo_app
+        widget:
+            type: gitea
+            url: https://forgejo.{{HOMEPAGE_VAR_DOMAIN}}/
+            key: {{HOMEPAGE_VAR_GITEA_API_KEY}}
+    - SonarQube:
+        href: https://sonarqube.{{HOMEPAGE_VAR_DOMAIN}}/
+        siteMonitor: https://sonarqube.{{HOMEPAGE_VAR_DOMAIN}}/
+        icon: sonarqube
+        description: Continuous code quality inspection tool
+        container: sonarqube_app
     - PenPot:
         href: https://penpot.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://penpot.{{HOMEPAGE_VAR_DOMAIN}}/
@@ -212,7 +224,7 @@
 
 - Media:
     - Jellyfin:
-        href: 
+        href: https://jellyfin.{{HOMEPAGE_VAR_DOMAIN}}/
         siteMonitor: https://jellyfin.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: jellyfin
         description: Open source media server
@@ -226,19 +238,19 @@
             enableUser: true
             showEpisodeNumber: true
             expandOneStreamToTwoRows: true
-    - Jellyseerr:
-        href: https://jellyseerr.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: https://jellyseerr.{{HOMEPAGE_VAR_DOMAIN}}/
+    - Seerr:
+        href: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}/
+        siteMonitor: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: jellyseerr
         description: Media request and management tool for Jellyfin
         container: arr_jellyseerr
         widget:
             type: jellyseerr
-            url: https://jellyseerr.{{HOMEPAGE_VAR_DOMAIN}}/
+            url: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}/
             key: {{HOMEPAGE_VAR_JELLYSEERR_APP_PASSWORD}}
     - Lidarr:
         href: https://lidarr.{{HOMEPAGE_VAR_DOMAIN}}/
-        siteMonitor: 
+        siteMonitor: https://lidarr.{{HOMEPAGE_VAR_DOMAIN}}/
         icon: lidarr
         description: Music collection manager for Usenet and BitTorrent
         container: arr_lidarr
