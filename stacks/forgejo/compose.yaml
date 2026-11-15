@@ -34,6 +34,8 @@ services:
     privileged: true
     restart: unless-stopped
     command: ["dockerd", "-H", "tcp://0.0.0.0:2375", "--tls=false"]
+    dns:
+      - ${DNS_SERVER}
 
   runner:
     image: data.forgejo.org/forgejo/runner:12
