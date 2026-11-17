@@ -121,6 +121,10 @@
         icon: ntfy
         description: Notification sender
         container: ntfy-app-1
+    - Mailcow:
+        href: https://mail.{{HOMEPAGE_VAR_DOMAIN}}/
+        siteMonitor: https://mail.{{HOMEPAGE_VAR_DOMAIN}}/
+        icon: mailcow
 
 # - Knowledge:
 #     - WikiJs:
